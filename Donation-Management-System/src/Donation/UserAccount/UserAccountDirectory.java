@@ -4,10 +4,28 @@
  */
 package Donation.UserAccount;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Raushan
  */
 public class UserAccountDirectory {
+    
+    private ArrayList<UserAccount> userAccountList;
+
+    public UserAccountDirectory(ArrayList<UserAccount> userAccountList) {
+        this.userAccountList = userAccountList;
+    }
+
+    public ArrayList<UserAccount> getUserAccountList() {
+        return userAccountList;
+    }
+
+    public void setUserAccountList(ArrayList<UserAccount> userAccountList) {
+        this.userAccountList = userAccountList;
+    }
+    
+    
     
 }
