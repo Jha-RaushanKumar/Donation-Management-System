@@ -4,7 +4,7 @@
  */
 package Donation.UserAccount;
 
-import Donation.Employee.Employee;
+import Donation.Role.Role;
 
 /**
  *
@@ -14,12 +14,10 @@ public class UserAccount {
     
     private String username;
     private String password;
-    private Employee employee;
+    private Role role;
 
-    public UserAccount(String username, String password, Employee employee) {
-        this.username = username;
-        this.password = password;
-        this.employee = employee;
+    public UserAccount() {
+        
     }
 
     public String getUsername() {
@@ -38,13 +36,17 @@ public class UserAccount {
         this.password = password;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Role getRole() {
+        return role;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setRole(Role role) {
+        this.role = role;
     }
+    
+    
+
+    
     
     
     
