@@ -15,19 +15,19 @@ public class ConfigureSystem {
     
     public static EcoSystem configure() {
 
-        EcoSystem system = EcoSystem.getInstance();
+        EcoSystem ecosystem = EcoSystem.getInstance();
 
-        Employee employee = system.getEmployeeDirectory().createEmployee();
+        Employee employee = ecosystem.getEmployeeDirectory().createEmployee();
         employee.setId(1775832);
         employee.setName("Raushan");
 
-        UserAccount useracc = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
+        UserAccount useracc = ecosystem.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
         useracc.setUsername("sysadmin");
         useracc.setPassword("sysadmin");
         useracc.setEmployee(employee);
         useracc.setRole(new SystemAdminRole());
         
-        return system;
+        return ecosystem;
     }
     
 }

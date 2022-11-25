@@ -56,7 +56,7 @@ public class EcoSystem extends Organization{
 
     public boolean checkUserUniqueness(String userName, EcoSystem ecoSys) {
         for (Network network : ecoSys.getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEntList()) {
                 for (UserAccount useracc : enterprise.getUserAccountDirectory().getUserAccountList()) {
                     if (useracc.getUsername().equals(userName)) {
                         return false;

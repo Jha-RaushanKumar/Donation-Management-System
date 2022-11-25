@@ -4,10 +4,54 @@
  */
 package Donation.Role;
 
+import Configuration.EcoSystem;
+import Donation.Enterprise.Enterprise;
+import Donation.Network.Network;
+import Donation.Organization.Organization;
+import Donation.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Raushan
  */
-public class Role {
+public abstract class Role {
     
+    public enum RoleType {
+        SystemAdmin("System Administrator"),
+        DonationAdmin("Donation Admin"),
+        FundsAdmin("Funds Admin"),
+        KitSupplyAdmin("Kit Supply Admin"),
+        DonorAdmin("Donor Admin"),
+        DonorIndividual("Donor"),
+        DisasterReliefOrgRole("Disaster Relief Org"),
+        EducationDonationOrgRole("Education Donation Org"),
+        DisasterReliefKitSupplyManager("Disaster Relief Kit Supply Manager"),
+        EducationKitSupplyManager("Education Kit Supply Manager");
+
+        private String value;
+
+        private RoleType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+    }
+    
+    public abstract JPanel createWorkArea(JPanel userProcessContainer,
+            UserAccount account,
+            Organization organization,
+            Enterprise enterprise,
+            Network network,
+            EcoSystem ecoSystem);
+    
+    @Override
+    public String toString() {
+        return this.getClass().getName();
+    }
+    
+
 }

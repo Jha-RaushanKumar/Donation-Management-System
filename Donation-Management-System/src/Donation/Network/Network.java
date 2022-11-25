@@ -12,27 +12,27 @@ import Donation.Enterprise.EnterpriseDirectory;
  */
 public class Network {
     
-    private String name;
-    private EnterpriseDirectory enterpriseDirectory;
+    private String netName;
+    private EnterpriseDirectory entDirectory;
     
     public Network(){
-        enterpriseDirectory=new EnterpriseDirectory();
+        entDirectory = new EnterpriseDirectory(); 
     }
 
     public String getName() {
-        return name;
+        return netName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.netName = name;
     }
 
     public EnterpriseDirectory getEnterpriseDirectory() {
-        return enterpriseDirectory;
+        return entDirectory;
     }
 
     public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
-        this.enterpriseDirectory = enterpriseDirectory;
+        this.entDirectory = enterpriseDirectory;
     }
     
     
