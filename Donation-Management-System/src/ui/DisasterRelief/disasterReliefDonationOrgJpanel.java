@@ -8,12 +8,12 @@ package ui.DisasterRelief;
  *
  * @author reeteshkesarwani
  */
-public class disasterReliefDonationOrgJpanel extends javax.swing.JPanel {
+public class DisasterReliefDonationOrgJpanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DisasterReliefDonationOrgJpanel
      */
-    public disasterReliefDonationOrgJpanel() {
+    public DisasterReliefDonationOrgJpanel() {
         initComponents();
     }
 

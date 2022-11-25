@@ -8,12 +8,12 @@ package ui.Education;
  *
  * @author reeteshkesarwani
  */
-public class educationDonationOrgJPanel extends javax.swing.JPanel {
+public class EducationDonationOrgJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form EducationDonationOrgJPanel
      */
-    public educationDonationOrgJPanel() {
+    public EducationDonationOrgJPanel() {
         initComponents();
     }
 

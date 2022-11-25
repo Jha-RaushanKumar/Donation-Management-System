@@ -8,12 +8,12 @@ package ui.Funds;
  *
  * @author reeteshkesarwani
  */
-public class fundsAdminJPanel extends javax.swing.JPanel {
+public class FundsAdminJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form FundsAdminJPanel
      */
-    public fundsAdminJPanel() {
+    public FundsAdminJPanel() {
         initComponents();
     }
 

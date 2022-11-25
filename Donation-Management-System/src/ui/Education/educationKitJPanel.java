@@ -8,12 +8,12 @@ package ui.Education;
  *
  * @author reeteshkesarwani
  */
-public class educationKitJPanel extends javax.swing.JPanel {
+public class EducationKitJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form EducationKitJPanel
      */
-    public educationKitJPanel() {
+    public EducationKitJPanel() {
         initComponents();
     }
 

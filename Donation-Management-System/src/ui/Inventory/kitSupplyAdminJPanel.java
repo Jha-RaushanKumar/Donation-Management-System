@@ -8,12 +8,12 @@ package ui.Inventory;
  *
  * @author reeteshkesarwani
  */
-public class kitSupplyAdminJPanel extends javax.swing.JPanel {
+public class KitSupplyAdminJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form KitSupplyAdminJPanel
      */
-    public kitSupplyAdminJPanel() {
+    public KitSupplyAdminJPanel() {
         initComponents();
     }
 

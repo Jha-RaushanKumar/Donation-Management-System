@@ -8,12 +8,12 @@ package ui.Funds;
  *
  * @author reeteshkesarwani
  */
-public class donateFundsJPanel extends javax.swing.JPanel {
+public class DonateFundsJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DonateFundsJPanel
      */
-    public donateFundsJPanel() {
+    public DonateFundsJPanel() {
         initComponents();
     }
 

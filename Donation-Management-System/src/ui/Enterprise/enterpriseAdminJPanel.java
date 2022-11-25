@@ -8,12 +8,12 @@ package ui.Enterprise;
  *
  * @author reeteshkesarwani
  */
-public class enterpriseAdminJPanel extends javax.swing.JPanel {
+public class EnterpriseAdminJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form enterpriseAdminJPanel
      */
-    public enterpriseAdminJPanel() {
+    public EnterpriseAdminJPanel() {
         initComponents();
     }
 

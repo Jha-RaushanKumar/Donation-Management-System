@@ -8,12 +8,12 @@ package ui.System;
  *
  * @author reeteshkesarwani
  */
-public class networkJPanel extends javax.swing.JPanel {
+public class NetworkJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form networkJPanel
      */
-    public networkJPanel() {
+    public NetworkJPanel() {
         initComponents();
     }
 

@@ -8,12 +8,12 @@ package ui.System;
  *
  * @author reeteshkesarwani
  */
-public class systemAdminJPanel extends javax.swing.JPanel {
+public class SystemAdminJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form systemAdminJPanel
      */
-    public systemAdminJPanel() {
+    public SystemAdminJPanel() {
         initComponents();
     }
 
