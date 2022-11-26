@@ -26,19 +26,365 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblOrganizationList = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        comboBoxOrgType = new javax.swing.JComboBox();
+        txtUsername = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        btnAddOrganization = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        comboBoxRole = new javax.swing.JComboBox();
+        txtName = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
+        btnDelete1 = new javax.swing.JButton();
+        btnDelete2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblWorkQueue = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButtonDownloadReport = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jPanelReport = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(1050, 670));
+
+        jTabbedPane1.setForeground(new java.awt.Color(2, 55, 108));
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 800));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 900));
+        jPanel1.setLayout(null);
+
+        jScrollPane1.setForeground(new java.awt.Color(2, 55, 108));
+
+        tblOrganizationList.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)))));
+        tblOrganizationList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Organization Name", "Organization Type", "Username", "Password"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblOrganizationList);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 70, 800, 110);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel1.setText("Organization List");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(10, 20, 180, 22);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Organization Type");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(190, 250, 170, 40);
+
+        comboBoxOrgType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxOrgType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxOrgTypeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboBoxOrgType);
+        comboBoxOrgType.setBounds(420, 250, 220, 40);
+        jPanel1.add(txtUsername);
+        txtUsername.setBounds(420, 410, 220, 40);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Organization Name");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(180, 360, 180, 40);
+
+        btnAddOrganization.setBackground(new java.awt.Color(2, 55, 108));
+        btnAddOrganization.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAddOrganization.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddOrganization.setText("Add Organization");
+        btnAddOrganization.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddOrganizationActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddOrganization);
+        btnAddOrganization.setBounds(430, 770, 220, 40);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Username");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(240, 410, 130, 40);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Password");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(240, 470, 120, 40);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Role");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(260, 310, 90, 40);
+
+        comboBoxRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(comboBoxRole);
+        comboBoxRole.setBounds(420, 310, 220, 40);
+        jPanel1.add(txtName);
+        txtName.setBounds(420, 360, 220, 40);
+        jPanel1.add(txtPassword);
+        txtPassword.setBounds(420, 460, 220, 40);
+
+        btnDelete.setBackground(new java.awt.Color(2, 55, 108));
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Add Organization");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDelete);
+        btnDelete.setBounds(430, 620, 230, 40);
+
+        btnDelete1.setBackground(new java.awt.Color(2, 55, 108));
+        btnDelete1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDelete1.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete1.setText("Delete");
+        btnDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelete1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDelete1);
+        btnDelete1.setBounds(660, 190, 150, 40);
+
+        btnDelete2.setBackground(new java.awt.Color(2, 55, 108));
+        btnDelete2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDelete2.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete2.setText("Add Organization");
+        btnDelete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelete2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDelete2);
+        btnDelete2.setBounds(330, 520, 210, 40);
+
+        jTabbedPane1.addTab("Manage Organization", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
+
+        tblWorkQueue.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Request #", "Request Date", "Organization Type", "Quantity", "Donor Name", "Donor Type", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblWorkQueue);
+
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 70, 750, 148);
+
+        jButton1.setBackground(new java.awt.Color(2, 55, 108));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Accept");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(440, 240, 110, 30);
+
+        jButton2.setBackground(new java.awt.Color(2, 55, 108));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Reject ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2);
+        jButton2.setBounds(560, 240, 120, 30);
+
+        jButtonDownloadReport.setBackground(new java.awt.Color(2, 55, 108));
+        jButtonDownloadReport.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButtonDownloadReport.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDownloadReport.setText("Download");
+        jButtonDownloadReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDownloadReportActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonDownloadReport);
+        jButtonDownloadReport.setBounds(40, 400, 130, 40);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel9.setText("Supplykit List ");
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(10, 30, 180, 22);
+
+        jPanelReport.setLayout(new javax.swing.BoxLayout(jPanelReport, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel2.add(jPanelReport);
+        jPanelReport.setBounds(230, 320, 560, 260);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel4);
+        jPanel4.setBounds(240, 340, 0, 0);
+
+        jTabbedPane1.addTab("Managing work request", jPanel2);
+
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        jLabel7.setText("Kit Supply  Admin JPanel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(134, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(389, 389, 389)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDelete1ActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnAddOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrganizationActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnAddOrganizationActionPerformed
+
+    private void comboBoxOrgTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrgTypeActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_comboBoxOrgTypeActionPerformed
+
+    private void jButtonDownloadReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDownloadReportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDownloadReportActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnDelete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDelete2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddOrganization;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDelete1;
+    private javax.swing.JButton btnDelete2;
+    private javax.swing.JComboBox comboBoxOrgType;
+    private javax.swing.JComboBox comboBoxRole;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonDownloadReport;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelReport;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tblOrganizationList;
+    private javax.swing.JTable tblWorkQueue;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
