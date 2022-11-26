@@ -26,19 +26,19 @@ public class EnterpriseDirectory {
         this.entList = entList;
     }
     
-    public Enterprise addEnterprise(String entName, Enterprise.EnterpriseType type) {
+    public Enterprise addEnterprise(String entName, Enterprise.EntType type) {
         Enterprise ent = null;
-        if (type == Enterprise.EnterpriseType.DonationDirectory) {
-            ent = new DonationDirectory(entName);
+        if (type == Enterprise.EntType.DonationEntDirectory) {
+            ent = new DonationEntDirectory(entName);
             entList.add(ent);
-        } else if (type == Enterprise.EnterpriseType.FundsDirectory) {
-            ent = new FundsDirectory(entName);
+        } else if (type == Enterprise.EntType.FundsEntDirectory) {
+            ent = new FundsEntDirectory(entName);
             entList.add(ent);
-        } else if (type == Enterprise.EnterpriseType.KitSupplyDirectory) {
-            ent = new KitSupplyDirectory(entName);
+        } else if (type == Enterprise.EntType.KitSupplyEntDirectory) {
+            ent = new KitSupplyEntDirectory(entName);
             entList.add(ent);
-        } else if (type == Enterprise.EnterpriseType.DonorDirectory) {
-            ent = new DonorDirectory(entName);
+        } else if (type == Enterprise.EntType.DonorEntDirectory) {
+            ent = new DonorEntDirectory(entName);
             entList.add(ent);
         }
         return ent;
