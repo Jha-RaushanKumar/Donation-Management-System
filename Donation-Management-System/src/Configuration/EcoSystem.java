@@ -7,6 +7,8 @@ package Configuration;
 import Donation.Enterprise.Enterprise;
 import Donation.Network.Network;
 import Donation.Organization.Organization;
+import Donation.Role.Role;
+import Donation.Role.SystemAdminRole;
 import Donation.UserAccount.UserAccount;
 import java.util.ArrayList;
 
@@ -27,7 +29,7 @@ public class EcoSystem extends Organization{
     }
     
     private EcoSystem() {
-        super();
+        super(null);
         networkList = new ArrayList<>();
     }
 
@@ -35,6 +37,12 @@ public class EcoSystem extends Organization{
         Network network = new Network();
         networkList.add(network);
         return network;
+    }
+    
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> listRole = new ArrayList<Role>();
+        listRole.add(new SystemAdminRole());
+        return listRole;
     }
 
 
@@ -57,13 +65,13 @@ public class EcoSystem extends Organization{
     public boolean checkUserUniqueness(String userName, EcoSystem ecoSys) {
         for (Network network : ecoSys.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEntList()) {
-                for (UserAccount useracc : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                for (UserAccount useracc : enterprise.getuserAccountList().getUaList()) {
                     if (useracc.getUsername().equals(userName)) {
                         return false;
                     }
                 }
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    for (UserAccount useracc : organization.getUserAccountDirectory().getUserAccountList()) {
+                for (Organization organization : enterprise.getOrgDirectory().getOrgList()) {
+                    for (UserAccount useracc : organization.getuserAccountList().getUaList()) {
                         if (useracc.getUsername().equals(userName)) {
                             return false;
                         }
