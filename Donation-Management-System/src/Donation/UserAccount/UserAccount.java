@@ -4,6 +4,7 @@
  */
 package Donation.UserAccount;
 
+import Donation.Employee.Employee;
 import Donation.Role.Role;
 
 /**
@@ -15,6 +16,7 @@ public class UserAccount {
     private String username;
     private String password;
     private Role role;
+    private Employee employee;
 
     public UserAccount() {
         
@@ -43,6 +45,16 @@ public class UserAccount {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+    
+    
     
     
 
