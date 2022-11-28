@@ -5,6 +5,7 @@
 package Donation.UserAccount;
 
 import Configuration.EcoSystem;
+import Donation.Employee.Employee;
 import Donation.Enterprise.Enterprise;
 import Donation.Network.Network;
 import Donation.Organization.Organization;
@@ -19,8 +20,8 @@ public class UserAccountDirectory {
     
     private ArrayList<UserAccount> uaList;
 
-    public UserAccountDirectory(ArrayList<UserAccount> uaList) {
-        this.uaList = uaList;
+    public UserAccountDirectory() {
+        uaList = new ArrayList();
     }
 
     public ArrayList<UserAccount> getUaList() {
@@ -31,11 +32,12 @@ public class UserAccountDirectory {
         this.uaList = uaList;
     }
 
-    public UserAccount addUserAccount(String username, String password, Role role) {
+    public UserAccount addUserAccount(String username, String password, Role role, Employee employee) {
         UserAccount uAccount = new UserAccount();
         uAccount.setUsername(username);
         uAccount.setPassword(password);
         uAccount.setRole(role);
+        uAccount.setEmployee(employee);
         uaList.add(uAccount);
         return uAccount;
     }
