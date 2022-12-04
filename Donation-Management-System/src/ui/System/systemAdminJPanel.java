@@ -8,8 +8,8 @@ import ui.Enterprise.Enterprise;
 import ui.Enterprise.EnterpriseAdmin;
 import Configuration.EcoSystem;
 import javax.swing.JPanel;
-import ui.Enterprise.EnterpriseAdminJPanel;
-import ui.Enterprise.EnterpriseJPanel;
+import ui.Enterprise.EnterpriseAdmin;
+import ui.Enterprise.Enterprise;
 
 /**
  *
