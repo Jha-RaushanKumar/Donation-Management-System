@@ -36,7 +36,6 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblWorkQueue = new javax.swing.JTable();
-        btnDelete = new javax.swing.JButton();
         lblDonarName1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -50,6 +49,7 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         txtOrgName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         btnAddOrg = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
         jLabel1.setText("Donation Admin");
@@ -124,16 +124,6 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
 
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(10, 128, 955, 160);
-
-        btnDelete.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnDelete);
-        btnDelete.setBounds(780, 320, 180, 40);
 
         lblDonarName1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         lblDonarName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -214,6 +204,10 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel2.add(btnAddOrg);
         btnAddOrg.setBounds(440, 793, 180, 50);
 
+        jButton1.setText("Delete");
+        jPanel2.add(jButton1);
+        jButton1.setBounds(800, 330, 110, 40);
+
         jTabbedPane1.addTab("Manage Organizations", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -240,70 +234,8 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblWorkQueue.getSelectedRow();
-
-        if (selectedRow >= 0) {
-            DonorRegistrationRequest request = (DonorRegistrationRequest) tblWorkQueue.getValueAt(selectedRow, 0);
-            if (request.getStatus().equalsIgnoreCase("Requested")) {
-                JOptionPane.showMessageDialog(null, "Please assign request to yourself and then process it.");
-                return;
-            }
-            else{
-
-                if (request.getOrgType() == Organization.Type.DonorCSR) {
-                    System.out.println("Donor CSR");
-                    for(Organization org : enterprise.getOrganizationDirectory().getOrganizationList()){
-                        if(org.getType() == Organization.Type.DonorCSR){
-                            Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
-                            UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new DonorCSRSupervisorRole());
-
-                        }
-                    }
-
-                } if (request.getOrgType() == Organization.Type.DonorIndividual) {
-                    System.out.println("Donor Individual");
-                    for(Organization org : enterprise.getOrganizationDirectory().getOrganizationList()){
-                        if(org.getType() == Organization.Type.DonorIndividual){
-                            Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
-                            UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new DonorIndividualRole());
-
-                        }
-                    }
-
-                }
-
-                request.setStatus("Completed");
-                JOptionPane.showMessageDialog(null, "User account has been activated successfully");
-                populateTable();
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
-            return;
-        }
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
     private void comboBoxOrgTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrgTypeActionPerformed
-        // TODO add your handling code here:
-        Organization.Type type = (Organization.Type) comboBoxOrgType.getSelectedItem();
-        if(type == Organization.Type.AnimalWelfareCharityOrganization){
-            comboBoxRole.removeAllItems();
-            comboBoxRole.addItem(Role.RoleType.AnimalWelfareCharityPOCRole);
-        }
-        else if(type == Organization.Type.DisasterReliefCharityOrganization){
-            comboBoxRole.removeAllItems();
-            comboBoxRole.addItem(Role.RoleType.DisasterReliefCharityPOCRole);
-        }
-        else if(type == Organization.Type.EducationCharityOrganization){
-            comboBoxRole.removeAllItems();
-            comboBoxRole.addItem(Role.RoleType.EducationCharityPOCRole);
-        }
-        else if(type == Organization.Type.OrphanageCharityOrganization){
-            comboBoxRole.removeAllItems();
-            comboBoxRole.addItem(Role.RoleType.OrphanageCharityPOCRole);
-        }
+       
     }//GEN-LAST:event_comboBoxOrgTypeActionPerformed
 
     private void txtOrgNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrgNameActionPerformed
@@ -313,9 +245,9 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddOrg;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JComboBox comboBoxOrgType;
     private javax.swing.JComboBox comboBoxRole;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
