@@ -5,6 +5,7 @@
 package Configuration;
 
 import Donation.Employee.Employee;
+import Donation.Role.SystemAdminRole;
 import Donation.UserAccount.UserAccount;
 
 /**
@@ -15,19 +16,14 @@ public class ConfigureSystem {
     
     public static EcoSystem configure() {
 
-        EcoSystem system = EcoSystem.getInstance();
+        EcoSystem ecosystem = EcoSystem.getInstance();
 
-        Employee employee = system.getEmployeeDirectory().createEmployee();
+        Employee employee = ecosystem.getEmpDirectory().addEmployee("Raushan");
         employee.setId(1775832);
-        employee.setName("Raushan");
-
-        UserAccount useracc = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
-        useracc.setUsername("sysadmin");
-        useracc.setPassword("sysadmin");
-        useracc.setEmployee(employee);
-        useracc.setRole(new SystemAdminRole());
         
-        return system;
+        UserAccount useracc = ecosystem.getuserAccountList().addUserAccount("sysadmin", "sysadmin", new SystemAdminRole(), employee);
+        
+        return ecosystem;
     }
     
 }

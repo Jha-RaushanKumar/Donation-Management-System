@@ -14,8 +14,8 @@ public class EmployeeDirectory {
     
     private ArrayList<Employee> empList;
 
-    public EmployeeDirectory(ArrayList<Employee> empList) {
-        this.empList = empList;
+    public EmployeeDirectory() {
+        empList = new ArrayList();
     }
 
     public ArrayList<Employee> getEmpList() {
@@ -26,9 +26,11 @@ public class EmployeeDirectory {
         this.empList = empList;
     }
     
-    public void addEmployee(int id, String name) {
-        Employee emp = new Employee(id, name);
+    public Employee addEmployee(String name) {
+        Employee emp = new Employee(empList.size() + 1);
+        emp.setName(name);
         empList.add(emp);
+        return emp;
     }
-    
+       
 }

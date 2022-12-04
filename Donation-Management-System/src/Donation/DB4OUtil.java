@@ -9,9 +9,9 @@ import Configuration.EcoSystem;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
-import com.db4o.query.Predicate;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.ta.TransparentPersistenceSupport;
+import java.nio.file.Paths;
 
 
 
@@ -20,7 +20,7 @@ import com.db4o.ta.TransparentPersistenceSupport;
  * @author Raushan
  */
 public class DB4OUtil {
-    private static final String FILENAME = "D:\\GitHub\\Donation-Management-System\\Donation-Management-System\\DataBank.db4o";
+    private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();
     
     private static DB4OUtil dB4OUtil;
 
@@ -31,21 +31,21 @@ public class DB4OUtil {
         return dB4OUtil;
     }
 
-    protected synchronized static void shutdown(ObjectContainer conn) {
-        if (conn != null) {
-            conn.close();
+    protected synchronized static void shutdown(ObjectContainer container) {
+        if (container != null) {
+            container.close();
         }
     }
 
     private ObjectContainer createConnection() {
         try {
 
-            EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-            ObjectContainer db = Db4oEmbedded.openFile(config, FILENAME);
-            config.common().add(new TransparentPersistenceSupport());
-            config.common().activationDepth(Integer.MAX_VALUE);
-            config.common().updateDepth(Integer.MAX_VALUE);
-            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true);
+            EmbeddedConfiguration configuration = Db4oEmbedded.newConfiguration();
+            ObjectContainer db = Db4oEmbedded.openFile(configuration, FILENAME);
+            configuration.common().add(new TransparentPersistenceSupport());
+            configuration.common().activationDepth(Integer.MAX_VALUE);
+            configuration.common().updateDepth(Integer.MAX_VALUE);
+            configuration.common().objectClass(EcoSystem.class).cascadeOnUpdate(true);
             return db;
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
@@ -54,22 +54,23 @@ public class DB4OUtil {
     }
 
     public synchronized void storeSystem(EcoSystem system) {
-        ObjectContainer conn = createConnection();
-        conn.store(system);
-        conn.commit();
-        conn.close();
+        ObjectContainer connection = createConnection();
+        connection.store(system);
+        connection.commit();
+        connection.close();
     }
 
     public EcoSystem retrieveSystem() {
-        ObjectContainer conn = createConnection();
-        ObjectSet<EcoSystem> ecosystems = conn.query(EcoSystem.class); // Change to the object you want to save
+        ObjectContainer connection = createConnection();
+        System.out.println(FILENAME);
+        ObjectSet<EcoSystem> systems = connection.query(EcoSystem.class);
         EcoSystem system;
-        if (ecosystems.size() == 0) {
+        if (systems.isEmpty()) {
             system = ConfigureSystem.configure();
         } else {
-            system = ecosystems.get(ecosystems.size() - 1);
+            system = systems.get(systems.size() - 1);
         }
-        conn.close();
+        connection.close();
         return system;
     }
 }

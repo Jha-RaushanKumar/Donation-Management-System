@@ -4,10 +4,44 @@
  */
 package Donation.Enterprise;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Raushan
  */
 public class EnterpriseDirectory {
+    
+    private ArrayList<Enterprise> entList;
+
+    public EnterpriseDirectory() {
+        entList = new ArrayList<Enterprise>();
+    }
+
+    public ArrayList<Enterprise> getEntList() {
+        return entList;
+    }
+
+    public void setEntList(ArrayList<Enterprise> entList) {
+        this.entList = entList;
+    }
+    
+    public Enterprise addEnterprise(String entName, Enterprise.EntType type) {
+        Enterprise ent = null;
+        if (type == Enterprise.EntType.DonationEntDirectory) {
+            ent = new DonationEntDirectory(entName);
+            entList.add(ent);
+        } else if (type == Enterprise.EntType.FundsEntDirectory) {
+            ent = new FundsEntDirectory(entName);
+            entList.add(ent);
+        } else if (type == Enterprise.EntType.KitSupplyEntDirectory) {
+            ent = new KitSupplyEntDirectory(entName);
+            entList.add(ent);
+        } else if (type == Enterprise.EntType.DonorEntDirectory) {
+            ent = new DonorEntDirectory(entName);
+            entList.add(ent);
+        }
+        return ent;
+    }
     
 }
