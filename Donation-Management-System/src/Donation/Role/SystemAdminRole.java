@@ -10,6 +10,7 @@ import Donation.Network.Network;
 import Donation.Organization.Organization;
 import Donation.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.System.SystemAdminJPanel;
 
 /**
  *
@@ -18,8 +19,8 @@ import javax.swing.JPanel;
 public class SystemAdminRole extends Role {
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise ent, Network network, EcoSystem ecosystem) {
-        //return new SystemAdminJPanel(userProcessContainer, ecosystem);
-        return null;
+        return new SystemAdminJPanel(userProcessContainer, ecosystem);
+        
     }
     
 }

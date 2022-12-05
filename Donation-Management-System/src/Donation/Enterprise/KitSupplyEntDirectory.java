@@ -23,9 +23,9 @@ public class KitSupplyEntDirectory extends Enterprise{
     @Override
     public ArrayList<Role> getSupportedRole() {
         roles = new ArrayList<Role>();
+        roles.add(new KitSupplyAdmin());
         roles.add(new DisasterReliefKitSupplyManagerRole());
         roles.add(new EducationKitSupplyManagerRole());
-        roles.add(new KitSupplyAdmin());
         return roles;
     }
     

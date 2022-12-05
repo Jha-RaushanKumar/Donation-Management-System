@@ -26,7 +26,7 @@ public abstract class Enterprise extends Organization{
     }
     
     public enum EntType {
-        DonationEntDirectory("Charity/ Non-governmental Organization Directory"), 
+        DonationEntDirectory("Donation Enterprise Directory"), 
         FundsEntDirectory("Funds Enterprise Directory"),
         KitSupplyEntDirectory("Kit Supply Enterprise Directory"), 
         DonorEntDirectory("Donor Enterprise Directory");
