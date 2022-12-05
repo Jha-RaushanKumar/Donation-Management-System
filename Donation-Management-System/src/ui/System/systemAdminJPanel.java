@@ -4,12 +4,12 @@
  */
 package ui.System;
 
-import ui.Enterprise.Enterprise;
+import ui.Enterprise.Enterprisee;
 import ui.Enterprise.EnterpriseAdmin;
 import Configuration.EcoSystem;
 import javax.swing.JPanel;
 import ui.Enterprise.EnterpriseAdmin;
-import ui.Enterprise.Enterprise;
+import ui.Enterprise.Enterprisee;
 
 /**
  *
@@ -127,7 +127,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Enterprise panel = new Enterprise(jpanel, ecosystem);
+        Enterprisee panel = new Enterprisee(jpanel, ecosystem);
         panel.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -139,7 +139,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Network panel = new Network(jpanel, ecosystem);
+        Networkk panel = new Networkk(jpanel, ecosystem);
         panel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
