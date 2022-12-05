@@ -9,9 +9,19 @@ import Donation.DB4OUtil;
 import Donation.Enterprise.Enterprise;
 import Donation.Network.Network;
 import Donation.Organization.Organization;
+import Donation.Role.DonationAdminRole;
+import Donation.Role.DonorAdminRole;
+import Donation.Role.FundsAdminRole;
+import Donation.Role.KitSupplyAdmin;
+import static Donation.Role.Role.RoleType.KitSupplyAdmin;
 import Donation.Role.SystemAdminRole;
 import Donation.UserAccount.UserAccount;
+import static java.time.Clock.system;
 import javax.swing.JOptionPane;
+import ui.Donation.DonationAdminJPanel;
+import ui.Donor.DonorAdminJPanel;
+import ui.Funds.FundsAdminJPanel;
+import ui.Inventory.KitSupplyAdminJPanel;
 import ui.System.SystemAdminJPanel;
 import ui.System.SystemAdminJPanel;
 
@@ -68,6 +78,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
+        txtUserName.setText("sysadmin");
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
@@ -89,6 +100,8 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnRegisterDoner.setText("Donor Registration");
+
+        txtUserPassword.setText("sysadmin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -258,66 +271,26 @@ private void changePanel() {
         if (userAccount != null && userAccount.getRole() != null) {
             String greetings = "Welcome";
             if (userAccount.getRole() instanceof SystemAdminRole) {
-                greetings = greetings + " " + userAccount.getUsername();
                 SystemAdminJPanel panel = new SystemAdminJPanel(jPanel2, ecosystem);
                 jSplitPane1.setRightComponent(panel);
-            } /*
+            } 
+            else if(userAccount.getRole() instanceof DonationAdminRole) {
+                DonationAdminJPanel panel = new DonationAdminJPanel(ecosystem, network, enterprise, jPanel2);
+                jSplitPane1.setRightComponent(panel);
+            } 
+            else if(userAccount.getRole() instanceof FundsAdminRole) {
+                FundsAdminJPanel panel = new FundsAdminJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
+                jSplitPane1.setRightComponent(panel);
+            } 
+            else if(userAccount.getRole() instanceof KitSupplyAdmin) {
+                KitSupplyAdminJPanel panel = new KitSupplyAdminJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
+                jSplitPane1.setRightComponent(panel);
+            }
             else if(userAccount.getRole() instanceof DonorAdminRole) {
-                DonorAdminWorkArea panel = new DonorAdminWorkArea(container, system, network, enterprise, userAccount);
-                jSplitPane1.setRightComponent(panel);
-            } 
-            else if(userAccount.getRole() instanceof DonorCSRSupervisorRole) {
-                DonorWorkAreaJPanel panel = new DonorWorkAreaJPanel(container, system, userAccount, network, enterprise);
+                DonorAdminJPanel panel = new DonorAdminJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
                 jSplitPane1.setRightComponent(panel);
             }
-            else if(userAccount.getRole() instanceof DonorIndividualRole) {
-                DonorWorkAreaJPanel panel = new DonorWorkAreaJPanel(container, system, userAccount, network, enterprise);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof CharityAdminRole) {
-                CharityAdminWorkArea panel = new CharityAdminWorkArea( container, system, network, enterprise);
-                jSplitPane1.setRightComponent(panel);
-            } 
-            else if(userAccount.getRole() instanceof AnimalWelfareCharityPOCRole) {
-                AnimalWelfareCharityPOCWorkAreaJPanel panel = new AnimalWelfareCharityPOCWorkAreaJPanel(userAccount,enterprise,organization, network);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof DisasterReliefCharityPOCRole) {
-                DisasterReliefCharityPOCWorkAreaJPanel panel = new DisasterReliefCharityPOCWorkAreaJPanel(userAccount,enterprise,organization, network);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof EducationCharityPOCRole) {
-                EducationCharityPOCWorkAreaJPanel panel = new EducationCharityPOCWorkAreaJPanel(userAccount,enterprise,organization, network);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof OrphanageCharityPOCRole) {
-                OrphanageCharityPOCWorkAreaJPanel panel = new OrphanageCharityPOCWorkAreaJPanel(userAccount,enterprise,organization, network);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof InventoryAdminRole) {
-                InventoryAdminWorkArea panel = new InventoryAdminWorkArea(container, system, network, enterprise, userAccount);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof AnimalWelfareKitInventoryManagerRole) {
-                AnimalWelfareKitInventoryManagerWorkAreaJPanel panel = new AnimalWelfareKitInventoryManagerWorkAreaJPanel(userAccount,enterprise,organization);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof DisasterReliefKitInventoryManagerRole) {
-                DisasterReliefKitInventoryManagerWorkAreaJPanel panel = new DisasterReliefKitInventoryManagerWorkAreaJPanel(userAccount,enterprise,organization);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof EducationKitInventoryManagerRole) {
-                EducationKitInventoryManagerWorkAreaJPanel panel = new EducationKitInventoryManagerWorkAreaJPanel(userAccount,enterprise,organization);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof FinanceAdminRole) {
-                CommerceFinanceTeamAdminWorkAreaJPanel panel = new CommerceFinanceTeamAdminWorkAreaJPanel(container, system, network, enterprise, userAccount);
-                jSplitPane1.setRightComponent(panel);
-            }
-            else if(userAccount.getRole() instanceof CommerceFinanceTeamLedgerRole) {
-                CommerceFinanceTeamLedgerWorkAreaJPanel panel = new CommerceFinanceTeamLedgerWorkAreaJPanel(container, system, network, enterprise, userAccount);
-                jSplitPane1.setRightComponent(panel);
-            }*/
+            
         }
 
     }
