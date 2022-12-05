@@ -30,13 +30,34 @@ public class EcoSystem extends Organization{
     
     private EcoSystem() {
         super(null);
-        networkList = new ArrayList<>();
+        networkList = new ArrayList<Network>();
     }
 
     public Network createNetwork() {
         Network network = new Network();
         networkList.add(network);
         return network;
+        
+    }
+    
+    public void deleteNetwork(String name) {
+        for (Network net : networkList) {
+ 
+            if (net.getName() == name) {
+                networkList.remove(net);
+                break;
+            }
+        }
+    }
+    public Network gettNetwork(String name) {
+        for (Network net : networkList) {
+ 
+            if (net.getName() == name) {
+                networkList.remove(net);
+                return net;
+            }
+        }
+        return null;
     }
     
     public ArrayList<Role> getSupportedRole() {

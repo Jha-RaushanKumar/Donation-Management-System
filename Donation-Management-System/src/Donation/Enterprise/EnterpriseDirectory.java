@@ -26,11 +26,13 @@ public class EnterpriseDirectory {
         this.entList = entList;
     }
     
-    public Enterprise addEnterprise(String entName, Enterprise.EntType type) {
+    public void addEnterprise(String entName, Enterprise.EntType type) {
         Enterprise ent = null;
         if (type == Enterprise.EntType.DonationEntDirectory) {
             ent = new DonationEntDirectory(entName);
             entList.add(ent);
+            
+            
         } else if (type == Enterprise.EntType.FundsEntDirectory) {
             ent = new FundsEntDirectory(entName);
             entList.add(ent);
@@ -41,7 +43,6 @@ public class EnterpriseDirectory {
             ent = new DonorEntDirectory(entName);
             entList.add(ent);
         }
-        return ent;
     }
     
 }
