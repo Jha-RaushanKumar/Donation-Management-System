@@ -11,6 +11,7 @@ import Donation.Network.Network;
 import Donation.Organization.Organization;
 import Donation.Role.DonationAdminRole;
 import Donation.Role.DonorAdminRole;
+import Donation.Role.DonorRole;
 import Donation.Role.FundsAdminRole;
 import Donation.Role.KitSupplyAdmin;
 import static Donation.Role.Role.RoleType.KitSupplyAdmin;
@@ -20,6 +21,8 @@ import static java.time.Clock.system;
 import javax.swing.JOptionPane;
 import ui.Donation.DonationAdminJPanel;
 import ui.Donor.DonorAdminJPanel;
+import ui.Donor.DonorJPanel;
+import ui.Donor.RegistrationDonorJPanel;
 import ui.Funds.FundsAdminJPanel;
 import ui.Inventory.KitSupplyAdminJPanel;
 import ui.System.SystemAdminJPanel;
@@ -44,7 +47,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         ecosystem = dB4OUtil.retrieveSystem();
         EcoSystem.setInstance(ecosystem);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);        
     }
 
     /**
@@ -100,6 +103,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnRegisterDoner.setText("Donor Registration");
+        btnRegisterDoner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterDonerActionPerformed(evt);
+            }
+        });
 
         txtUserPassword.setText("sysadmin");
 
@@ -266,10 +274,24 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setRightComponent(jPanel2);
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnRegisterDonerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterDonerActionPerformed
+        // TODO add your handling code here:
+        RegistrationDonorJPanel panel = new RegistrationDonorJPanel(jPanel2, ecosystem);
+        jSplitPane1.setRightComponent(panel);
+        txtUserName.setEnabled(false);
+            txtUserPassword.setEnabled(false);
+            btnLogout.setEnabled(true);
+            jButton1.setEnabled(false);
+            btnRegisterDoner.setEnabled(false);
+            jPanel2.setVisible(true);
+            txtUserName.setText("");
+            txtUserPassword.setText("");
+            
+    }//GEN-LAST:event_btnRegisterDonerActionPerformed
 private void changePanel() {
 
         if (userAccount != null && userAccount.getRole() != null) {
-            String greetings = "Welcome";
             if (userAccount.getRole() instanceof SystemAdminRole) {
                 SystemAdminJPanel panel = new SystemAdminJPanel(jPanel2, ecosystem);
                 jSplitPane1.setRightComponent(panel);
@@ -288,6 +310,10 @@ private void changePanel() {
             }
             else if(userAccount.getRole() instanceof DonorAdminRole) {
                 DonorAdminJPanel panel = new DonorAdminJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
+                jSplitPane1.setRightComponent(panel);
+            }
+            else if(userAccount.getRole() instanceof DonorRole) {
+                DonorJPanel panel = new DonorJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
                 jSplitPane1.setRightComponent(panel);
             }
             
