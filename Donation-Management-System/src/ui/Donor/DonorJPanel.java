@@ -11,6 +11,8 @@ import Donation.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.Funds.DonateFundsJPanel;
 import ui.Funds.DonateFundsPanel;
+import ui.KitSupply.DonateDisasterKitSupplyJPanel;
+import ui.KitSupply.DonateEducationKitSupplyJPanel;
 
 /**
  *
@@ -140,6 +142,8 @@ public class DonorJPanel extends javax.swing.JPanel {
 
     private void btnDonateEduKitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateEduKitActionPerformed
         // TODO add your handling code here:
+        DonateEducationKitSupplyJPanel panel = new DonateEducationKitSupplyJPanel(ecosystem, network, enterprise, jPanel, userAccount);
+        panel.setVisible(true);
     }//GEN-LAST:event_btnDonateEduKitActionPerformed
 
     private void btnDonateFundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateFundsActionPerformed
@@ -150,6 +154,8 @@ public class DonorJPanel extends javax.swing.JPanel {
 
     private void btnDonateDisasterKitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateDisasterKitActionPerformed
         // TODO add your handling code here:
+        DonateDisasterKitSupplyJPanel panel = new DonateDisasterKitSupplyJPanel(ecosystem, network, enterprise, jPanel, userAccount);
+        panel.setVisible(true);
     }//GEN-LAST:event_btnDonateDisasterKitActionPerformed
 
 
