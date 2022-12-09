@@ -293,11 +293,7 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
-            else if (req.getStatus().equalsIgnoreCase("Rejected")) {
-                JOptionPane.showMessageDialog(null, "Request is already rejected.");
-                return;
-            }
-            else if (req.getStatus().equalsIgnoreCase("Forwarded to Charity Organization")) {
+            else if (req.getStatus().equalsIgnoreCase("Forwarded to Donation Organization")) {
 
                 if (req instanceof DisasterReliefKitSupplyWorkRequest) {
                     DisasterReliefKitSupplyWorkRequest fundRequest = (DisasterReliefKitSupplyWorkRequest) tableKits.getValueAt(selectedRow, 0);
@@ -313,7 +309,7 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is completed");
             }
             else {
-                JOptionPane.showMessageDialog(null, "Please wait until Supply Kit team acceptance.");
+                JOptionPane.showMessageDialog(null, "Please wait until Kit Supply team acceptance.");
                 return;
             }
         } else {
