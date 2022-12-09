@@ -56,8 +56,8 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
         for(Enterprise e : network.getEnterpriseDirectory().getEntList()){
             if(e.getEntType() == EntType.KitSupplyEntDirectory){
                 for(Organization organization : e.getOrgDirectory().getOrgList()){
-                    if(org.getOrgType()== Organization.orgType.DisasterReliefKitSupplyOrg){
-                        this.disasterReliefKitSupplyOrg = (DisasterReliefKitSupplyOrg) org;
+                    if(organization.getOrgType()== Organization.orgType.DisasterReliefKitSupplyOrg){
+                        this.disasterReliefKitSupplyOrg = (DisasterReliefKitSupplyOrg) organization;
                     }}}}
         
         txtTotalKits.setText(String.valueOf(disasterReliefKitSupplyOrg.getTotalSupplyKits()));
@@ -306,7 +306,7 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
                 req.setReceiver(userAccount);
                 req.setStatus("Completed");
                 populateTable();
-                JOptionPane.showMessageDialog(null, "Request is completed");
+                JOptionPane.showMessageDialog(null, "Request is processed");
             }
             else {
                 JOptionPane.showMessageDialog(null, "Please wait until Kit Supply team acceptance.");
