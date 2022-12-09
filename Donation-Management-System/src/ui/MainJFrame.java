@@ -365,7 +365,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(panel);
             }
             else if(userAccount.getRole() instanceof EducationDonationOrgAdminRole) {
-                EducationDonationOrgJPanel panel = new EducationDonationOrgJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
+                EducationDonationOrgJPanel panel = new EducationDonationOrgJPanel(ecosystem, network,organization, enterprise,jPanel2, userAccount);
                 jSplitPane1.setRightComponent(panel);
             }
             

@@ -6,9 +6,20 @@ package ui.Education;
 
 import Configuration.EcoSystem;
 import Donation.Enterprise.Enterprise;
+import Donation.Enterprise.Enterprise.EntType;
 import Donation.Network.Network;
+import Donation.Organization.EducationDonationOrg;
+import Donation.Organization.Organization;
+import static Donation.Organization.Organization.orgType.EducationKitSupplyOrg;
 import Donation.UserAccount.UserAccount;
+import Donation.WorkQueue.EducationKitSupplyWorkRequest;
+import Donation.WorkQueue.FundsWorkRequest;
+import Donation.WorkQueue.WorkRequest;
+import Donation.WorkQueue.WorkQueue;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,13 +33,16 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
     private static JPanel jPanel;
     private static UserAccount userAccount;
     private static EcoSystem ecosystem;
+    private Organization org;
     private static Network network;
     private static Enterprise enterprise;
-    public EducationDonationOrgJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
+    private EducationDonationOrg educationDonationOrg;
+    public EducationDonationOrgJPanel(EcoSystem ecosystem, Network network, Organization org,Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
         this.ecosystem = ecosystem;
         this.network = network;
         this.enterprise = enterprise;
+        this.org =org;
         this.jPanel = jPanel;
         this.userAccount = userAccount;
     }
@@ -227,14 +241,14 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
                 return;
             }
             else {
-                if (request instanceof CommerceFinanceRequest) {
-                    CommerceFinanceRequest fundRequest = (CommerceFinanceRequest) tableFunds.getValueAt(selectedRow, 0);
-                    double amount = fundRequest.getAmount();
-                    double totalFunds = educationCharityOrg.getTotalFunds() + amount;
-                    educationCharityOrg.setTotalFunds(totalFunds);
-                    txtTotalFunds.setText(String.valueOf(educationCharityOrg.getTotalFunds()));
+                if (request instanceof FundsWorkRequest) {
+                    FundsWorkRequest fundRequest = (FundsWorkRequest) tableFunds.getValueAt(selectedRow, 0);
+                    double amount = fundRequest.getFunds();
+                    double totalFunds = educationDonationOrg.getTotalFunds() + amount;
+                    educationDonationOrg.setTotalFunds(totalFunds);
+                    txtTotalFunds.setText(String.valueOf(educationDonationOrg.getTotalFunds()));
                 }
-                request.setReceiver(account);
+                request.setReceiver(userAccount);
                 request.setStatus("Completed");
                 populateTable();
                 JOptionPane.showMessageDialog(null, "Request is completed and funds added to the organization");
@@ -261,15 +275,15 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
             }
             else if (request.getStatus().equalsIgnoreCase("Forwarded to Charity Organization")) {
 
-                if (request instanceof EducationWelfareKitInventoryRequest) {
-                    EducationWelfareKitInventoryRequest fundRequest = (EducationWelfareKitInventoryRequest) tblKits.getValueAt(selectedRow, 0);
+                if (request instanceof EducationKitSupplyWorkRequest) {
+                    EducationKitSupplyWorkRequest fundRequest = (EducationKitSupplyWorkRequest) tblKits.getValueAt(selectedRow, 0);
 
-                    int quantity = fundRequest.getQuanity();
-                    int totalKits = educationCharityOrg.getTotalKits() + quantity;
-                    educationCharityOrg.setTotalKits(totalKits);
-                    txtTotalKits.setText(String.valueOf(educationCharityOrg.getTotalKits()));
+                    double quantity = fundRequest.getKitCount();
+                    double totalKits = educationDonationOrg.getTotalSupplyKits() + quantity;
+                    educationDonationOrg.setTotalSupplyKits((int) totalKits);
+                    txtTotalKits.setText(String.valueOf(educationDonationOrg.getTotalSupplyKits()));
                 }
-                request.setReceiver(account);
+                request.setReceiver(userAccount);
                 request.setStatus("Completed");
                 populateTable();
                 JOptionPane.showMessageDialog(null, "Request is completed");
@@ -304,4 +318,65 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTotalFunds;
     private javax.swing.JTextField txtTotalKits;
     // End of variables declaration//GEN-END:variables
+
+ public void populateTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) tableFunds.getModel();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+        model.setRowCount(0);
+
+        if (org.getWorkQueue() == null) {
+            org.setWorkQueue(new WorkQueue());
+        }
+        for (WorkRequest workReq : org.getWorkQueue().getWorkReqList()) {
+
+            if (workReq instanceof FundsWorkRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = workReq;
+                row[1] = formatter.format(((FundsWorkRequest) workReq).getRequestDateTime());
+                row[2] = ((FundsWorkRequest) workReq).getFunds();
+                row[3] = ((FundsWorkRequest) workReq).getName();
+                row[4] = ((FundsWorkRequest) workReq).getType();
+                row[5] = ((FundsWorkRequest) workReq).getStatus();
+
+                model.addRow(row);
+            }
+        }
+        
+        DefaultTableModel model1 = (DefaultTableModel) tblKits.getModel();
+
+        model1.setRowCount(0);
+
+        if (org.getWorkQueue() == null) {
+            org.setWorkQueue(new WorkQueue());
+        }
+        
+        for(Enterprise e : network.getEnterpriseDirectory().getEntList()){
+            if(e.getEntType()== EntType.DonationEntDirectory){
+                for(Organization org : e.getOrgDirectory().getOrgList()){
+                    if(org.getOrgType()== Organization.orgType.EducationKitSupplyOrg){
+                        for (WorkRequest workReq : org.getWorkQueue().getWorkReqList()) {
+
+                           if (workReq instanceof EducationKitSupplyWorkRequest) {
+                            Object[] row = new Object[model1.getColumnCount()];
+                            row[0] = workReq;
+                            row[1] = formatter.format(((EducationKitSupplyWorkRequest) workReq).getRequestDateTime());
+                            row[2] = ((EducationKitSupplyWorkRequest) workReq).getKitCount();
+                            row[3] = ((EducationKitSupplyWorkRequest) workReq).getName();
+                            row[4] = ((EducationKitSupplyWorkRequest) workReq).getType();
+                            row[5] = ((EducationKitSupplyWorkRequest) workReq).getStatus();
+
+                            model1.addRow(row);
+                        }
+                    }
+                    }
+                }
+            }
+        }
+        
+
+    }
+
+
 }
