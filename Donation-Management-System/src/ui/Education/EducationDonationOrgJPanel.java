@@ -52,11 +52,11 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         for(Enterprise e : network.getEnterpriseDirectory().getEntList()){
             if(e.getEntType() == Enterprise.EntType.KitSupplyEntDirectory){
                 for(Organization organization : e.getOrgDirectory().getOrgList()){
-                    if(org.getOrgType()== Organization.orgType.EducationKitSupplyOrg){
-                        this.educationKitSupplyOrg = (EducationKitSupplyOrg) org;
+                    if(organization.getOrgType()== Organization.orgType.EducationKitSupplyOrg){
+                        this.educationKitSupplyOrg = (EducationKitSupplyOrg) organization;
                     }}}}
         
-        txtTotalKits.setText(String.valueOf(educationDonationOrg.addTotalSupplyKits(WIDTH)));
+        txtTotalKits.setText(String.valueOf(educationDonationOrg.getTotalSupplyKits()));
         populateTable();
     }
 
@@ -278,7 +278,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
-            else if (req.getStatus().equalsIgnoreCase("Forwarded to Donation Organization")) {
+            else if (req.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
 
                 if (req instanceof EducationKitSupplyWorkRequest) {
                     EducationKitSupplyWorkRequest fundRequest = (EducationKitSupplyWorkRequest) tableKits.getValueAt(selectedRow, 0);
@@ -327,27 +327,36 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
  public void populateTable() {
         
         DefaultTableModel model = (DefaultTableModel) tableFunds.getModel();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-
         model.setRowCount(0);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        
         if (org.getWorkQueue() == null) {
             org.setWorkQueue(new WorkQueue());
         }
-        for (WorkRequest workReq : org.getWorkQueue().getWorkReqList()) {
+        
+        for(Enterprise e : network.getEnterpriseDirectory().getEntList()){
+            if(e.getEntType()== EntType.FundsEntDirectory){
+                for(Organization org : e.getOrgDirectory().getOrgList()){
+                    if(org.getOrgType()== Organization.orgType.FundsOrg){
+                        for (WorkRequest req : org.getWorkQueue().getWorkReqList()) {
+                            if (req instanceof FundsWorkRequest) {
+                                Object[] row = new Object[model.getColumnCount()];
+                                row[0] = req;
+                                row[1] = formatter.format(((FundsWorkRequest) req).getRequestDateTime());
+                                row[2] = ((FundsWorkRequest) req).getFunds();
+                                row[3] = ((FundsWorkRequest) req).getName();
+                                row[4] = ((FundsWorkRequest) req).getType();
+                                row[5] = ((FundsWorkRequest) req).getStatus();
 
-            if (workReq instanceof FundsWorkRequest) {
-                Object[] row = new Object[model.getColumnCount()];
-                row[0] = workReq;
-                row[1] = formatter.format(((FundsWorkRequest) workReq).getRequestDateTime());
-                row[2] = ((FundsWorkRequest) workReq).getFunds();
-                row[3] = ((FundsWorkRequest) workReq).getName();
-                row[4] = ((FundsWorkRequest) workReq).getType();
-                row[5] = ((FundsWorkRequest) workReq).getStatus();
-
-                model.addRow(row);
+                                model.addRow(row);
+                            }
+                        }
+                    }
+                }
             }
         }
+        
         
         DefaultTableModel model1 = (DefaultTableModel) tableKits.getModel();
 
@@ -358,7 +367,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         }
         
         for(Enterprise e : network.getEnterpriseDirectory().getEntList()){
-            if(e.getEntType()== EntType.DonationEntDirectory){
+            if(e.getEntType()== EntType.KitSupplyEntDirectory){
                 for(Organization org : e.getOrgDirectory().getOrgList()){
                     if(org.getOrgType()== Organization.orgType.EducationKitSupplyOrg){
                         for (WorkRequest workReq : org.getWorkQueue().getWorkReqList()) {
