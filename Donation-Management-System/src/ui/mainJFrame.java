@@ -14,10 +14,8 @@ import Donation.Role.DonorAdminRole;
 import Donation.Role.DonorRole;
 import Donation.Role.FundsAdminRole;
 import Donation.Role.KitSupplyAdmin;
-import static Donation.Role.Role.RoleType.KitSupplyAdmin;
 import Donation.Role.SystemAdminRole;
 import Donation.UserAccount.UserAccount;
-import static java.time.Clock.system;
 import javax.swing.JOptionPane;
 import ui.Donation.DonationAdminJPanel;
 import ui.Donor.DonorAdminJPanel;
@@ -26,16 +24,15 @@ import ui.Donor.RegistrationDonorJPanel;
 import ui.Funds.FundsAdminJPanel;
 import ui.Inventory.KitSupplyAdminJPanel;
 import ui.System.SystemAdminJPanel;
-import ui.System.SystemAdminJPanel;
 
 /**
  *
- * @author swapnilbiradar
+ * @author Raushan
  */
 public class MainJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form mainJFrame
+     * Creates new form MainJFrame
      */
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private EcoSystem ecosystem;
@@ -47,7 +44,6 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         ecosystem = dB4OUtil.retrieveSystem();
         EcoSystem.setInstance(ecosystem);
-        setLocationRelativeTo(null);        
     }
 
     /**
@@ -72,8 +68,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jSplitPane1.setDividerLocation(250);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 153));
 
@@ -152,7 +146,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(32, 32, 32)
                 .addComponent(btnLogout)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -169,14 +163,14 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addComponent(jLabel3)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(jLabel3)
-                .addContainerGap(579, Short.MAX_VALUE))
+                .addContainerGap(636, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -186,14 +180,16 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1))
+                .addGap(33, 33, 33)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1))
+                .addGap(30, 30, 30)
+                .addComponent(jSplitPane1)
+                .addContainerGap())
         );
 
         pack();
@@ -212,7 +208,7 @@ public class MainJFrame extends javax.swing.JFrame {
         network = null;
         enterprise = null;
         organization = null;
-        
+
         if (userAccount == null) {
             for (Network n : ecosystem.getNetworkList()) {
                 for (Enterprise e : n.getEnterpriseDirectory().getEntList()) {
@@ -267,7 +263,6 @@ public class MainJFrame extends javax.swing.JFrame {
         btnLogout.setEnabled(false);
         btnLogout.setText("Logout");
         dB4OUtil.storeSystem(ecosystem);
-        
 
         txtUserName.setText("");
         txtUserPassword.setText("");
@@ -280,16 +275,66 @@ public class MainJFrame extends javax.swing.JFrame {
         RegistrationDonorJPanel panel = new RegistrationDonorJPanel(jPanel2, ecosystem);
         jSplitPane1.setRightComponent(panel);
         txtUserName.setEnabled(false);
-            txtUserPassword.setEnabled(false);
-            btnLogout.setEnabled(true);
-            jButton1.setEnabled(false);
-            btnRegisterDoner.setEnabled(false);
-            jPanel2.setVisible(true);
-            txtUserName.setText("");
-            txtUserPassword.setText("");
-            
+        txtUserPassword.setEnabled(false);
+        btnLogout.setEnabled(true);
+        jButton1.setEnabled(false);
+        btnRegisterDoner.setEnabled(false);
+        jPanel2.setVisible(true);
+        txtUserName.setText("");
+        txtUserPassword.setText("");
+
     }//GEN-LAST:event_btnRegisterDonerActionPerformed
-private void changePanel() {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainJFrame().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnRegisterDoner;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextField txtUserName;
+    private javax.swing.JPasswordField txtUserPassword;
+    // End of variables declaration//GEN-END:variables
+
+    private void changePanel() {
 
         if (userAccount != null && userAccount.getRole() != null) {
             if (userAccount.getRole() instanceof SystemAdminRole) {
@@ -320,54 +365,4 @@ private void changePanel() {
         }
 
     }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainJFrame().setVisible(true);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnRegisterDoner;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField txtUserName;
-    private javax.swing.JPasswordField txtUserPassword;
-    // End of variables declaration//GEN-END:variables
 }
