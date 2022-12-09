@@ -9,6 +9,7 @@ import Donation.Enterprise.Enterprise;
 import Donation.Enterprise.Enterprise.EntType;
 import Donation.Network.Network;
 import Donation.Organization.EducationDonationOrg;
+import Donation.Organization.EducationKitSupplyOrg;
 import Donation.Organization.Organization;
 import static Donation.Organization.Organization.orgType.EducationKitSupplyOrg;
 import Donation.UserAccount.UserAccount;
@@ -37,6 +38,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
     private static Network network;
     private static Enterprise enterprise;
     private EducationDonationOrg educationDonationOrg;
+    private EducationKitSupplyOrg educationKitSupplyOrg;
     public EducationDonationOrgJPanel(EcoSystem ecosystem, Network network, Organization org,Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
         this.ecosystem = ecosystem;
@@ -45,6 +47,17 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         this.org =org;
         this.jPanel = jPanel;
         this.userAccount = userAccount;
+        this.educationDonationOrg = (EducationDonationOrg) org;
+        txtTotalFunds.setText(String.valueOf(educationDonationOrg.getTotalFunds()));
+        for(Enterprise e : network.getEnterpriseDirectory().getEntList()){
+            if(e.getEntType() == Enterprise.EntType.KitSupplyEntDirectory){
+                for(Organization organization : e.getOrgDirectory().getOrgList()){
+                    if(org.getOrgType()== Organization.orgType.EducationKitSupplyOrg){
+                        this.educationKitSupplyOrg = (EducationKitSupplyOrg) org;
+                    }}}}
+        
+        txtTotalKits.setText(String.valueOf(educationDonationOrg.addTotalSupplyKits(WIDTH)));
+        populateTable();
     }
 
     /**
