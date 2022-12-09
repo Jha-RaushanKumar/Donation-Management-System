@@ -4,6 +4,14 @@
  */
 package ui.Donor;
 
+import Configuration.EcoSystem;
+import Donation.Enterprise.Enterprise;
+import Donation.Network.Network;
+import Donation.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import ui.Funds.DonateFundsJPanel;
+import ui.Funds.DonateFundsJPanell;
+
 /**
  *
  * @author reeteshkesarwani
@@ -13,8 +21,18 @@ public class DonorJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DonorJPanel
      */
-    public DonorJPanel() {
+    private static JPanel jPanel;
+    private static UserAccount userAccount;
+    private static EcoSystem ecosystem;
+    private static Network network;
+    private static Enterprise enterprise;
+    public DonorJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
+        this.ecosystem = ecosystem;
+        this.network = network;
+        this.enterprise = enterprise;
+        this.jPanel = jPanel;
+        this.userAccount = userAccount;
     }
 
     /**
@@ -47,6 +65,11 @@ public class DonorJPanel extends javax.swing.JPanel {
         btnDonateDisasterKit.setText("Donate Disaster Kit");
 
         btnDonateFunds.setText("Donate Funds");
+        btnDonateFunds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonateFundsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,6 +113,12 @@ public class DonorJPanel extends javax.swing.JPanel {
     private void btnDonateEduKitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateEduKitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDonateEduKitActionPerformed
+
+    private void btnDonateFundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateFundsActionPerformed
+        // TODO add your handling code here:
+        DonateFundsJPanell panel = new DonateFundsJPanell(ecosystem, network, enterprise, jPanel, userAccount);
+        panel.setVisible(true);
+    }//GEN-LAST:event_btnDonateFundsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
