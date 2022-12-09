@@ -4,6 +4,11 @@
  */
 package ui.Donation;
 
+import Configuration.EcoSystem;
+import Donation.Enterprise.Enterprise;
+import Donation.Network.Network;
+import javax.swing.JPanel;
+
 /**
  *
  * @author reeteshkesarwani
@@ -13,8 +18,17 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
     /**
      * Creates new form donationAdminJPanel
      */
-    public DonationAdminJPanel() {
+    private static JPanel jPanel;
+    private static EcoSystem ecosystem;
+    private static Network network;
+    private static Enterprise enterprise;
+    public DonationAdminJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel) {
         initComponents();
+        this.ecosystem = ecosystem;
+        this.network = network;
+        this.enterprise = enterprise;
+        this.jPanel = jPanel;
+        
     }
 
     /**
@@ -31,7 +45,6 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrgList = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         lblDonarAdmin = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -85,16 +98,11 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 130, 888, 194);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Organization List");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 100, 132, 22);
-
         lblDonarAdmin.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         lblDonarAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDonarAdmin.setText("Welcome Donation Admin");
         jPanel1.add(lblDonarAdmin);
-        lblDonarAdmin.setBounds(10, 50, 1109, 29);
+        lblDonarAdmin.setBounds(10, 50, 1109, 32);
 
         jTabbedPane1.addTab("Collected Donations", jPanel1);
 
@@ -129,19 +137,19 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         lblDonarName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDonarName1.setText("Welcome Donation Admin");
         jPanel2.add(lblDonarName1);
-        lblDonarName1.setBounds(10, 50, 1109, 29);
+        lblDonarName1.setBounds(10, 50, 1109, 32);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel5.setText("Organization List");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(10, 100, 160, 23);
+        jLabel5.setBounds(10, 100, 160, 24);
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Organization Type");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(220, 430, 190, 23);
+        jLabel3.setBounds(210, 320, 190, 24);
 
         comboBoxOrgType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         comboBoxOrgType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -151,40 +159,40 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(comboBoxOrgType);
-        comboBoxOrgType.setBounds(470, 430, 260, 40);
+        comboBoxOrgType.setBounds(460, 320, 260, 40);
 
         txtUsername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel2.add(txtUsername);
-        txtUsername.setBounds(470, 640, 260, 40);
+        txtUsername.setBounds(460, 530, 260, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Organization Name");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(220, 580, 190, 23);
+        jLabel4.setBounds(210, 470, 190, 24);
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Username");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(270, 650, 140, 23);
+        jLabel6.setBounds(260, 540, 140, 24);
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Password");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(270, 720, 140, 23);
+        jLabel7.setBounds(260, 610, 140, 24);
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Role");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(300, 510, 110, 23);
+        jLabel8.setBounds(290, 400, 110, 24);
 
         comboBoxRole.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         comboBoxRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(comboBoxRole);
-        comboBoxRole.setBounds(470, 500, 260, 40);
+        comboBoxRole.setBounds(460, 390, 260, 40);
 
         txtOrgName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtOrgName.addActionListener(new java.awt.event.ActionListener() {
@@ -193,16 +201,16 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(txtOrgName);
-        txtOrgName.setBounds(470, 570, 260, 40);
+        txtOrgName.setBounds(460, 460, 260, 40);
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel2.add(txtPassword);
-        txtPassword.setBounds(470, 710, 260, 40);
+        txtPassword.setBounds(460, 600, 260, 40);
 
         btnAddOrg.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         btnAddOrg.setText("Add Organization");
         jPanel2.add(btnAddOrg);
-        btnAddOrg.setBounds(440, 793, 180, 50);
+        btnAddOrg.setBounds(430, 680, 180, 50);
 
         jButton1.setText("Delete");
         jPanel2.add(jButton1);
@@ -249,7 +257,6 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox comboBoxRole;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
