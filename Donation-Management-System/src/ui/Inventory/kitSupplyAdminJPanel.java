@@ -4,6 +4,12 @@
  */
 package ui.Inventory;
 
+import Configuration.EcoSystem;
+import Donation.Enterprise.Enterprise;
+import Donation.Network.Network;
+import Donation.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author reeteshkesarwani
@@ -13,8 +19,18 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
     /**
      * Creates new form KitSupplyAdminJPanel
      */
-    public KitSupplyAdminJPanel() {
+    private static JPanel jPanel;
+    private static UserAccount userAccount;
+    private static EcoSystem ecosystem;
+    private static Network network;
+    private static Enterprise enterprise;
+    public KitSupplyAdminJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
+        this.ecosystem = ecosystem;
+        this.network = network;
+        this.enterprise = enterprise;
+        this.jPanel = jPanel;
+        this.userAccount = userAccount;
     }
 
     /**
