@@ -59,6 +59,11 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonBack.setText("Back");
+        buttonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBackActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Donate Kit Supply for Disaster");
 
@@ -167,6 +172,11 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_buttonBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,7 +228,7 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
             if (ent.getEntType().toString().equals(Enterprise.EntType.DonationEntDirectory.toString())) {
                 for (Organization organization : ent.getOrgDirectory().getOrgList()) {
                     if (organization.getOrgType().toString().equals(Organization.orgType.DisasterReliefOrg.toString())) {
-                        comboDisOrg.addItem(organization.toString());
+                        comboDisOrg.addItem(organization);
                     }
                 }
             }
