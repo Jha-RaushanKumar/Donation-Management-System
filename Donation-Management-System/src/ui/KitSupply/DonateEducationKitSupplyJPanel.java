@@ -184,10 +184,10 @@ public class DonateEducationKitSupplyJPanel extends javax.swing.JFrame {
                 if(enterprise.getEntType()== Enterprise.EntType.KitSupplyEntDirectory){
                     for(Organization organization : enterprise.getOrgDirectory().getOrgList()){
                         if(organization.getOrgType()== Organization.orgType.EducationKitSupplyOrg){
-                            if (org.getWorkQueue() == null) {
-                                org.setWorkQueue(new WorkQueue());
+                            if (organization.getWorkQueue() == null) {
+                                organization.setWorkQueue(new WorkQueue());
                             }
-                            org.getWorkQueue().getWorkReqList().add(req);
+                            organization.getWorkQueue().getWorkReqList().add(req);
                         }
                     }
                 }
@@ -257,7 +257,7 @@ public class DonateEducationKitSupplyJPanel extends javax.swing.JFrame {
             if (ent.getEntType().toString().equals(Enterprise.EntType.DonationEntDirectory.toString())) {
                 for (Organization organization : ent.getOrgDirectory().getOrgList()) {
                     if (organization.getOrgType().toString().equals(Organization.orgType.EducationDonationOrg.toString())) {
-                        comboEdu.addItem(organization.toString());
+                        comboEdu.addItem(organization);
                     }
                 }
             }
