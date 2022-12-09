@@ -4,6 +4,24 @@
  */
 package ui.Funds;
 
+import Configuration.EcoSystem;
+import Donation.Employee.Employee;
+import Donation.Enterprise.Enterprise;
+import Donation.Network.Network;
+import Donation.Organization.Organization;
+import static Donation.Organization.Organization.orgType.DonorIndividualOrg;
+import static Donation.Organization.Organization.orgType.FundsOrg;
+import Donation.Role.DonorRole;
+import Donation.UserAccount.UserAccount;
+import Donation.WorkQueue.DonorRegistrationWorkRequest;
+import Donation.WorkQueue.FundsWorkRequest;
+import Donation.WorkQueue.WorkQueue;
+import Donation.WorkQueue.WorkRequest;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author reeteshkesarwani
@@ -13,8 +31,20 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
     /**
      * Creates new form FundsAdminJPanel
      */
-    public FundsAdminJPanel() {
+    private static JPanel jPanel;
+    private static UserAccount userAccount;
+    private static EcoSystem ecosystem;
+    private static Network network;
+    private static Enterprise enterprise;
+    public FundsAdminJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
+        this.ecosystem = ecosystem;
+        this.network = network;
+        this.enterprise = enterprise;
+        this.jPanel = jPanel;
+        this.userAccount = userAccount;
+        populateTable();
+        populateTableOrg();
     }
 
     /**
@@ -29,31 +59,22 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblOrganizationList = new javax.swing.JTable();
-        comboBoxOrgType = new javax.swing.JComboBox();
+        tblOrg = new javax.swing.JTable();
         txtUsername = new javax.swing.JTextField();
-        comboBoxRole = new javax.swing.JComboBox();
         txtName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblFunds = new javax.swing.JTable();
+        tableFunds = new javax.swing.JTable();
         jLabelIncomingKit = new javax.swing.JLabel();
         btnAccept = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jPanelReport = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
@@ -63,104 +84,88 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setToolTipText("");
 
-        tblOrganizationList.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
-        tblOrganizationList.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrg.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tblOrg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Organization Name", "Organization Type", "Username", "Password"
+                "Organization Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblOrganizationList);
+        jScrollPane1.setViewportView(tblOrg);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(0, 80, 950, 140);
-
-        comboBoxOrgType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxOrgType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxOrgTypeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(comboBoxOrgType);
-        comboBoxOrgType.setBounds(450, 370, 220, 40);
         jPanel1.add(txtUsername);
-        txtUsername.setBounds(450, 590, 220, 40);
-
-        comboBoxRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(comboBoxRole);
-        comboBoxRole.setBounds(450, 440, 220, 40);
+        txtUsername.setBounds(410, 340, 220, 40);
         jPanel1.add(txtName);
-        txtName.setBounds(450, 510, 220, 40);
+        txtName.setBounds(410, 260, 220, 40);
         jPanel1.add(txtPassword);
-        txtPassword.setBounds(450, 670, 220, 40);
-
-        jButton1.setText("Delete");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(830, 350, 78, 23);
+        txtPassword.setBounds(410, 420, 220, 40);
 
         jLabel8.setText("Password");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(340, 680, 80, 17);
+        jLabel8.setBounds(300, 430, 80, 16);
 
         jLabel10.setText("Username");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(330, 600, 100, 17);
+        jLabel10.setBounds(290, 350, 100, 16);
 
         jLabel12.setText("Organization Name");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(300, 520, 120, 17);
-
-        jLabel13.setText("Role");
-        jPanel1.add(jLabel13);
-        jLabel13.setBounds(350, 450, 49, 30);
-
-        jLabel14.setText("Organization Type");
-        jPanel1.add(jLabel14);
-        jLabel14.setBounds(300, 380, 110, 17);
+        jLabel12.setBounds(260, 270, 120, 16);
 
         jLabel15.setText("List of Organization");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(10, 40, 150, 17);
+        jLabel15.setBounds(10, 40, 150, 16);
+
+        jButton6.setText("Add Organization");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6);
+        jButton6.setBounds(470, 490, 140, 22);
 
         jTabbedPane1.addTab("Manage Organization", jPanel1);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
 
-        tblFunds.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
-        tblFunds.setModel(new javax.swing.table.DefaultTableModel(
+        tableFunds.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableFunds.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request #", "Date", "Organization Type", "Funds", "Donor Name", "Source", "Status"
+                "Request #", "Date", "Organization Name", "Organization Type", "Funds", "Donor Name", "Source", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tblFunds);
+        jScrollPane3.setViewportView(tableFunds);
 
         jPanel3.add(jScrollPane3);
         jScrollPane3.setBounds(10, 110, 1000, 177);
@@ -182,43 +187,20 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jPanel3.add(btnAccept);
         btnAccept.setBounds(1010, 320, 123, 36);
 
-        jPanelReport.setLayout(new javax.swing.BoxLayout(jPanelReport, javax.swing.BoxLayout.LINE_AXIS));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanelReport, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 121, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelReport, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel4);
-        jPanel4.setBounds(399, 424, 733, 351);
-
         jLabel2.setText("Welcome Funds Admin");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(440, 50, 160, 17);
+        jLabel2.setBounds(440, 50, 160, 16);
 
-        jButton3.setText("Reject");
-        jPanel3.add(jButton3);
-        jButton3.setBounds(790, 340, 78, 23);
-
-        jButton4.setText("Download");
-        jPanel3.add(jButton4);
-        jButton4.setBounds(190, 500, 100, 23);
-
-        jButton5.setText("Reject");
+        jButton5.setText("Process");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton5);
-        jButton5.setBounds(900, 340, 78, 23);
+        jButton5.setBounds(900, 340, 78, 22);
 
         jTabbedPane1.addTab("Manage Work Requests", jPanel3);
-
-        jButton2.setText("Add Organization");
 
         jLabel1.setText("Welcome Funds Admin");
 
@@ -227,10 +209,6 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(430, 430, 430)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(442, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(415, 415, 415))
@@ -245,9 +223,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 819, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(32, 32, 32))
+                .addContainerGap(875, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(50, Short.MAX_VALUE)
@@ -256,46 +232,115 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboBoxOrgTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrgTypeActionPerformed
-        
-    }//GEN-LAST:event_comboBoxOrgTypeActionPerformed
-
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
         
        
     }//GEN-LAST:event_btnAcceptActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        String name = txtName.getText().trim();
+        Organization.orgType type = FundsOrg;
+        if(!name.isEmpty()){
+            Organization organization = enterprise.getOrgDirectory().addOrganization(type, txtName.getText());
+            
+            JOptionPane.showMessageDialog(null, "Organization created.");
+            txtName.setText("");
+
+        } else{
+            JOptionPane.showMessageDialog(null, "Please enter Organization name");
+        }
+        populateTableOrg();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tableFunds.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            FundsWorkRequest wreq = (FundsWorkRequest) tableFunds.getValueAt(selectedRow, 0);
+            if (wreq.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Funds processed already!");
+                return;
+            }
+            else if (wreq.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
+                JOptionPane.showMessageDialog(null, "Request is already processed to Donation Organization.");
+                return;
+            }
+            else {
+                wreq.setReceiver(userAccount);
+                wreq.setStatus("Processed to Donation Organization");
+        
+                JOptionPane.showMessageDialog(null, "Request processed to Donation Organization.");
+                populateTable();               
+            }
+        } 
+        else {
+            JOptionPane.showMessageDialog(null, "Please select a row to process.");
+            return;
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
-    private javax.swing.JComboBox comboBoxOrgType;
-    private javax.swing.JComboBox comboBoxRole;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelIncomingKit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanelReport;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tblFunds;
-    private javax.swing.JTable tblOrganizationList;
+    private javax.swing.JTable tableFunds;
+    private javax.swing.JTable tblOrg;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+    private void populateTableOrg() {
+        DefaultTableModel model = (DefaultTableModel) tblOrg.getModel();
+        
+        model.setRowCount(0);
+            for(Organization org : enterprise.getOrgDirectory().getOrgList()){
+                Object[] row = new Object[1];
+                row[0] = org.getName();
+                model.addRow(row);
+            }   
+    }
+    public void populateTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) tableFunds.getModel();
+        model.setRowCount(0);
+
+        if (enterprise.getWorkQueue() == null) {
+            enterprise.setWorkQueue(new WorkQueue());
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        
+        for (WorkRequest workRequest : enterprise.getWorkQueue().getWorkReqList()) {
+            if (workRequest instanceof FundsWorkRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = workRequest;
+                row[1] = formatter.format(((FundsWorkRequest) workRequest).getRequestDateTime());
+                row[2] = ((FundsWorkRequest) workRequest).getName();
+                row[3] = ((FundsWorkRequest) workRequest).getOrgType();
+                row[4] = ((FundsWorkRequest) workRequest).getFunds();
+                row[5] = ((FundsWorkRequest) workRequest).getName();
+                row[6] = ((FundsWorkRequest) workRequest).getType();
+                row[7] = ((FundsWorkRequest) workRequest).getStatus();
+
+                model.addRow(row);
+            }
+        }
+
+    }
+    
 }
