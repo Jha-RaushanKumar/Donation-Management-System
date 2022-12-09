@@ -9,16 +9,19 @@ import Donation.DB4OUtil;
 import Donation.Enterprise.Enterprise;
 import Donation.Network.Network;
 import Donation.Organization.Organization;
+import Donation.Role.DisasterReliefOrgAdminRole;
 import Donation.Role.DonationAdminRole;
 import Donation.Role.DonorAdminRole;
 import Donation.Role.DonorRole;
 import Donation.Role.EducationDonationOrgAdminRole;
 import Donation.Role.FundsAdminRole;
 import Donation.Role.KitSupplyAdmin;
+import static Donation.Role.Role.RoleType.DisasterReliefOrgAdminRole;
 import static Donation.Role.Role.RoleType.EducationDonationOrgAdminRole;
 import Donation.Role.SystemAdminRole;
 import Donation.UserAccount.UserAccount;
 import javax.swing.JOptionPane;
+import ui.DisasterRelief.DisasterReliefOrgJPanel;
 import ui.Donation.DonationAdminJPanel;
 import ui.Donor.DonorAdminJPanel;
 import ui.Donor.DonorJPanel;
@@ -366,6 +369,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
             else if(userAccount.getRole() instanceof EducationDonationOrgAdminRole) {
                 EducationDonationOrgJPanel panel = new EducationDonationOrgJPanel(ecosystem, network,organization, enterprise,jPanel2, userAccount);
+                jSplitPane1.setRightComponent(panel);
+            }
+            else if(userAccount.getRole() instanceof DisasterReliefOrgAdminRole) {
+                DisasterReliefOrgJPanel panel = new DisasterReliefOrgJPanel( userAccount,enterprise,organization,network );
                 jSplitPane1.setRightComponent(panel);
             }
             
