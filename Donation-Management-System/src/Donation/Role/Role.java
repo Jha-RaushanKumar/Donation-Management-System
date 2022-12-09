@@ -24,10 +24,11 @@ public abstract class Role {
         KitSupplyAdmin("Kit Supply Admin"),
         DonorAdmin("Donor Admin"),
         DonorIndividual("Donor"),
-        DisasterReliefOrgRole("Disaster Relief Org"),
-        EducationDonationOrgRole("Education Donation Org"),
+        DisasterReliefOrgAdminRole("Disaster Relief Org"),
+        EducationDonationOrgAdminRole("Education Donation Org"),
         DisasterReliefKitSupplyManager("Disaster Relief Kit Supply Manager"),
-        EducationKitSupplyManager("Education Kit Supply Manager");
+        EducationKitSupplyManager("Education Kit Supply Manager"),
+        FundsOrgAdmin("Funds Admin");
 
         private String value;
 

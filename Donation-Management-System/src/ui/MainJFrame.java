@@ -12,8 +12,10 @@ import Donation.Organization.Organization;
 import Donation.Role.DonationAdminRole;
 import Donation.Role.DonorAdminRole;
 import Donation.Role.DonorRole;
+import Donation.Role.EducationDonationOrgAdminRole;
 import Donation.Role.FundsAdminRole;
 import Donation.Role.KitSupplyAdmin;
+import static Donation.Role.Role.RoleType.EducationDonationOrgAdminRole;
 import Donation.Role.SystemAdminRole;
 import Donation.UserAccount.UserAccount;
 import javax.swing.JOptionPane;
@@ -21,6 +23,7 @@ import ui.Donation.DonationAdminJPanel;
 import ui.Donor.DonorAdminJPanel;
 import ui.Donor.DonorJPanel;
 import ui.Donor.RegistrationDonorJPanel;
+import ui.Education.EducationDonationOrgJPanel;
 import ui.Funds.FundsAdminJPanel;
 import ui.KitSupply.KitSupplyAdminJPanel;
 import ui.System.SystemAdminPanel;
@@ -342,7 +345,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(panel);
             } 
             else if(userAccount.getRole() instanceof DonationAdminRole) {
-                DonationAdminJPanel panel = new DonationAdminJPanel(ecosystem, network, enterprise, jPanel2);
+                DonationAdminJPanel panel = new DonationAdminJPanel(ecosystem, network, enterprise, jPanel2, userAccount);
                 jSplitPane1.setRightComponent(panel);
             } 
             else if(userAccount.getRole() instanceof FundsAdminRole) {
@@ -359,6 +362,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
             else if(userAccount.getRole() instanceof DonorRole) {
                 DonorJPanel panel = new DonorJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
+                jSplitPane1.setRightComponent(panel);
+            }
+            else if(userAccount.getRole() instanceof EducationDonationOrgAdminRole) {
+                EducationDonationOrgJPanel panel = new EducationDonationOrgJPanel(ecosystem, network, enterprise,jPanel2, userAccount);
                 jSplitPane1.setRightComponent(panel);
             }
             

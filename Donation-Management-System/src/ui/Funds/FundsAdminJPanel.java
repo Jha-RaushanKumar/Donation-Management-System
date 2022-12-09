@@ -5,10 +5,13 @@
 package ui.Funds;
 
 import Configuration.EcoSystem;
+import Donation.Employee.Employee;
 import Donation.Enterprise.Enterprise;
 import Donation.Network.Network;
+import Donation.Organization.FundsOrg;
 import Donation.Organization.Organization;
 import static Donation.Organization.Organization.orgType.FundsOrg;
+import Donation.Role.FundsOrgAdminRole;
 import Donation.UserAccount.UserAccount;
 import Donation.WorkQueue.FundsWorkRequest;
 import Donation.WorkQueue.WorkQueue;
@@ -56,9 +59,9 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrg = new javax.swing.JTable();
-        txtUsername = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
+        txtOrg = new javax.swing.JTextField();
+        txtUserPassword = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -104,12 +107,12 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(0, 80, 950, 140);
-        jPanel1.add(txtUsername);
-        txtUsername.setBounds(410, 340, 220, 40);
-        jPanel1.add(txtName);
-        txtName.setBounds(410, 260, 220, 40);
-        jPanel1.add(txtPassword);
-        txtPassword.setBounds(410, 420, 220, 40);
+        jPanel1.add(txtUserName);
+        txtUserName.setBounds(410, 340, 220, 40);
+        jPanel1.add(txtOrg);
+        txtOrg.setBounds(410, 260, 220, 40);
+        jPanel1.add(txtUserPassword);
+        txtUserPassword.setBounds(410, 420, 220, 40);
 
         jLabel8.setText("Password");
         jPanel1.add(jLabel8);
@@ -164,7 +167,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tableFunds);
 
         jPanel3.add(jScrollPane3);
-        jScrollPane3.setBounds(10, 110, 1000, 177);
+        jScrollPane3.setBounds(40, 130, 840, 140);
 
         jLabelIncomingKit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabelIncomingKit.setText("Incoming funds");
@@ -194,7 +197,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(jButton5);
-        jButton5.setBounds(900, 340, 78, 22);
+        jButton5.setBounds(790, 310, 78, 22);
 
         jTabbedPane1.addTab("Manage Work Requests", jPanel3);
 
@@ -227,15 +230,19 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        String name = txtName.getText().trim();
+        String name = txtOrg.getText().trim();
         Organization.orgType type = FundsOrg;
         if(!name.isEmpty()){
-            Organization organization = enterprise.getOrgDirectory().addOrganization(type, txtName.getText());
-
+            Organization organization = enterprise.getOrgDirectory().addOrganization(type, txtOrg.getText());
+            Employee emp = organization.getEmpDirectory().addEmployee(txtOrg.getText());
+            UserAccount user = organization.getuserAccountList().addUserAccount(txtUserName.getText(), txtUserPassword.getText(), new FundsOrgAdminRole(), emp);
             JOptionPane.showMessageDialog(null, "Organization created.");
-            txtName.setText("");
-
-        } else{
+            txtUserName.setText("");
+            txtUserPassword.setText("");
+            txtOrg.setText("");
+            
+        }
+        else{
             JOptionPane.showMessageDialog(null, "Please enter Organization name");
         }
         populateTableOrg();
@@ -293,9 +300,9 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tableFunds;
     private javax.swing.JTable tblOrg;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtOrg;
+    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtUserPassword;
     // End of variables declaration//GEN-END:variables
 
     private void populateTableOrg() {
@@ -318,19 +325,24 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         }
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
-        for (WorkRequest workRequest : enterprise.getWorkQueue().getWorkReqList()) {
-            if (workRequest instanceof FundsWorkRequest) {
-                Object[] row = new Object[model.getColumnCount()];
-                row[0] = workRequest;
-                row[1] = formatter.format(((FundsWorkRequest) workRequest).getRequestDateTime());
-                row[2] = ((FundsWorkRequest) workRequest).getName();
-                row[3] = ((FundsWorkRequest) workRequest).getOrgType();
-                row[4] = ((FundsWorkRequest) workRequest).getFunds();
-                row[5] = ((FundsWorkRequest) workRequest).getName();
-                row[6] = ((FundsWorkRequest) workRequest).getType();
-                row[7] = ((FundsWorkRequest) workRequest).getStatus();
+        for (Organization organization : enterprise.getOrgDirectory().getOrgList()) {
+            if (organization.getWorkQueue() == null) {
+                organization.setWorkQueue(new WorkQueue());
+            }
+            for (WorkRequest req : organization.getWorkQueue().getWorkReqList()) {
+                if (req instanceof FundsWorkRequest) {
+                    Object[] row = new Object[model.getColumnCount()];
+                    row[0] = req;
+                    row[1] = formatter.format(((FundsWorkRequest) req).getRequestDateTime());
+                    row[2] = ((FundsWorkRequest) req).getName();
+                    row[3] = ((FundsWorkRequest) req).getOrgType();
+                    row[4] = ((FundsWorkRequest) req).getFunds();
+                    row[5] = ((FundsWorkRequest) req).getName();
+                    row[6] = ((FundsWorkRequest) req).getType();
+                    row[7] = ((FundsWorkRequest) req).getStatus();
 
-                model.addRow(row);
+                    model.addRow(row);
+                }
             }
         }
 

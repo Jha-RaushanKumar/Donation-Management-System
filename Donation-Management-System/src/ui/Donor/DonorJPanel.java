@@ -10,6 +10,7 @@ import Donation.Network.Network;
 import Donation.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.Funds.DonateFundsJPanel;
+import ui.Funds.DonateFundsPanel;
 
 /**
  *
@@ -64,6 +65,11 @@ public class DonorJPanel extends javax.swing.JPanel {
         });
 
         btnDonateDisasterKit.setText("Donate Disaster Kit");
+        btnDonateDisasterKit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonateDisasterKitActionPerformed(evt);
+            }
+        });
 
         btnDonateFunds.setText("Donate Funds");
         btnDonateFunds.addActionListener(new java.awt.event.ActionListener() {
@@ -138,9 +144,13 @@ public class DonorJPanel extends javax.swing.JPanel {
 
     private void btnDonateFundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateFundsActionPerformed
         // TODO add your handling code here:
-        DonateFundsJPanel panel = new DonateFundsJPanel(ecosystem, network, enterprise, jPanel, userAccount);
+        DonateFundsPanel panel = new DonateFundsPanel(ecosystem, network, enterprise, jPanel, userAccount);
         panel.setVisible(true);
     }//GEN-LAST:event_btnDonateFundsActionPerformed
+
+    private void btnDonateDisasterKitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateDisasterKitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDonateDisasterKitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

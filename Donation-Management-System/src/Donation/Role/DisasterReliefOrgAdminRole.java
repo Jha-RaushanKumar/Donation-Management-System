@@ -24,7 +24,7 @@ public class DisasterReliefOrgAdminRole extends Role{
     
     @Override
     public String toString(){
-        return (Role.RoleType.DisasterReliefOrgRole.getValue());
+        return (Role.RoleType.DisasterReliefOrgAdminRole.getValue());
     }
     
 }
