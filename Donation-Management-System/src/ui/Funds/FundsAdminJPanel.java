@@ -147,17 +147,17 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         tableFunds.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
         tableFunds.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request #", "Date", "Organization Name", "Organization Type", "Funds", "Donor Name", "Source", "Status"
+                "Request #", "Date", "Organization Type", "Funds", "Donor Name", "Source", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -320,9 +320,6 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tableFunds.getModel();
         model.setRowCount(0);
 
-        if (enterprise.getWorkQueue() == null) {
-            enterprise.setWorkQueue(new WorkQueue());
-        }
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
         for (Organization organization : enterprise.getOrgDirectory().getOrgList()) {
@@ -334,12 +331,11 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
                     Object[] row = new Object[model.getColumnCount()];
                     row[0] = req;
                     row[1] = formatter.format(((FundsWorkRequest) req).getRequestDateTime());
-                    row[2] = ((FundsWorkRequest) req).getName();
-                    row[3] = ((FundsWorkRequest) req).getOrgType();
-                    row[4] = ((FundsWorkRequest) req).getFunds();
-                    row[5] = ((FundsWorkRequest) req).getName();
-                    row[6] = ((FundsWorkRequest) req).getType();
-                    row[7] = ((FundsWorkRequest) req).getStatus();
+                    row[2] = ((FundsWorkRequest) req).getOrgType();
+                    row[3] = ((FundsWorkRequest) req).getFunds();
+                    row[4] = ((FundsWorkRequest) req).getName();
+                    row[5] = ((FundsWorkRequest) req).getType();
+                    row[6] = ((FundsWorkRequest) req).getStatus();
 
                     model.addRow(row);
                 }
