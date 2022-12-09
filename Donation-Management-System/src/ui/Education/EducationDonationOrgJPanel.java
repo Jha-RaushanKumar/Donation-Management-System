@@ -63,7 +63,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         buttonProcess = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblKits = new javax.swing.JTable();
+        tableKits = new javax.swing.JTable();
         jLabelIncomingKit1 = new javax.swing.JLabel();
         buttonProcessKits = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -127,8 +127,8 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabelTitle);
         jLabelTitle.setBounds(10, 10, 940, 70);
 
-        tblKits.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
-        tblKits.setModel(new javax.swing.table.DefaultTableModel(
+        tableKits.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableKits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -147,7 +147,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblKits);
+        jScrollPane2.setViewportView(tableKits);
 
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(50, 480, 850, 130);
@@ -184,7 +184,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(120, 160, 93, 22);
         jPanel1.add(txtTotalFunds);
-        txtTotalFunds.setBounds(230, 160, 231, 22);
+        txtTotalFunds.setBounds(230, 160, 231, 23);
 
         jLabelInventoryOverview1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelInventoryOverview1.setForeground(new java.awt.Color(2, 55, 108));
@@ -198,7 +198,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(140, 430, 75, 22);
         jPanel1.add(txtTotalKits);
-        txtTotalKits.setBounds(230, 430, 240, 22);
+        txtTotalKits.setBounds(230, 430, 240, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -227,69 +227,61 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         int selectedRow = tableFunds.getSelectedRow();
 
         if (selectedRow >= 0) {
-            WorkRequest request = (WorkRequest) tableFunds.getValueAt(selectedRow, 0);
-            if (request.getStatus().equalsIgnoreCase("Requested")) {
+            WorkRequest req = (WorkRequest) tableFunds.getValueAt(selectedRow, 0);
+            if (req.getStatus().equalsIgnoreCase("Requested")) {
                 JOptionPane.showMessageDialog(null, "Please wait until Finance Team acceptance.");
                 return;
             }
-            else if (request.getStatus().equalsIgnoreCase("Completed")) {
+            else if (req.getStatus().equalsIgnoreCase("Completed")) {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
-            else if (request.getStatus().equalsIgnoreCase("Rejected")) {
-                JOptionPane.showMessageDialog(null, "Request is already rejected.");
-                return;
-            }
             else {
-                if (request instanceof FundsWorkRequest) {
+                if (req instanceof FundsWorkRequest) {
                     FundsWorkRequest fundRequest = (FundsWorkRequest) tableFunds.getValueAt(selectedRow, 0);
                     double amount = fundRequest.getFunds();
                     double totalFunds = educationDonationOrg.getTotalFunds() + amount;
                     educationDonationOrg.setTotalFunds(totalFunds);
                     txtTotalFunds.setText(String.valueOf(educationDonationOrg.getTotalFunds()));
                 }
-                request.setReceiver(userAccount);
-                request.setStatus("Completed");
+                req.setReceiver(userAccount);
+                req.setStatus("Completed");
                 populateTable();
-                JOptionPane.showMessageDialog(null, "Request is completed and funds added to the organization");
+                JOptionPane.showMessageDialog(null, "Funds added to the organization");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a request to accept.");
+            JOptionPane.showMessageDialog(null, "Choose a request to process.");
             return;
         }
     }//GEN-LAST:event_buttonProcessActionPerformed
 
     private void buttonProcessKitsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProcessKitsActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblKits.getSelectedRow();
+        int selectedRow = tableKits.getSelectedRow();
 
         if (selectedRow >= 0) {
-            WorkRequest request = (WorkRequest) tblKits.getValueAt(selectedRow, 0);
-            if (request.getStatus().equalsIgnoreCase("Completed")) {
+            WorkRequest req = (WorkRequest) tableKits.getValueAt(selectedRow, 0);
+            if (req.getStatus().equalsIgnoreCase("Completed")) {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
-            else if (request.getStatus().equalsIgnoreCase("Rejected")) {
-                JOptionPane.showMessageDialog(null, "Request is already rejected.");
-                return;
-            }
-            else if (request.getStatus().equalsIgnoreCase("Forwarded to Charity Organization")) {
+            else if (req.getStatus().equalsIgnoreCase("Forwarded to Donation Organization")) {
 
-                if (request instanceof EducationKitSupplyWorkRequest) {
-                    EducationKitSupplyWorkRequest fundRequest = (EducationKitSupplyWorkRequest) tblKits.getValueAt(selectedRow, 0);
+                if (req instanceof EducationKitSupplyWorkRequest) {
+                    EducationKitSupplyWorkRequest fundRequest = (EducationKitSupplyWorkRequest) tableKits.getValueAt(selectedRow, 0);
 
                     double quantity = fundRequest.getKitCount();
                     double totalKits = educationDonationOrg.getTotalSupplyKits() + quantity;
                     educationDonationOrg.setTotalSupplyKits((int) totalKits);
                     txtTotalKits.setText(String.valueOf(educationDonationOrg.getTotalSupplyKits()));
                 }
-                request.setReceiver(userAccount);
-                request.setStatus("Completed");
+                req.setReceiver(userAccount);
+                req.setStatus("Completed");
                 populateTable();
                 JOptionPane.showMessageDialog(null, "Request is completed");
             }
             else {
-                JOptionPane.showMessageDialog(null, "Please wait until Inventory team acceptance.");
+                JOptionPane.showMessageDialog(null, "Please wait until Kit Supply team acceptance.");
                 return;
             }
         } else {
@@ -314,7 +306,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableFunds;
-    private javax.swing.JTable tblKits;
+    private javax.swing.JTable tableKits;
     private javax.swing.JTextField txtTotalFunds;
     private javax.swing.JTextField txtTotalKits;
     // End of variables declaration//GEN-END:variables
@@ -344,7 +336,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
             }
         }
         
-        DefaultTableModel model1 = (DefaultTableModel) tblKits.getModel();
+        DefaultTableModel model1 = (DefaultTableModel) tableKits.getModel();
 
         model1.setRowCount(0);
 
