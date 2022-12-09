@@ -4,6 +4,19 @@
  */
 package ui.Funds;
 
+import Configuration.EcoSystem;
+import Donation.Enterprise.Enterprise;
+import Donation.Network.Network;
+import Donation.Organization.Organization;
+import Donation.UserAccount.UserAccount;
+import Donation.WorkQueue.FundsWorkRequest;
+import Donation.WorkQueue.WorkQueue;
+import java.awt.Color;
+import java.util.Date;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author reeteshkesarwani
@@ -13,8 +26,19 @@ public class DonateFundsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DonateFundsJPanel
      */
-    public DonateFundsJPanel() {
+    private static JPanel jPanel;
+    private static UserAccount userAccount;
+    private static EcoSystem ecosystem;
+    private static Network network;
+    private static Enterprise enterprise;
+    public DonateFundsJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
+        this.ecosystem = ecosystem;
+        this.network = network;
+        this.enterprise = enterprise;
+        this.jPanel = jPanel;
+        this.userAccount = userAccount;
+        populateOrg();
     }
 
     /**
@@ -27,7 +51,7 @@ public class DonateFundsJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        comboBoxOrg = new javax.swing.JComboBox();
+        comboOrg = new javax.swing.JComboBox();
         txtAmount = new javax.swing.JTextField();
         txtPurpose = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -41,10 +65,10 @@ public class DonateFundsJPanel extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 750));
         jPanel1.setLayout(null);
 
-        comboBoxOrg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        comboBoxOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(comboBoxOrg);
-        comboBoxOrg.setBounds(370, 140, 264, 50);
+        comboOrg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        comboOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(comboOrg);
+        comboOrg.setBounds(370, 140, 264, 50);
 
         txtAmount.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAmount.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -70,7 +94,7 @@ public class DonateFundsJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(430, 440, 72, 23);
+        jButton1.setBounds(430, 440, 68, 22);
 
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -79,19 +103,19 @@ public class DonateFundsJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(30, 30, 78, 23);
+        jButton3.setBounds(30, 30, 78, 22);
 
         jLabel1.setText("Name of Organization");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(180, 150, 160, 17);
+        jLabel1.setBounds(180, 150, 160, 16);
 
         jLabel5.setText("Reason");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(240, 240, 70, 17);
+        jLabel5.setBounds(240, 240, 70, 16);
 
         jLabel7.setText("Amount");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(230, 330, 70, 17);
+        jLabel7.setBounds(230, 330, 70, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,15 +140,53 @@ public class DonateFundsJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Organization organization = (Organization) comboOrg.getSelectedItem();
+        Organization.orgType type = organization.getOrgType();
+        
+        if (txtAmount.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Provide all the Details!");
+        } 
+        else {
+            FundsWorkRequest freq = new FundsWorkRequest();
+            freq.setFunds(Double.parseDouble(txtAmount.getText()));
+            
+            
+            freq.setName(userAccount.getEmployee().getName());
+            freq.setType(userAccount.getRole().toString());
+            freq.setStatus("Donated");
+            freq.setRequestDateTime(new Date());
+            freq.setEnterprise(enterprise);
+            freq.setNetwork(network);
+            freq.setOrgType(type);
+
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEntList()) {
+                if (enterprise.getEntType() == Enterprise.EntType.FundsEntDirectory) {
+                    for(Organization org : enterprise.getOrgDirectory().getOrgList()){
+                        if(org.getOrgType() == Organization.orgType.FundsOrg){
+                            if (org.getWorkQueue() == null) {
+                            org.setWorkQueue(new WorkQueue());
+                        }
+                        org.getWorkQueue().getWorkReqList().add(freq);
+
+                        }
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Thank you for donating funds!!");
+            txtAmount.setText("");
+            comboOrg.setSelectedIndex(0);
+            txtPurpose.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox comboBoxOrg;
+    private javax.swing.JComboBox comboOrg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -135,4 +197,15 @@ public class DonateFundsJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtPurpose;
     // End of variables declaration//GEN-END:variables
+    private void populateOrg() {
+        comboOrg.removeAllItems();
+        
+        for(Enterprise enterprise : network.getEnterpriseDirectory().getEntList()){
+            if(enterprise.getEntType().toString().equals(Enterprise.EntType.DonationEntDirectory.toString())){
+                for(Organization org : enterprise.getOrgDirectory().getOrgList()){
+                        comboOrg.addItem(org);
+                }
+            }    
+        }
+    }
 }
