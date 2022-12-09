@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author Raushan
  */
-public class EducationDonationOrgAdminRole extends Role{
+public class FundsOrgAdminRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise ent, Network network, EcoSystem ecosystem) {
@@ -24,8 +24,7 @@ public class EducationDonationOrgAdminRole extends Role{
     
     @Override
     public String toString(){
-        return (Role.RoleType.EducationDonationOrgAdminRole.getValue());
+        return (Role.RoleType.FundsOrgAdmin.getValue());
     }
-    
     
 }

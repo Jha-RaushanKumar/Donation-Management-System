@@ -5,9 +5,18 @@
 package ui.Donation;
 
 import Configuration.EcoSystem;
+import Donation.Employee.Employee;
 import Donation.Enterprise.Enterprise;
 import Donation.Network.Network;
+import Donation.Organization.Organization;
+import Donation.Role.DisasterReliefOrgAdminRole;
+import Donation.Role.EducationDonationOrgAdminRole;
+import Donation.Role.Role;
+import Donation.UserAccount.UserAccount;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,15 +28,20 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
      * Creates new form DonationAdminJPanel
      */
     private static JPanel jPanel;
+    private static UserAccount userAccount;
     private static EcoSystem ecosystem;
     private static Network network;
     private static Enterprise enterprise;
-    public DonationAdminJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel) {
+    public DonationAdminJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
         this.ecosystem = ecosystem;
         this.network = network;
         this.enterprise = enterprise;
         this.jPanel = jPanel;
+        this.userAccount = userAccount;
+        populateTableOrg();
+        populateOrgTypes();
+        
     }
 
     /**
@@ -46,21 +60,21 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         lblDonarAdmin = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblWorkQueue = new javax.swing.JTable();
+        tableOrg = new javax.swing.JTable();
         lblDonarName1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        comboBoxOrgType = new javax.swing.JComboBox();
-        txtUsername = new javax.swing.JTextField();
+        comboOrgType = new javax.swing.JComboBox();
+        txtUserName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        comboBoxRole = new javax.swing.JComboBox();
-        txtOrgName = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
-        btnAddOrg = new javax.swing.JButton();
+        comboRole = new javax.swing.JComboBox();
+        txtOrg = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtUserPassword = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -104,8 +118,8 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
 
         jPanel2.setLayout(null);
 
-        tblWorkQueue.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
-        tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
+        tableOrg.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableOrg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -124,7 +138,7 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblWorkQueue);
+        jScrollPane2.setViewportView(tableOrg);
 
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(10, 128, 955, 160);
@@ -147,19 +161,19 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(210, 320, 190, 24);
 
-        comboBoxOrgType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        comboBoxOrgType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxOrgType.addActionListener(new java.awt.event.ActionListener() {
+        comboOrgType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        comboOrgType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboOrgType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxOrgTypeActionPerformed(evt);
+                comboOrgTypeActionPerformed(evt);
             }
         });
-        jPanel2.add(comboBoxOrgType);
-        comboBoxOrgType.setBounds(460, 320, 260, 40);
+        jPanel2.add(comboOrgType);
+        comboOrgType.setBounds(460, 320, 260, 40);
 
-        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel2.add(txtUsername);
-        txtUsername.setBounds(460, 530, 260, 40);
+        txtUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel2.add(txtUserName);
+        txtUserName.setBounds(460, 530, 260, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -173,44 +187,54 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel2.add(jLabel6);
         jLabel6.setBounds(260, 540, 140, 24);
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Password");
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(260, 610, 140, 24);
-
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Role");
         jPanel2.add(jLabel8);
         jLabel8.setBounds(290, 400, 110, 24);
 
-        comboBoxRole.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        comboBoxRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(comboBoxRole);
-        comboBoxRole.setBounds(460, 390, 260, 40);
+        comboRole.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(comboRole);
+        comboRole.setBounds(460, 390, 260, 40);
 
-        txtOrgName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtOrgName.addActionListener(new java.awt.event.ActionListener() {
+        txtOrg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrgNameActionPerformed(evt);
+                txtOrgActionPerformed(evt);
             }
         });
-        jPanel2.add(txtOrgName);
-        txtOrgName.setBounds(460, 460, 260, 40);
+        jPanel2.add(txtOrg);
+        txtOrg.setBounds(460, 460, 260, 40);
 
-        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel2.add(txtPassword);
-        txtPassword.setBounds(460, 600, 260, 40);
-
-        btnAddOrg.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        btnAddOrg.setText("Add Organization");
-        jPanel2.add(btnAddOrg);
-        btnAddOrg.setBounds(430, 680, 180, 50);
-
-        jButton1.setText("Delete");
+        jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
-        jButton1.setBounds(800, 330, 110, 40);
+        jButton1.setBounds(760, 480, 110, 40);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Password");
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(270, 610, 140, 22);
+
+        txtUserPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel2.add(txtUserPassword);
+        txtUserPassword.setBounds(470, 600, 260, 40);
+
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2);
+        jButton2.setBounds(800, 330, 110, 40);
 
         jTabbedPane1.addTab("Manage Organizations", jPanel2);
 
@@ -222,47 +246,110 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(478, 478, 478)
-                        .addComponent(jLabel1)))
+                .addGap(476, 476, 476)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboBoxOrgTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrgTypeActionPerformed
+    private void comboOrgTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgTypeActionPerformed
+       Organization.orgType orgtype = (Organization.orgType) comboOrgType.getSelectedItem();
+        if(orgtype == Organization.orgType.DisasterReliefOrg){
+            comboRole.removeAllItems();
+            comboRole.addItem(Role.RoleType.DisasterReliefOrgAdminRole);
+        }
+        else if(orgtype == Organization.orgType.EducationDonationOrg){
+            comboRole.removeAllItems();
+            comboRole.addItem(Role.RoleType.EducationDonationOrgAdminRole);
+        }
+    }//GEN-LAST:event_comboOrgTypeActionPerformed
 
-    }//GEN-LAST:event_comboBoxOrgTypeActionPerformed
-
-    private void txtOrgNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrgNameActionPerformed
+    private void txtOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrgActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrgNameActionPerformed
+    }//GEN-LAST:event_txtOrgActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        boolean val = true;
+        int selectedRow = tableOrg.getSelectedRow();
+        if(selectedRow<0){
+            val=false;
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+        }
+        if(val){
+            DefaultTableModel tableModel = (DefaultTableModel) tableOrg.getModel();
+            Object org = tableModel.getValueAt(selectedRow, 0 );
+            Organization.orgType orgType = (Organization.orgType) tableModel.getValueAt(selectedRow, 1 );
+            ArrayList<Organization> organizationList = enterprise.getOrgDirectory().getOrgList();
+            for(int i = 0; i < enterprise.getOrgDirectory().getOrgList().size(); i++){
+                if((organizationList.get(i).getName().equals(String.valueOf(org))) && (organizationList.get(i).getOrgType() == orgType)){
+                    enterprise.getOrgDirectory().getOrgList().remove(i);
+                    populateTableOrg();
+                    break;
+                }
+            } 
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Organization.orgType orgtype = (Organization.orgType) comboOrgType.getSelectedItem();
+        String name = txtUserName.getText().trim();
+        if(!name.isEmpty()){
+                Organization org = enterprise.getOrgDirectory().addOrganization(orgtype, txtOrg.getText());
+                if (orgtype == Organization.orgType.EducationDonationOrg) {
+                    if(org.getOrgType() == Organization.orgType.EducationDonationOrg){
+                        Employee emp = org.getEmpDirectory().addEmployee(txtOrg.getText());
+                        UserAccount useracc = org.getuserAccountList().addUserAccount(txtUserName.getText(), txtUserPassword.getText(), new EducationDonationOrgAdminRole(), emp);
+
+                    }
+                }
+                else if (orgtype == Organization.orgType.DisasterReliefOrg) {
+                    if(org.getOrgType() == Organization.orgType.DisasterReliefOrg){
+                        Employee emp = org.getEmpDirectory().addEmployee(txtOrg.getText());
+                        UserAccount useracc = org.getuserAccountList().addUserAccount(txtUserName.getText(), txtUserPassword.getText(), new DisasterReliefOrgAdminRole(), emp);
+
+                    }
+                }               
+             
+                JOptionPane.showMessageDialog(null, "Organization Created");
+                txtUserName.setText("");
+                txtUserPassword.setText("");
+                txtOrg.setText("");
+                comboOrgType.setSelectedIndex(0);
+            
+        } else{
+            JOptionPane.showMessageDialog(null, "Enter Organization name");
+        }
+        populateTableOrg();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddOrg;
-    private javax.swing.JComboBox comboBoxOrgType;
-    private javax.swing.JComboBox comboBoxRole;
+    private javax.swing.JComboBox comboOrgType;
+    private javax.swing.JComboBox comboRole;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -270,10 +357,42 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblDonarAdmin;
     private javax.swing.JLabel lblDonarName1;
+    private javax.swing.JTable tableOrg;
     private javax.swing.JTable tblOrgList;
-    private javax.swing.JTable tblWorkQueue;
-    private javax.swing.JTextField txtOrgName;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtOrg;
+    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtUserPassword;
     // End of variables declaration//GEN-END:variables
+
+    public void populateOrgTypes() {
+        comboOrgType.removeAllItems();
+        comboOrgType.addItem(Organization.orgType.EducationDonationOrg);
+        comboOrgType.addItem(Organization.orgType.DisasterReliefOrg);
+    }
+    private void populateTableOrg() {
+        DefaultTableModel model = (DefaultTableModel) tableOrg.getModel();
+        
+        model.setRowCount(0);
+        for (Enterprise ent : network.getEnterpriseDirectory().getEntList()) {
+            if(ent.getName().equals(enterprise.getName())){
+                for(Organization org : ent.getOrgDirectory().getOrgList()){
+                Object[] row = new Object[4];
+                row[0] = org.getName();
+                row[1] = org.getOrgType();
+                for(UserAccount useracc : org.getuserAccountList().getUaList()){
+                    if(useracc.getRole().toString().equals(Role.RoleType.DisasterReliefOrgAdminRole.toString())){
+                        row[2] = useracc.getUsername();
+                        row[3] = useracc.getPassword();
+                    }
+                    else if(useracc.getRole().toString().equals(Role.RoleType.EducationDonationOrgAdminRole.toString())){
+                        row[2] = useracc.getUsername();
+                        row[3] = useracc.getPassword();
+                    }
+                }
+                model.addRow(row);
+            }
+            }
+        }
+    }
+    
 }
