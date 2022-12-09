@@ -2,19 +2,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.Education;
+package ui.KitSupply;
+
+import Configuration.EcoSystem;
+import Donation.Enterprise.Enterprise;
+import Donation.Network.Network;
+import Donation.UserAccount.UserAccount;
+import javax.swing.JPanel;
 
 /**
  *
- * @author reeteshkesarwani
+ * @author Raushan
  */
-public class EducationDonationOrgJPanel extends javax.swing.JPanel {
+public class KitSupplyAdminJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form EducationDonationOrgJPanel
+     * Creates new form KitSupplyAdminJPanel
      */
-    public EducationDonationOrgJPanel() {
+    private static JPanel jPanel;
+    private static UserAccount userAccount;
+    private static EcoSystem ecosystem;
+    private static Network network;
+    private static Enterprise enterprise;
+    public KitSupplyAdminJPanel(EcoSystem ecosystem, Network network, Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
+        this.ecosystem = ecosystem;
+        this.network = network;
+        this.enterprise = enterprise;
+        this.jPanel = jPanel;
+        this.userAccount = userAccount;
+        
     }
 
     /**
@@ -30,11 +47,11 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1110, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 794, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

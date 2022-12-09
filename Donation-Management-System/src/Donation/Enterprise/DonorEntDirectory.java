@@ -22,8 +22,8 @@ public class DonorEntDirectory extends Enterprise{
     @Override
     public ArrayList<Role> getSupportedRole() {
         roles = new ArrayList<Role>();
-        roles.add(new DonorRole());
         roles.add(new DonorAdminRole());
+        roles.add(new DonorRole());
         return roles;
     }
     

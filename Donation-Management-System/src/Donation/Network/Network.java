@@ -18,6 +18,7 @@ public class Network {
     public Network(){
         entDirectory = new EnterpriseDirectory(); 
     }
+    
 
     public String getName() {
         return netName;
@@ -30,10 +31,13 @@ public class Network {
     public EnterpriseDirectory getEnterpriseDirectory() {
         return entDirectory;
     }
-
-    public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
-        this.entDirectory = enterpriseDirectory;
+    
+    
+    @Override
+    public String toString(){
+        return netName;
     }
+
     
     
     
