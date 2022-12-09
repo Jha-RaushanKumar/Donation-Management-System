@@ -52,9 +52,9 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        comboDisOrg = new javax.swing.JComboBox<>();
         txtCount = new javax.swing.JTextField();
         buttonSubmit = new javax.swing.JButton();
+        comboDisOrg = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,8 +66,6 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
 
         jLabel3.setText("Count");
 
-        comboDisOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         buttonSubmit.setText("Submit");
         buttonSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,31 +73,38 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
             }
         });
 
+        comboDisOrg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        comboDisOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(buttonBack)
+                .addGap(205, 205, 205)
+                .addComponent(jLabel1)
+                .addGap(242, 242, 242))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(buttonBack)
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel1))
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(241, 241, 241)
-                                .addComponent(jLabel3)))
+                        .addGap(241, 241, 241)
+                        .addComponent(jLabel3)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCount)
-                            .addComponent(comboDisOrg, 0, 80, Short.MAX_VALUE)
-                            .addComponent(buttonSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(242, 242, 242))
+                            .addComponent(buttonSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(242, 242, 242))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(comboDisOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +113,7 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(buttonBack))
-                .addGap(82, 82, 82)
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(comboDisOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,10 +152,10 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
                 if(enterprise.getEntType()== Enterprise.EntType.KitSupplyEntDirectory){
                     for(Organization organization : enterprise.getOrgDirectory().getOrgList()){
                         if(organization.getOrgType()== Organization.orgType.DisasterReliefKitSupplyOrg){
-                            if (org.getWorkQueue() == null) {
-                                org.setWorkQueue(new WorkQueue());
+                            if (organization.getWorkQueue() == null) {
+                                organization.setWorkQueue(new WorkQueue());
                             }
-                            org.getWorkQueue().getWorkReqList().add(req);
+                            organization.getWorkQueue().getWorkReqList().add(req);
                         }
                     }
                 }
@@ -200,7 +205,7 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton buttonBack;
     private javax.swing.JButton buttonSubmit;
-    private javax.swing.JComboBox<String> comboDisOrg;
+    private javax.swing.JComboBox comboDisOrg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
