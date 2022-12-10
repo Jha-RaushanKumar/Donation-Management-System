@@ -15,6 +15,7 @@ import Donation.Role.DonationAdminRole;
 import Donation.Role.DonorAdminRole;
 import Donation.Role.DonorRole;
 import Donation.Role.EducationDonationOrgAdminRole;
+import Donation.Role.EducationKitSupplyManagerRole;
 import Donation.Role.FundsAdminRole;
 import Donation.Role.KitSupplyAdmin;
 import static Donation.Role.Role.RoleType.DisasterReliefOrgAdminRole;
@@ -22,6 +23,7 @@ import static Donation.Role.Role.RoleType.EducationDonationOrgAdminRole;
 import Donation.Role.SystemAdminRole;
 import Donation.UserAccount.UserAccount;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import ui.DisasterRelief.DisasterReliefOrgJPanel;
 import ui.DisasterRelief.DisaterReliefKitSupplyManagerJPanel;
 import ui.Donation.DonationAdminJPanel;
@@ -29,6 +31,7 @@ import ui.Donor.DonorAdminJPanel;
 import ui.Donor.DonorJPanel;
 import ui.Donor.RegistrationDonorJPanel;
 import ui.Education.EducationDonationOrgJPanel;
+import ui.Education.EducationKitSupplyManagerJPanel;
 import ui.Funds.FundsAdminJPanel;
 import ui.KitSupply.KitSupplyAdminJPanel;
 import ui.System.SystemAdminPanel;
@@ -379,6 +382,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
             else if(userAccount.getRole() instanceof DisasterReliefKitSupplyManagerRole) {
                 DisaterReliefKitSupplyManagerJPanel panel = new DisaterReliefKitSupplyManagerJPanel( userAccount,enterprise,organization );
+                jSplitPane1.setRightComponent(panel);
+            }
+            else if(userAccount.getRole() instanceof EducationKitSupplyManagerRole) {
+                EducationKitSupplyManagerJPanel panel = new EducationKitSupplyManagerJPanel(ecosystem, network, organization, enterprise, jPanel2, userAccount);
                 jSplitPane1.setRightComponent(panel);
             }
             
