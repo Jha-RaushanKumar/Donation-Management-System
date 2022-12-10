@@ -93,6 +93,7 @@ public class DonateFundsPanel extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(320, 30, 450, 60);
 
+        jButton1.setBackground(new java.awt.Color(220, 215, 201));
         jButton1.setFont(new java.awt.Font("PT Sans", 0, 18)); // NOI18N
         jButton1.setText("Donate");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -104,6 +105,7 @@ public class DonateFundsPanel extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(420, 430, 170, 50);
 
+        jButton3.setBackground(new java.awt.Color(220, 215, 201));
         jButton3.setText("Back");
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -114,17 +116,23 @@ public class DonateFundsPanel extends javax.swing.JFrame {
         jPanel1.add(jButton3);
         jButton3.setBounds(40, 580, 130, 50);
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 215, 201));
         jLabel1.setText("Name of Organization");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(140, 150, 200, 50);
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(220, 215, 201));
         jLabel5.setText("Reason");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(130, 230, 180, 40);
+        jLabel5.setBounds(240, 220, 180, 40);
 
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(220, 215, 201));
         jLabel7.setText("Amount");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(140, 307, 160, 40);
+        jLabel7.setBounds(230, 300, 160, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

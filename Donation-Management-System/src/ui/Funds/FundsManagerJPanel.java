@@ -59,10 +59,11 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(44, 54, 57));
         jPanel3.setLayout(null);
 
-        tableFunds.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableFunds.setBackground(new java.awt.Color(220, 215, 224));
+        tableFunds.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tableFunds.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -85,12 +86,13 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tableFunds);
 
         jPanel3.add(jScrollPane3);
-        jScrollPane3.setBounds(40, 130, 840, 140);
+        jScrollPane3.setBounds(50, 240, 840, 140);
 
-        jLabelIncomingKit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabelIncomingKit.setText("Incoming funds");
+        jLabelIncomingKit.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
+        jLabelIncomingKit.setText("Funds Requests:");
         jPanel3.add(jLabelIncomingKit);
-        jLabelIncomingKit.setBounds(10, 80, 110, 20);
+        jLabelIncomingKit.setBounds(60, 140, 300, 60);
 
         btnAccept.setBackground(new java.awt.Color(2, 55, 108));
         btnAccept.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -104,30 +106,35 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
         jPanel3.add(btnAccept);
         btnAccept.setBounds(1010, 320, 123, 36);
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 62)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(220, 215, 201));
         jLabel2.setText("Welcome Funds Manager");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(440, 50, 160, 16);
+        jLabel2.setBounds(140, 40, 730, 70);
 
+        jButton5.setBackground(new java.awt.Color(220, 215, 201));
         jButton5.setText("Process");
+        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         jPanel3.add(jButton5);
-        jButton5.setBounds(790, 310, 78, 22);
+        jButton5.setBounds(740, 460, 130, 40);
 
-        btnReject.setBackground(new java.awt.Color(2, 55, 108));
-        btnReject.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnReject.setForeground(new java.awt.Color(255, 255, 255));
+        btnReject.setBackground(new java.awt.Color(220, 215, 201));
+        btnReject.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(51, 51, 51));
         btnReject.setText("Reject");
+        btnReject.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRejectActionPerformed(evt);
             }
         });
         jPanel3.add(btnReject);
-        btnReject.setBounds(630, 310, 123, 36);
+        btnReject.setBounds(580, 460, 123, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

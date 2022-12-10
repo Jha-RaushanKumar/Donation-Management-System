@@ -72,18 +72,25 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         tableFunds = new javax.swing.JTable();
         jLabelIncomingKit = new javax.swing.JLabel();
         btnAccept = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        setBackground(new java.awt.Color(44, 54, 57));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(220, 215, 201));
+        jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(44, 54, 57));
+        jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createCompoundBorder(), javax.swing.BorderFactory.createCompoundBorder()));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(220, 215, 201));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane1.setToolTipText("");
 
-        tblOrg.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tblOrg.setBackground(new java.awt.Color(220, 215, 224));
+        tblOrg.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tblOrg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -107,44 +114,61 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(0, 80, 950, 140);
+
+        txtUserName.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtUserName);
         txtUserName.setBounds(410, 340, 220, 40);
+
+        txtOrg.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtOrg);
         txtOrg.setBounds(410, 260, 220, 40);
+
+        txtUserPassword.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtUserPassword);
         txtUserPassword.setBounds(410, 420, 220, 40);
 
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Password");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(300, 430, 80, 16);
+        jLabel8.setBounds(230, 420, 90, 23);
 
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Username");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(290, 350, 100, 16);
+        jLabel10.setBounds(230, 350, 100, 23);
 
+        jLabel12.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Organization Name");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(260, 270, 120, 16);
+        jLabel12.setBounds(160, 270, 180, 23);
 
+        jLabel15.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("List of Organization");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(10, 40, 150, 16);
+        jLabel15.setBounds(10, 33, 200, 30);
 
+        jButton6.setBackground(new java.awt.Color(220, 215, 201));
         jButton6.setText("Add Organization");
+        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton6);
-        jButton6.setBounds(470, 490, 140, 22);
+        jButton6.setBounds(440, 490, 170, 40);
 
-        jTabbedPane1.addTab("Manage Organization", jPanel1);
+        jTabbedPane1.addTab(" Organizations", jPanel1);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(44, 54, 57));
         jPanel3.setLayout(null);
 
-        tableFunds.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableFunds.setBackground(new java.awt.Color(220, 215, 224));
+        tableFunds.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tableFunds.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -167,12 +191,13 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tableFunds);
 
         jPanel3.add(jScrollPane3);
-        jScrollPane3.setBounds(40, 130, 840, 140);
+        jScrollPane3.setBounds(30, 130, 840, 140);
 
-        jLabelIncomingKit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabelIncomingKit.setText("Incoming funds");
+        jLabelIncomingKit.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
+        jLabelIncomingKit.setText("Funds Requests:");
         jPanel3.add(jLabelIncomingKit);
-        jLabelIncomingKit.setBounds(10, 80, 110, 20);
+        jLabelIncomingKit.setBounds(30, 80, 190, 29);
 
         btnAccept.setBackground(new java.awt.Color(2, 55, 108));
         btnAccept.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -186,10 +211,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jPanel3.add(btnAccept);
         btnAccept.setBounds(1010, 320, 123, 36);
 
-        jLabel2.setText("Welcome Funds Admin");
-        jPanel3.add(jLabel2);
-        jLabel2.setBounds(440, 50, 160, 16);
-
+        jButton5.setBackground(new java.awt.Color(220, 215, 201));
         jButton5.setText("Process");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,10 +219,12 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(jButton5);
-        jButton5.setBounds(790, 310, 78, 22);
+        jButton5.setBounds(758, 310, 110, 50);
 
-        jTabbedPane1.addTab("Manage Work Requests", jPanel3);
+        jTabbedPane1.addTab(" Requests", jPanel3);
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 62)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 215, 201));
         jLabel1.setText("Welcome Funds Admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -213,16 +237,16 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
                         .addGap(74, 74, 74)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(476, 476, 476)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(64, Short.MAX_VALUE))
         );
@@ -297,7 +321,6 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelIncomingKit;
     private javax.swing.JPanel jPanel1;
