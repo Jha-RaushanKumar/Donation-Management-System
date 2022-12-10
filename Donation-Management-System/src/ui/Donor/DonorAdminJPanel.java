@@ -64,11 +64,6 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableRequestDonor = new javax.swing.JTable();
-        btnProcess = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableOrg = new javax.swing.JTable();
@@ -76,69 +71,28 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         txtOrgName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnAddOrganization = new javax.swing.JButton();
-        lblDonarName2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableRequestDonor = new javax.swing.JTable();
+        btnProcess = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(44, 54, 57));
 
-        jTabbedPane1.setForeground(new java.awt.Color(2, 55, 108));
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTabbedPane1.setBackground(new java.awt.Color(220, 215, 201));
+        jTabbedPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(220, 215, 201), 1, true));
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(null);
-
-        tableRequestDonor.setBackground(new java.awt.Color(234, 234, 234));
-        tableRequestDonor.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
-        tableRequestDonor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Request #", "Request Date", "Requestor Name", "Organization Type", "Address", "Contact", "Email Address", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tableRequestDonor);
-
-        jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 128, 955, 160);
-
-        btnProcess.setBackground(new java.awt.Color(2, 55, 108));
-        btnProcess.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnProcess.setForeground(new java.awt.Color(255, 255, 255));
-        btnProcess.setText("Process");
-        btnProcess.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProcessActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnProcess);
-        btnProcess.setBounds(780, 320, 180, 40);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(2, 55, 108));
-        jLabel4.setText("Donor List");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(10, 100, 92, 22);
-
-        jTabbedPane1.addTab("Manage work request", jPanel2);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setLayout(null);
 
         jScrollPane1.setForeground(new java.awt.Color(2, 55, 108));
 
-        tableOrg.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableOrg.setBackground(new java.awt.Color(220, 215, 224));
         tableOrg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -161,47 +115,99 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableOrg);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 130, 888, 194);
+        jScrollPane1.setBounds(40, 60, 770, 120);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(2, 55, 108));
-        jLabel1.setText("Organization List");
+        jLabel1.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 215, 201));
+        jLabel1.setText("Organization:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 100, 152, 22);
+        jLabel1.setBounds(10, 20, 152, 22);
 
+        txtOrgName.setBackground(new java.awt.Color(220, 215, 224));
         txtOrgName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(txtOrgName);
-        txtOrgName.setBounds(460, 360, 220, 40);
+        txtOrgName.setBounds(420, 290, 220, 40);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel3.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(220, 215, 201));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Name");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(300, 360, 110, 22);
+        jLabel3.setBounds(280, 300, 50, 22);
 
-        btnAddOrganization.setBackground(new java.awt.Color(2, 55, 108));
-        btnAddOrganization.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAddOrganization.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddOrganization.setText("Add Organization");
+        btnAddOrganization.setBackground(new java.awt.Color(220, 215, 201));
+        btnAddOrganization.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
+        btnAddOrganization.setText("Add");
+        btnAddOrganization.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAddOrganization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddOrganizationActionPerformed(evt);
             }
         });
         jPanel1.add(btnAddOrganization);
-        btnAddOrganization.setBounds(460, 450, 220, 40);
+        btnAddOrganization.setBounds(540, 360, 100, 30);
 
-        lblDonarName2.setFont(new java.awt.Font("Marker Felt", 1, 24)); // NOI18N
-        lblDonarName2.setForeground(new java.awt.Color(2, 55, 108));
-        lblDonarName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDonarName2.setText("Welcome Donor Admin");
-        jPanel1.add(lblDonarName2);
-        lblDonarName2.setBounds(10, 50, 1109, 27);
+        jLabel6.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(220, 215, 201));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Create Doner Organization");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(290, 220, 330, 29);
 
-        jTabbedPane1.addTab("Manage Organization", jPanel1);
+        jTabbedPane1.addTab("Organization", jPanel1);
 
-        jLabel5.setFont(new java.awt.Font("PT Serif", 1, 62)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(44, 54, 57));
+        jPanel2.setLayout(null);
+
+        jScrollPane2.setBackground(new java.awt.Color(220, 215, 224));
+        jScrollPane2.setBorder(null);
+
+        tableRequestDonor.setBackground(new java.awt.Color(220, 215, 224));
+        tableRequestDonor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Request #", "Request Date", "Requestor Name", "Organization Type", "Address", "Contact", "Email Address", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableRequestDonor);
+
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 60, 810, 140);
+
+        btnProcess.setBackground(new java.awt.Color(220, 215, 201));
+        btnProcess.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        btnProcess.setText("Process");
+        btnProcess.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnProcess);
+        btnProcess.setBounds(370, 280, 110, 40);
+
+        jLabel4.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(220, 215, 201));
+        jLabel4.setText("Donor Requests:");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(10, 20, 150, 22);
+
+        jTabbedPane1.addTab("New Requests ", jPanel2);
+
+        jLabel5.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(220, 215, 201));
         jLabel5.setText("Welcome Donor Admin");
 
@@ -210,22 +216,22 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 991, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(216, 216, 216))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(293, 293, 293))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -292,12 +298,12 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblDonarName2;
     private javax.swing.JTable tableOrg;
     private javax.swing.JTable tableRequestDonor;
     private javax.swing.JTextField txtOrgName;

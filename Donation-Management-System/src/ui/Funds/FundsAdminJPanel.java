@@ -67,6 +67,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableFunds = new javax.swing.JTable();
@@ -78,7 +79,10 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(44, 54, 57));
 
         jTabbedPane1.setBackground(new java.awt.Color(220, 215, 201));
-        jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jTabbedPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(220, 215, 201), 1, true));
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createCompoundBorder(), javax.swing.BorderFactory.createCompoundBorder()));
@@ -113,46 +117,52 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblOrg);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 80, 950, 140);
+        jScrollPane1.setBounds(0, 50, 800, 140);
 
         txtUserName.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtUserName);
-        txtUserName.setBounds(410, 340, 220, 40);
+        txtUserName.setBounds(440, 360, 200, 40);
 
         txtOrg.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtOrg);
-        txtOrg.setBounds(410, 260, 220, 40);
+        txtOrg.setBounds(440, 290, 200, 40);
 
         txtUserPassword.setBackground(new java.awt.Color(220, 215, 224));
+        txtUserPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserPasswordActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtUserPassword);
-        txtUserPassword.setBounds(410, 420, 220, 40);
+        txtUserPassword.setBounds(440, 430, 200, 40);
 
-        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(220, 215, 201));
         jLabel8.setText("Password");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(230, 420, 90, 23);
+        jLabel8.setBounds(260, 440, 90, 22);
 
-        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(220, 215, 201));
         jLabel10.setText("Username");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(230, 350, 100, 23);
+        jLabel10.setBounds(260, 370, 100, 22);
 
-        jLabel12.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Organization Name");
+        jLabel12.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(220, 215, 201));
+        jLabel12.setText("Name");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(160, 270, 180, 23);
+        jLabel12.setBounds(260, 300, 110, 22);
 
-        jLabel15.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("List of Organization");
+        jLabel15.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(220, 215, 201));
+        jLabel15.setText("Organization:");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(10, 33, 200, 30);
+        jLabel15.setBounds(0, 10, 200, 30);
 
         jButton6.setBackground(new java.awt.Color(220, 215, 201));
-        jButton6.setText("Add Organization");
+        jButton6.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        jButton6.setText("Add");
         jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +170,14 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jButton6);
-        jButton6.setBounds(440, 490, 170, 40);
+        jButton6.setBounds(540, 490, 100, 30);
+
+        jLabel3.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(220, 215, 201));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Create Funds Org Manager");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(280, 230, 330, 29);
 
         jTabbedPane1.addTab(" Organizations", jPanel1);
 
@@ -191,13 +208,13 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tableFunds);
 
         jPanel3.add(jScrollPane3);
-        jScrollPane3.setBounds(30, 130, 840, 140);
+        jScrollPane3.setBounds(10, 60, 780, 130);
 
-        jLabelIncomingKit.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabelIncomingKit.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
         jLabelIncomingKit.setText("Funds Requests:");
         jPanel3.add(jLabelIncomingKit);
-        jLabelIncomingKit.setBounds(30, 80, 190, 29);
+        jLabelIncomingKit.setBounds(10, 20, 190, 29);
 
         btnAccept.setBackground(new java.awt.Color(2, 55, 108));
         btnAccept.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -212,18 +229,20 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         btnAccept.setBounds(1010, 320, 123, 36);
 
         jButton5.setBackground(new java.awt.Color(220, 215, 201));
+        jButton5.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         jButton5.setText("Process");
+        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         jPanel3.add(jButton5);
-        jButton5.setBounds(758, 310, 110, 50);
+        jButton5.setBounds(340, 280, 110, 40);
 
         jTabbedPane1.addTab(" Requests", jPanel3);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 62)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(220, 215, 201));
         jLabel1.setText("Welcome Funds Admin");
 
@@ -234,21 +253,21 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
+                        .addGap(85, 85, 85)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                        .addGap(296, 296, 296)
+                        .addComponent(jLabel1)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -312,6 +331,10 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void txtUserPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserPasswordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
@@ -321,6 +344,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelIncomingKit;
     private javax.swing.JPanel jPanel1;
