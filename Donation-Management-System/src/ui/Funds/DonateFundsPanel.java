@@ -37,6 +37,7 @@ public class DonateFundsPanel extends javax.swing.JFrame {
         this.jPanel = jPanel;
         this.userAccount = userAccount;
         populateOrg();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -67,10 +68,10 @@ public class DonateFundsPanel extends javax.swing.JFrame {
 
         comboOrg.setBackground(new java.awt.Color(220, 215, 224));
         comboOrg.setEditable(true);
-        comboOrg.setFont(new java.awt.Font("Cambay Devanagari", 0, 18)); // NOI18N
+        comboOrg.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         comboOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(comboOrg);
-        comboOrg.setBounds(370, 140, 264, 50);
+        comboOrg.setBounds(550, 180, 220, 40);
 
         txtAmount.setBackground(new java.awt.Color(220, 215, 224));
         txtAmount.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -80,22 +81,22 @@ public class DonateFundsPanel extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtAmount);
-        txtAmount.setBounds(370, 300, 264, 50);
+        txtAmount.setBounds(550, 250, 220, 40);
 
         txtPurpose.setBackground(new java.awt.Color(220, 215, 224));
         txtPurpose.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(txtPurpose);
-        txtPurpose.setBounds(370, 220, 264, 50);
+        txtPurpose.setBounds(550, 320, 220, 40);
 
-        jLabel6.setFont(new java.awt.Font("PT Serif", 0, 62)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(220, 215, 201));
         jLabel6.setText("Donate Funds");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(320, 30, 450, 60);
+        jLabel6.setBounds(390, 30, 320, 60);
 
         jButton1.setBackground(new java.awt.Color(220, 215, 201));
-        jButton1.setFont(new java.awt.Font("PT Sans", 0, 18)); // NOI18N
-        jButton1.setText("Donate");
+        jButton1.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        jButton1.setText("Donate Funds");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,9 +104,10 @@ public class DonateFundsPanel extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(420, 430, 170, 50);
+        jButton1.setBounds(480, 420, 150, 50);
 
         jButton3.setBackground(new java.awt.Color(220, 215, 201));
+        jButton3.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         jButton3.setText("Back");
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -114,38 +116,41 @@ public class DonateFundsPanel extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(40, 580, 130, 50);
+        jButton3.setBounds(40, 660, 110, 40);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(220, 215, 201));
-        jLabel1.setText("Name of Organization");
+        jLabel1.setText("Organization");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(140, 150, 200, 50);
+        jLabel1.setBounds(340, 180, 120, 40);
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(220, 215, 201));
-        jLabel5.setText("Reason");
+        jLabel5.setText("Purpose");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(240, 220, 180, 40);
+        jLabel5.setBounds(340, 330, 80, 30);
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(220, 215, 201));
         jLabel7.setText("Amount");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(230, 300, 160, 40);
+        jLabel7.setBounds(340, 260, 80, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1119, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1143, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();

@@ -54,7 +54,6 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tableFunds = new javax.swing.JTable();
         jLabelIncomingKit = new javax.swing.JLabel();
-        btnAccept = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
@@ -86,33 +85,22 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tableFunds);
 
         jPanel3.add(jScrollPane3);
-        jScrollPane3.setBounds(50, 240, 840, 140);
+        jScrollPane3.setBounds(50, 260, 1040, 140);
 
-        jLabelIncomingKit.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabelIncomingKit.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
         jLabelIncomingKit.setText("Funds Requests:");
         jPanel3.add(jLabelIncomingKit);
-        jLabelIncomingKit.setBounds(60, 140, 300, 60);
+        jLabelIncomingKit.setBounds(50, 190, 300, 60);
 
-        btnAccept.setBackground(new java.awt.Color(2, 55, 108));
-        btnAccept.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAccept.setForeground(new java.awt.Color(255, 255, 255));
-        btnAccept.setText("Accept");
-        btnAccept.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcceptActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnAccept);
-        btnAccept.setBounds(1010, 320, 123, 36);
-
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 62)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(220, 215, 201));
         jLabel2.setText("Welcome Funds Manager");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(140, 40, 730, 70);
+        jLabel2.setBounds(270, 40, 560, 70);
 
         jButton5.setBackground(new java.awt.Color(220, 215, 201));
+        jButton5.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         jButton5.setText("Process");
         jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -121,10 +109,10 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(jButton5);
-        jButton5.setBounds(740, 460, 130, 40);
+        jButton5.setBounds(610, 440, 130, 40);
 
         btnReject.setBackground(new java.awt.Color(220, 215, 201));
-        btnReject.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnReject.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         btnReject.setForeground(new java.awt.Color(51, 51, 51));
         btnReject.setText("Reject");
         btnReject.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -134,29 +122,25 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnReject);
-        btnReject.setBounds(580, 460, 123, 40);
+        btnReject.setBounds(380, 440, 123, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1149, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -219,7 +203,6 @@ public class FundsManagerJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
