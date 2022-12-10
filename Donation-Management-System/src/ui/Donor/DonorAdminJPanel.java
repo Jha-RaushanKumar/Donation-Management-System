@@ -16,6 +16,14 @@ import Donation.WorkQueue.DonorRegistrationWorkRequest;
 import Donation.WorkQueue.WorkQueue;
 import Donation.WorkQueue.WorkRequest;
 import java.text.SimpleDateFormat;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -251,7 +259,10 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
                         }
                     }
                 }
+                String email = tableRequestDonor.getValueAt(selectedRow, 6).toString();
+                String name =  tableRequestDonor.getValueAt(selectedRow, 2).toString();
                 wreq.setStatus("Completed");
+                sendEmail(email,name);
                 JOptionPane.showMessageDialog(null, "Donor account created.");
                 populateTable();
             }
@@ -334,5 +345,42 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
                 row[0] = org.getName();
                 model.addRow(row);
             }   
+    }
+    
+    private void sendEmail(String email, String name) {
+        String to = email;
+        String from = "donar2022neu@gmail.com";
+        String message = "Hi " + name + ", Your account has been created successfully with your username and password provided. Please login and show your interest in donating funds/kits.";
+        String subject = "Account : Created";
+
+        String host = "smtp.gmail.com";
+
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("donar2022neu@gmail.com", "lwrplcpuyfwzdfvz");
+            }
+
+        });
+
+        //session.setDebug(true);
+        MimeMessage mail = new MimeMessage(session);
+        try {
+
+            mail.setFrom(from);
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            mail.setSubject(subject);
+            mail.setText(message);
+            Transport.send(mail);
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

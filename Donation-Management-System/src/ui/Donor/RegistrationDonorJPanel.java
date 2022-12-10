@@ -11,8 +11,16 @@ import Donation.Organization.Organization;
 import Donation.WorkQueue.DonorRegistrationWorkRequest;
 import Donation.WorkQueue.WorkQueue;
 import java.util.Date;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -27,10 +35,11 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
      */
     private static EcoSystem ecosystem;
     private static JPanel jpanel;
+
     public RegistrationDonorJPanel(JPanel jpanel, EcoSystem ecosystem) {
         initComponents();
-        this.jpanel=jpanel;
-        this.ecosystem=ecosystem;
+        this.jpanel = jpanel;
+        this.ecosystem = ecosystem;
         populateNetwork();
         populateOrganization();
     }
@@ -247,23 +256,19 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
         Network network = (Network) comboNetwork.getSelectedItem();
 
         if (txtName.getText().isEmpty()
-            || txtUserName.getText().isEmpty()
-            || txtUserPassword.getText().isEmpty()
-            || txtEmail.getText().isEmpty()
-            || txtAddress.getText().isEmpty()
-            || txtContact.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please provide all Details.","Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else if (txtName.getText().length() <= 0 || (!txtName.getText().matches("[A-Za-z]+"))) {
-            JOptionPane.showMessageDialog(this, "Please Enter Valid Name","Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else if (!isContactValid(txtContact.getText())) {
-            JOptionPane.showMessageDialog(null, "Please provide valid contact no.","Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else if (!isEmailValid(txtEmail.getText())) {
-            JOptionPane.showMessageDialog(null, "Please provide valid email.","Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else if (isEmailValid(txtEmail.getText())) {
+                || txtUserName.getText().isEmpty()
+                || txtUserPassword.getText().isEmpty()
+                || txtEmail.getText().isEmpty()
+                || txtAddress.getText().isEmpty()
+                || txtContact.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide all Details.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (txtName.getText().length() <= 0 || (!txtName.getText().matches("[A-Za-z]+"))) {
+            JOptionPane.showMessageDialog(this, "Please Enter Valid Name", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!isContactValid(txtContact.getText())) {
+            JOptionPane.showMessageDialog(null, "Please provide valid contact no.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!isEmailValid(txtEmail.getText())) {
+            JOptionPane.showMessageDialog(null, "Please provide valid email.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (isEmailValid(txtEmail.getText())) {
             DonorRegistrationWorkRequest req = new DonorRegistrationWorkRequest();
             req.setName(txtName.getText());
             req.setUserName(txtUserName.getText());
@@ -291,7 +296,7 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
             //sendTextMessage(contact);
             for (Network n : ecosystem.getNetworkList()) {
                 for (Enterprise enterprise : n.getEnterpriseDirectory().getEntList()) {
-                    if(enterprise.getEntType() == Enterprise.EntType.DonorEntDirectory){
+                    if (enterprise.getEntType() == Enterprise.EntType.DonorEntDirectory) {
                         if (enterprise.getWorkQueue() == null) {
                             enterprise.setWorkQueue(new WorkQueue());
                         }
@@ -299,6 +304,7 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
                     }
                 }
             }
+            sendEmail(txtEmail.getText().toString(), txtName.getText().toString());
             JOptionPane.showMessageDialog(null, "Registered succesfully!");
             txtName.setText("");
             txtUserName.setText("");
@@ -356,18 +362,19 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtUserPassword;
     // End of variables declaration//GEN-END:variables
 
-    private void populateNetwork(){
+    private void populateNetwork() {
         comboNetwork.removeAllItems();
-                
-        for (Network network : ecosystem.getNetworkList()){
+
+        for (Network network : ecosystem.getNetworkList()) {
             comboNetwork.addItem(network);
         }
     }
+
     public void populateOrganization() {
         comboOrg.removeAllItems();
         comboOrg.addItem(Organization.orgType.DonorIndividualOrg);
     }
-    
+
     private boolean isContactValid(String text) {
         String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
         Pattern pattern = Pattern.compile(regex);
@@ -378,16 +385,53 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
         }
         return false;
     }
-    
+
     public static boolean isEmailValid(String email) {
-        Pattern emailPattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
-        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+        Pattern emailPattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
         Matcher matcher = emailPattern.matcher(email);
 
         if (matcher.matches()) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    private void sendEmail(String email, String name) {
+        String to = email;
+        String from = "donar2022neu@gmail.com";
+        String message = "Hi " + name + ", Thank you for registering. Please wait till your account gets activated. We will inform you regarding this.";
+        String subject = "Registration : Successful";
+
+        String host = "smtp.gmail.com";
+
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("donar2022neu@gmail.com", "lwrplcpuyfwzdfvz");
+            }
+
+        });
+
+        //session.setDebug(true);
+        MimeMessage mail = new MimeMessage(session);
+        try {
+
+            mail.setFrom(from);
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            mail.setSubject(subject);
+            mail.setText(message);
+            Transport.send(mail);
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
