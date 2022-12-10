@@ -193,9 +193,9 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
 
         jLabelSupplyKitOverview1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelSupplyKitOverview1.setForeground(new java.awt.Color(2, 55, 108));
-        jLabelSupplyKitOverview1.setText("Total Kits Donations collected for Disaster Welfare Charity Organization");
+        jLabelSupplyKitOverview1.setText("Total Kits Donations collected for Disaster Relief Donation Organization");
         jPanel1.add(jLabelSupplyKitOverview1);
-        jLabelSupplyKitOverview1.setBounds(100, 370, 645, 37);
+        jLabelSupplyKitOverview1.setBounds(100, 370, 643, 37);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(2, 55, 108));

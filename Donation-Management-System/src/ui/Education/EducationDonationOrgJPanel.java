@@ -12,6 +12,7 @@ import Donation.Organization.EducationDonationOrg;
 import Donation.Organization.EducationKitSupplyOrg;
 import Donation.Organization.Organization;
 import static Donation.Organization.Organization.orgType.EducationKitSupplyOrg;
+import static Donation.Role.Role.RoleType.EducationDonationOrgAdminRole;
 import Donation.UserAccount.UserAccount;
 import Donation.WorkQueue.EducationKitSupplyWorkRequest;
 import Donation.WorkQueue.FundsWorkRequest;
@@ -188,7 +189,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
 
         jLabelInventoryOverview.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelInventoryOverview.setForeground(new java.awt.Color(2, 55, 108));
-        jLabelInventoryOverview.setText("Total Donations collected for Education Charity Organization");
+        jLabelInventoryOverview.setText("Total Donations collected for Education Donation Organization");
         jPanel1.add(jLabelInventoryOverview);
         jLabelInventoryOverview.setBounds(20, 110, 645, 37);
 
@@ -198,11 +199,11 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(120, 160, 93, 22);
         jPanel1.add(txtTotalFunds);
-        txtTotalFunds.setBounds(230, 160, 231, 23);
+        txtTotalFunds.setBounds(230, 160, 231, 22);
 
         jLabelInventoryOverview1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelInventoryOverview1.setForeground(new java.awt.Color(2, 55, 108));
-        jLabelInventoryOverview1.setText("Total Kits Donations collected for Education Charity Organization");
+        jLabelInventoryOverview1.setText("Total Kits Donations collected for Education Donation Organization");
         jPanel1.add(jLabelInventoryOverview1);
         jLabelInventoryOverview1.setBounds(20, 380, 645, 37);
 
@@ -212,7 +213,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(140, 430, 75, 22);
         jPanel1.add(txtTotalKits);
-        txtTotalKits.setBounds(230, 430, 240, 23);
+        txtTotalKits.setBounds(230, 430, 240, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

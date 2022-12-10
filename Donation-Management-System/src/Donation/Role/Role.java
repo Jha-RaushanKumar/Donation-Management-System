@@ -28,7 +28,8 @@ public abstract class Role {
         EducationDonationOrgAdminRole("Education Donation Org"),
         DisasterReliefKitSupplyManager("Disaster Relief Kit Supply Manager"),
         EducationKitSupplyManager("Education Kit Supply Manager"),
-        FundsOrgAdmin("Funds Admin");
+        FundsOrgAdmin("Funds Admin"),
+        FundsManager("Funds Manager");
 
         private String value;
 

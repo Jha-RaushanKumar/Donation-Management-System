@@ -379,9 +379,9 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
             }
             else {
                 request.setReceiver(userAccount);
-                request.setStatus("Processed to Donation Organization");
+                request.setStatus("Processed to respecctive Donation Organization Manager");
                 populateTable();
-                JOptionPane.showMessageDialog(null, "Request processed to Donation Organization");
+                JOptionPane.showMessageDialog(null, "Request processed to respective Donation Organization Manager");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a request to process.");

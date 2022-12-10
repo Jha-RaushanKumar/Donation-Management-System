@@ -17,6 +17,7 @@ import Donation.Role.DonorRole;
 import Donation.Role.EducationDonationOrgAdminRole;
 import Donation.Role.EducationKitSupplyManagerRole;
 import Donation.Role.FundsAdminRole;
+import Donation.Role.FundsOrgAdminRole;
 import Donation.Role.KitSupplyAdmin;
 import static Donation.Role.Role.RoleType.DisasterReliefOrgAdminRole;
 import static Donation.Role.Role.RoleType.EducationDonationOrgAdminRole;
@@ -33,6 +34,7 @@ import ui.Donor.RegistrationDonorJPanel;
 import ui.Education.EducationDonationOrgJPanel;
 import ui.Education.EducationKitSupplyManagerJPanel;
 import ui.Funds.FundsAdminJPanel;
+import ui.Funds.FundsManagerJPanel;
 import ui.KitSupply.KitSupplyAdminJPanel;
 import ui.System.SystemAdminPanel;
 
@@ -386,6 +388,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
             else if(userAccount.getRole() instanceof EducationKitSupplyManagerRole) {
                 EducationKitSupplyManagerJPanel panel = new EducationKitSupplyManagerJPanel(ecosystem, network, organization, enterprise, jPanel2, userAccount);
+                jSplitPane1.setRightComponent(panel);
+            }
+            else if(userAccount.getRole() instanceof FundsOrgAdminRole) {
+                FundsManagerJPanel panel = new FundsManagerJPanel(ecosystem, network, enterprise, jPanel2, userAccount);
                 jSplitPane1.setRightComponent(panel);
             }
             
