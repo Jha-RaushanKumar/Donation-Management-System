@@ -131,7 +131,7 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
 
         jLabelSupplyKitOverview.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelSupplyKitOverview.setForeground(new java.awt.Color(2, 55, 108));
-        jLabelSupplyKitOverview.setText("Total Donations collected for Disaster Welfare Charity Organization");
+        jLabelSupplyKitOverview.setText("Total Donations collected for Disaster Relief Donation Organization");
         jPanel1.add(jLabelSupplyKitOverview);
         jLabelSupplyKitOverview.setBounds(80, 110, 645, 37);
 
@@ -256,7 +256,11 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             WorkRequest req = (WorkRequest) tableFunds.getValueAt(selectedRow, 0);
             if (req.getStatus().equalsIgnoreCase("Donated")) {
-                JOptionPane.showMessageDialog(null, "Please wait until Finance Team acceptance.");
+                JOptionPane.showMessageDialog(null, "Please wait for Finance Team to process.");
+                return;
+            }
+            else if (req.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
                 return;
             }
             else if (req.getStatus().equalsIgnoreCase("Completed")) {
@@ -293,6 +297,10 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
+            else if (req.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
+                return;
+            }
             else if (req.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
 
                 if (req instanceof DisasterReliefKitSupplyWorkRequest) {
@@ -309,7 +317,7 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is processed");
             }
             else {
-                JOptionPane.showMessageDialog(null, "Please wait until Kit Supply team acceptance.");
+                JOptionPane.showMessageDialog(null, "Please wait for Kit Supply team to process.");
                 return;
             }
         } else {
