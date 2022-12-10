@@ -48,13 +48,14 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         this.jPanel = jPanel;
         this.userAccount = userAccount;
         this.educationDonationOrg = (EducationDonationOrg) org;
-        txtTotalFunds.setText(String.valueOf(educationDonationOrg.getTotalFunds()));
         for(Enterprise e : network.getEnterpriseDirectory().getEntList()){
             if(e.getEntType() == Enterprise.EntType.KitSupplyEntDirectory){
                 for(Organization organization : e.getOrgDirectory().getOrgList()){
                     if(organization.getOrgType()== Organization.orgType.EducationKitSupplyOrg){
                         this.educationKitSupplyOrg = (EducationKitSupplyOrg) organization;
                     }}}}
+        
+        txtTotalFunds.setText(String.valueOf(educationDonationOrg.getTotalFunds()));
         
         txtTotalKits.setText(String.valueOf(educationDonationOrg.getTotalSupplyKits()));
         populateTable();
@@ -241,15 +242,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
 
         if (selectedRow >= 0) {
             WorkRequest req = (WorkRequest) tableFunds.getValueAt(selectedRow, 0);
-            if (req.getStatus().equalsIgnoreCase("Requested")) {
-                JOptionPane.showMessageDialog(null, "Please wait until Finance Team acceptance.");
-                return;
-            }
-            else if (req.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request is already completed.");
-                return;
-            }
-            else {
+            if (req.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
                 if (req instanceof FundsWorkRequest) {
                     FundsWorkRequest fundRequest = (FundsWorkRequest) tableFunds.getValueAt(selectedRow, 0);
                     double amount = fundRequest.getFunds();
@@ -261,6 +254,15 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
                 req.setStatus("Completed");
                 populateTable();
                 JOptionPane.showMessageDialog(null, "Funds added to the organization");
+                
+            }
+            else if (req.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request is already completed.");
+                return;
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please wait until Finance Team acceptance.");
+                return;
             }
         } else {
             JOptionPane.showMessageDialog(null, "Choose a request to process.");
