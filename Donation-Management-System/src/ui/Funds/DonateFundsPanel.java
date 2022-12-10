@@ -143,8 +143,9 @@ public class DonateFundsPanel extends javax.swing.JFrame {
         Organization organization = (Organization) comboOrg.getSelectedItem();
         Organization.orgType type = organization.getOrgType();
 
-        if (txtAmount.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Provide all the Details!");
+        if (txtAmount.getText().isEmpty()
+                || type == null || (!txtAmount.getText().matches("[0-9]+")) || txtPurpose.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Provide all valid Details(Amount in dollars).","Warning", JOptionPane.WARNING_MESSAGE);
         }
         else {
             FundsWorkRequest freq = new FundsWorkRequest();
@@ -171,7 +172,7 @@ public class DonateFundsPanel extends javax.swing.JFrame {
                     }
                 }
             }
-            JOptionPane.showMessageDialog(null, "Thank you for donating funds!!");
+            JOptionPane.showMessageDialog(null, "Thank you for donating funds!");
             txtAmount.setText("");
             comboOrg.setSelectedIndex(0);
             txtPurpose.setText("");

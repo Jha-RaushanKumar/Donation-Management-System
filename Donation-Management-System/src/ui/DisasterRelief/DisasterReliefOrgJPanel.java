@@ -282,7 +282,7 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is completed and funds added to the organization");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a request to accept.");
+            JOptionPane.showMessageDialog(null, "Please select a request to accept.");
             return;
         }
     }//GEN-LAST:event_btnProcessActionPerformed
@@ -321,7 +321,7 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
                 return;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a request to accept.");
+            JOptionPane.showMessageDialog(null, "Please select a request to accept.");
             return;
         }
     }//GEN-LAST:event_btnProcessKitActionPerformed

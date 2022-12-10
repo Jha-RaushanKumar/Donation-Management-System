@@ -231,8 +231,11 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         String name = txtOrg.getText().trim();
+        String username = txtUserName.getText();
+        String password = String.valueOf(txtUserPassword.getText());
+        
         Organization.orgType type = FundsOrg;
-        if(!name.isEmpty()){
+        if(!name.isEmpty() && !password.isEmpty() && !username.isEmpty()){
             Organization organization = enterprise.getOrgDirectory().addOrganization(type, txtOrg.getText());
             Employee emp = organization.getEmpDirectory().addEmployee(txtOrg.getText());
             UserAccount user = organization.getuserAccountList().addUserAccount(txtUserName.getText(), txtUserPassword.getText(), new FundsOrgAdminRole(), emp);
@@ -243,7 +246,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
             
         }
         else{
-            JOptionPane.showMessageDialog(null, "Please enter Organization name");
+            JOptionPane.showMessageDialog(null, "Please enter Organization name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         populateTableOrg();
     }//GEN-LAST:event_jButton6ActionPerformed
