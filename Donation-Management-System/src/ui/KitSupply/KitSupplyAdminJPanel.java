@@ -86,21 +86,25 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         buttonProcess = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(44, 54, 57));
+
+        jLabel7.setBackground(new java.awt.Color(44, 54, 57));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel7.setForeground(new java.awt.Color(220, 215, 201));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Kit Supply Admin");
 
-        jTabbedPane1.setForeground(new java.awt.Color(2, 55, 108));
+        jTabbedPane1.setForeground(new java.awt.Color(51, 51, 51));
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 900));
         jPanel1.setLayout(null);
 
         jScrollPane1.setForeground(new java.awt.Color(2, 55, 108));
 
-        tableOrg.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)))));
+        tableOrg.setBackground(new java.awt.Color(220, 215, 224));
+        tableOrg.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tableOrg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -126,18 +130,19 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
         jScrollPane1.setBounds(20, 150, 1050, 120);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel1.setForeground(new java.awt.Color(220, 215, 201));
         jLabel1.setText("Organization List");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 120, 180, 22);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel2.setForeground(new java.awt.Color(220, 215, 201));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Organization Type");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(90, 330, 170, 40);
 
+        comboOrg.setBackground(new java.awt.Color(220, 215, 224));
         comboOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,19 +151,21 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(comboOrg);
         comboOrg.setBounds(340, 330, 220, 40);
+
+        txtUserName.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtUserName);
         txtUserName.setBounds(760, 380, 220, 40);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel3.setForeground(new java.awt.Color(220, 215, 201));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Organization Name");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(80, 460, 180, 40);
 
-        buttonAdd.setBackground(new java.awt.Color(2, 55, 108));
+        buttonAdd.setBackground(new java.awt.Color(220, 215, 201));
         buttonAdd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        buttonAdd.setForeground(new java.awt.Color(255, 255, 255));
+        buttonAdd.setForeground(new java.awt.Color(51, 51, 51));
         buttonAdd.setText("Add Organization");
         buttonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,40 +173,45 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(buttonAdd);
-        buttonAdd.setBounds(440, 510, 220, 40);
+        buttonAdd.setBounds(480, 560, 220, 40);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel4.setForeground(new java.awt.Color(220, 215, 201));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Username");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(550, 390, 130, 40);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel5.setForeground(new java.awt.Color(220, 215, 201));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Password");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(560, 450, 120, 40);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel6.setForeground(new java.awt.Color(220, 215, 201));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Role");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(170, 390, 90, 40);
 
+        comboRole.setBackground(new java.awt.Color(220, 215, 224));
         comboRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(comboRole);
         comboRole.setBounds(340, 390, 220, 40);
+
+        txtOrg.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtOrg);
         txtOrg.setBounds(340, 460, 220, 40);
+
+        txtUserPassword.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtUserPassword);
         txtUserPassword.setBounds(760, 450, 220, 40);
 
-        buttonDelete.setBackground(new java.awt.Color(2, 55, 108));
+        buttonDelete.setBackground(new java.awt.Color(220, 215, 201));
         buttonDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        buttonDelete.setForeground(new java.awt.Color(255, 255, 255));
+        buttonDelete.setForeground(new java.awt.Color(51, 51, 51));
         buttonDelete.setText("Delete");
         buttonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,25 +222,26 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
         buttonDelete.setBounds(910, 280, 150, 40);
 
         lblDonarName1.setFont(new java.awt.Font("Marker Felt", 1, 24)); // NOI18N
-        lblDonarName1.setForeground(new java.awt.Color(2, 55, 108));
+        lblDonarName1.setForeground(new java.awt.Color(220, 215, 201));
         lblDonarName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDonarName1.setText("Welcome Inventory Admin");
         jPanel1.add(lblDonarName1);
-        lblDonarName1.setBounds(10, 70, 1109, 32);
+        lblDonarName1.setBounds(10, 70, 1109, 27);
 
-        jTabbedPane1.addTab("Manage Organization", jPanel1);
+        jTabbedPane1.addTab("Organizations", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(44, 54, 57));
         jPanel2.setLayout(null);
 
         lblDonarName.setFont(new java.awt.Font("Marker Felt", 1, 24)); // NOI18N
-        lblDonarName.setForeground(new java.awt.Color(2, 55, 108));
+        lblDonarName.setForeground(new java.awt.Color(220, 215, 201));
         lblDonarName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDonarName.setText("Welcome Inventory Admin");
         jPanel2.add(lblDonarName);
-        lblDonarName.setBounds(10, 73, 1109, 32);
+        lblDonarName.setBounds(10, 73, 1109, 27);
 
-        tableKits.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableKits.setBackground(new java.awt.Color(220, 215, 224));
+        tableKits.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tableKits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -254,11 +267,12 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
         jScrollPane2.setBounds(140, 160, 810, 110);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel9.setForeground(new java.awt.Color(220, 215, 201));
         jLabel9.setText("Kits Request List");
         jPanel2.add(jLabel9);
         jLabel9.setBounds(10, 120, 180, 22);
 
+        buttonProcess.setBackground(new java.awt.Color(220, 215, 201));
         buttonProcess.setText("Process");
         buttonProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,9 +280,9 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(buttonProcess);
-        buttonProcess.setBounds(850, 300, 70, 22);
+        buttonProcess.setBounds(767, 300, 160, 50);
 
-        jTabbedPane1.addTab("Manage work request", jPanel2);
+        jTabbedPane1.addTab("Requests", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -289,7 +303,7 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
