@@ -56,6 +56,7 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnReject = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -83,7 +84,7 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableKits);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(80, 250, 1250, 177);
+        jScrollPane1.setBounds(80, 250, 1020, 160);
 
         jLabelIncomingKit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelIncomingKit.setForeground(new java.awt.Color(2, 55, 108));
@@ -115,13 +116,25 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Welcome Admin");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 130, 1210, 27);
+        jLabel9.setBounds(0, 130, 1210, 32);
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 100, 90);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPanel1.add(jLabel2);
         jLabel2.setBounds(320, 540, 530, 390);
+
+        btnReject.setBackground(new java.awt.Color(2, 55, 108));
+        btnReject.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReject);
+        btnReject.setBounds(840, 440, 123, 36);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -155,34 +168,63 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
-           
-            else if (req.getStatus().equalsIgnoreCase("Forwarded to Donation Organization")) {
-                JOptionPane.showMessageDialog(null, "Request is already forwarded to the Donation organization.");
+            else if (req.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
+                return;
+            }
+            else if (req.getStatus().equalsIgnoreCase("Proceessed to Donation Organization")) {
+                JOptionPane.showMessageDialog(null, "Request is already processed to the Donation organization.");
                 return;
             }
             else {
                 if (req instanceof DisasterReliefKitSupplyWorkRequest) {
-                    DisasterReliefKitSupplyWorkRequest fundRequest = (DisasterReliefKitSupplyWorkRequest) tableKits.getValueAt(selectedRow, 0);
-                    //
-                    //                    int quantity = fundRequest.getQuanity();
-                    //                    int totalKits = animalWelfareInventoryOrg.getTotalKits() + quantity;
-                    //                    animalWelfareInventoryOrg.setTotalKits(totalKits);
-                    //                    txtTotalKits.setText(String.valueOf(animalWelfareInventoryOrg.getTotalKits()));
+                    DisasterReliefKitSupplyWorkRequest fr = (DisasterReliefKitSupplyWorkRequest) tableKits.getValueAt(selectedRow, 0);
                 }
                 req.setReceiver(userAccount);
-                req.setStatus("Forwarded to Donation Organization");
+                req.setStatus("Processed to Donation Organization");
                 populateTable();
-                JOptionPane.showMessageDialog(null, "Request is forwarded to the Donation organization");
+                JOptionPane.showMessageDialog(null, "Request is processed to the Donation organization");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a request to accept.");
+            JOptionPane.showMessageDialog(null, "Please select a request to accept.");
             return;
         }
     }//GEN-LAST:event_btnProcessActionPerformed
 
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tableKits.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) tableKits.getValueAt(selectedRow, 0);
+            if (request.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
+                JOptionPane.showMessageDialog(null, "Request is already processed to Donation Organization");
+                return;
+            }
+            else if (request.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request is already completed.");
+                return;
+            }
+            else if (request.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
+                return;
+            }
+            else {
+                request.setReceiver(userAccount);
+                request.setStatus("Rejected");
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Request rejected");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row to reject.");
+            return;
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
+    private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
@@ -195,24 +237,24 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
 
 public void populateTable() {
         
-        DefaultTableModel model = (DefaultTableModel) tableKits.getModel();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
+        DefaultTableModel model = (DefaultTableModel) tableKits.getModel();
         model.setRowCount(0);
 
         if (organization.getWorkQueue() == null) {
             organization.setWorkQueue(new WorkQueue());
         }
-        for (WorkRequest workReq : organization.getWorkQueue().getWorkReqList()) {
+        for (WorkRequest req : organization.getWorkQueue().getWorkReqList()) {
 
-            if (workReq instanceof DisasterReliefKitSupplyWorkRequest) {
+            if (req instanceof DisasterReliefKitSupplyWorkRequest) {
                 Object[] row = new Object[model.getColumnCount()];
-                row[0] = workReq;
-                row[1] = formatter.format(((DisasterReliefKitSupplyWorkRequest) workReq).getRequestDateTime());
-                row[2] = ((DisasterReliefKitSupplyWorkRequest) workReq).getKitCount();
-                row[3] = ((DisasterReliefKitSupplyWorkRequest) workReq).getName();
-                row[4] = ((DisasterReliefKitSupplyWorkRequest) workReq).getType();
-                row[5] = ((DisasterReliefKitSupplyWorkRequest) workReq).getStatus();
+                row[0] = req;
+                row[1] = formatter.format(((DisasterReliefKitSupplyWorkRequest) req).getRequestDateTime());
+                row[2] = ((DisasterReliefKitSupplyWorkRequest) req).getKitCount();
+                row[3] = ((DisasterReliefKitSupplyWorkRequest) req).getName();
+                row[4] = ((DisasterReliefKitSupplyWorkRequest) req).getType();
+                row[5] = ((DisasterReliefKitSupplyWorkRequest) req).getStatus();
 
                 model.addRow(row);
             }
