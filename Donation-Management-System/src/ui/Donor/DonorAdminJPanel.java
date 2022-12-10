@@ -68,7 +68,6 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableRequestDonor = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
-        lblDonarName1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,12 +79,15 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         lblDonarName2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(44, 54, 57));
+
         jTabbedPane1.setForeground(new java.awt.Color(2, 55, 108));
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
+        tableRequestDonor.setBackground(new java.awt.Color(234, 234, 234));
         tableRequestDonor.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
         tableRequestDonor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,13 +124,6 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         });
         jPanel2.add(btnProcess);
         btnProcess.setBounds(780, 320, 180, 40);
-
-        lblDonarName1.setFont(new java.awt.Font("Marker Felt", 1, 24)); // NOI18N
-        lblDonarName1.setForeground(new java.awt.Color(2, 55, 108));
-        lblDonarName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDonarName1.setText("Welcome Donor Admin");
-        jPanel2.add(lblDonarName1);
-        lblDonarName1.setBounds(10, 50, 1109, 32);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(2, 55, 108));
@@ -202,25 +197,26 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         lblDonarName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDonarName2.setText("Welcome Donor Admin");
         jPanel1.add(lblDonarName2);
-        lblDonarName2.setBounds(10, 50, 1109, 32);
+        lblDonarName2.setBounds(10, 50, 1109, 27);
 
         jTabbedPane1.addTab("Manage Organization", jPanel1);
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        jLabel5.setText("Donor Admin");
+        jLabel5.setFont(new java.awt.Font("PT Serif", 1, 62)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(220, 215, 201));
+        jLabel5.setText("Welcome Donor Admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(446, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(417, 417, 417))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(216, 216, 216))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +297,6 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblDonarName1;
     private javax.swing.JLabel lblDonarName2;
     private javax.swing.JTable tableOrg;
     private javax.swing.JTable tableRequestDonor;
