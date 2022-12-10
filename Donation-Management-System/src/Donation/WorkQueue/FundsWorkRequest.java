@@ -67,8 +67,5 @@ public class FundsWorkRequest extends WorkRequest{
 
     public void setFunds(double funds) {
         this.funds = funds;
-    }
-    
-    
-    
+    }   
 }
