@@ -260,6 +260,10 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
+            else if (req.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
+                return;
+            }
             else {
                 JOptionPane.showMessageDialog(null, "Please wait until Finance Team acceptance.");
                 return;
