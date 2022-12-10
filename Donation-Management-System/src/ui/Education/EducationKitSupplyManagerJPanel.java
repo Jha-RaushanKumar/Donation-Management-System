@@ -35,8 +35,6 @@ public class EducationKitSupplyManagerJPanel extends javax.swing.JPanel {
     private static Enterprise enterprise;
     private static Organization organization;
 
-    public EducationKitSupplyManagerJPanel() {
-    }
     public EducationKitSupplyManagerJPanel(EcoSystem ecosystem, Network network, Organization organization,Enterprise enterprise, JPanel jPanel, UserAccount userAccount) {
         initComponents();
          this.ecosystem = ecosystem;
@@ -59,35 +57,43 @@ public class EducationKitSupplyManagerJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         kitSupplyManagertable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Education Kit Supply Manager ");
 
         jLabel2.setText("Incoming Kits ");
 
-        jButton1.setText("Accept");
-
         kitSupplyManagertable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Date", "Quantity", "Donar Name", "Source", "Status"
+                "Request", "Date", "Quantity", "Donar Name", "Source", "Status"
             }
         ));
         jScrollPane1.setViewportView(kitSupplyManagertable);
 
-        jButton2.setText("Accept");
+        jButton2.setText("Process");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        btnReject.setBackground(new java.awt.Color(2, 55, 108));
+        btnReject.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
             }
         });
 
@@ -107,14 +113,11 @@ public class EducationKitSupplyManagerJPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(368, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(122, 122, 122))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(394, 394, 394))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(381, 381, 381))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,11 +128,11 @@ public class EducationKitSupplyManagerJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(jButton2)
-                .addGap(29, 29, 29)
-                .addComponent(jButton1)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -143,33 +146,62 @@ public class EducationKitSupplyManagerJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Request is already completed.");
                 return;
             }
-            else if (req.getStatus().equalsIgnoreCase("Forwarded to Charity Organization")) {
-                JOptionPane.showMessageDialog(null, "Request is already forwarded to the Donation organization.");
+            else if (req.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
+                return;
+            }
+            else if (req.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
+                JOptionPane.showMessageDialog(null, "Request is already processed to the Donation organization.");
                 return;
             }
             else {
                 if (req instanceof EducationKitSupplyWorkRequest) {
-                    EducationKitSupplyWorkRequest fundRequest = (EducationKitSupplyWorkRequest) kitSupplyManagertable.getValueAt(selectedRow, 0);
-//                    
-//                    int quantity = fundRequest.getQuanity();
-//                    int totalKits = animalWelfareInventoryOrg.getTotalKits() + quantity;
-//                    animalWelfareInventoryOrg.setTotalKits(totalKits);
-//                    txtTotalKits.setText(String.valueOf(animalWelfareInventoryOrg.getTotalKits()));
+                    EducationKitSupplyWorkRequest fr = (EducationKitSupplyWorkRequest) kitSupplyManagertable.getValueAt(selectedRow, 0);
                 }
                 req.setReceiver(userAccount);
-                req.setStatus("Forwarded to Donation Organization");
+                req.setStatus("Processed to Donation Organization");
                 populateTable();
-                JOptionPane.showMessageDialog(null, "Request is forwarded to the Donation organization");
+                JOptionPane.showMessageDialog(null, "Request is processed to the Donation organization");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a request to accept.");
+            JOptionPane.showMessageDialog(null, "Please select a request to accept.");
             return;
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = kitSupplyManagertable.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) kitSupplyManagertable.getValueAt(selectedRow, 0);
+            if (request.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
+                JOptionPane.showMessageDialog(null, "Request is already processed to Donation Organization");
+                return;
+            }
+            else if (request.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request is already completed.");
+                return;
+            }
+            else if (request.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
+                return;
+            }
+            else {
+                request.setReceiver(userAccount);
+                request.setStatus("Rejected");
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Request is rejected");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row to reject.");
+            return;
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnReject;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

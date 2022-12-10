@@ -74,6 +74,7 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         btnAccept = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
@@ -199,6 +200,18 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         jPanel3.add(jButton5);
         jButton5.setBounds(790, 310, 78, 22);
 
+        btnReject.setBackground(new java.awt.Color(2, 55, 108));
+        btnReject.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnReject);
+        btnReject.setBounds(630, 310, 123, 36);
+
         jTabbedPane1.addTab("Manage Work Requests", jPanel3);
 
         jLabel1.setText("Welcome Funds Admin");
@@ -260,7 +273,11 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             FundsWorkRequest wreq = (FundsWorkRequest) tableFunds.getValueAt(selectedRow, 0);
             if (wreq.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Funds processed already!");
+                JOptionPane.showMessageDialog(null, "Funds processed already.");
+                return;
+            }
+            else if (wreq.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Funds rejected already.");
                 return;
             }
             else if (wreq.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
@@ -281,9 +298,37 @@ public class FundsAdminJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tableFunds.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) tableFunds.getValueAt(selectedRow, 0);
+            if (request.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request is already completed.");
+                return;
+            } else if (request.getStatus().equalsIgnoreCase("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already rejected.");
+                return;
+            } else if (request.getStatus().equalsIgnoreCase("Processed to Donation Organization")) {
+                JOptionPane.showMessageDialog(null, "Request is already processed to Donation Organization.");
+                return;
+            } else {
+                request.setReceiver(userAccount);
+                request.setStatus("Rejected");
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Request rejected");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row to reject.");
+            return;
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnReject;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
