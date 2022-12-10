@@ -61,15 +61,18 @@ public class DonateFundsPanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 750));
         jPanel1.setLayout(null);
 
-        comboOrg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        comboOrg.setBackground(new java.awt.Color(220, 215, 224));
+        comboOrg.setEditable(true);
+        comboOrg.setFont(new java.awt.Font("Cambay Devanagari", 0, 18)); // NOI18N
         comboOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(comboOrg);
         comboOrg.setBounds(370, 140, 264, 50);
 
+        txtAmount.setBackground(new java.awt.Color(220, 215, 224));
         txtAmount.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAmount.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -79,43 +82,49 @@ public class DonateFundsPanel extends javax.swing.JFrame {
         jPanel1.add(txtAmount);
         txtAmount.setBounds(370, 300, 264, 50);
 
+        txtPurpose.setBackground(new java.awt.Color(220, 215, 224));
         txtPurpose.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(txtPurpose);
         txtPurpose.setBounds(370, 220, 264, 50);
 
+        jLabel6.setFont(new java.awt.Font("PT Serif", 0, 62)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(220, 215, 201));
         jLabel6.setText("Donate Funds");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(412, 40, 140, 40);
+        jLabel6.setBounds(320, 30, 450, 60);
 
+        jButton1.setFont(new java.awt.Font("PT Sans", 0, 18)); // NOI18N
         jButton1.setText("Donate");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(430, 440, 69, 22);
+        jButton1.setBounds(420, 430, 170, 50);
 
         jButton3.setText("Back");
+        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(30, 30, 78, 22);
+        jButton3.setBounds(40, 580, 130, 50);
 
         jLabel1.setText("Name of Organization");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(180, 150, 160, 16);
+        jLabel1.setBounds(140, 150, 200, 50);
 
         jLabel5.setText("Reason");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(240, 240, 70, 16);
+        jLabel5.setBounds(130, 230, 180, 40);
 
         jLabel7.setText("Amount");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(230, 330, 70, 16);
+        jLabel7.setBounds(140, 307, 160, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
