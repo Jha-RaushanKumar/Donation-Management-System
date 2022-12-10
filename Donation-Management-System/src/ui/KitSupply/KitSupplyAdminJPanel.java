@@ -309,8 +309,10 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         // TODO add your handling code here:
         String name = txtUserName.getText().trim();
+        String username = txtOrg.getText();
+        String password = String.valueOf(txtUserPassword.getText());
         Organization.orgType orgType = (Organization.orgType) comboOrg.getSelectedItem();
-        if(!name.isEmpty()){
+        if(!name.isEmpty() && !password.isEmpty() && !username.isEmpty()){
             Organization org = enterprise.getOrgDirectory().addOrganization(orgType, txtOrg.getText());
             if (orgType == Organization.orgType.DisasterReliefKitSupplyOrg) {
                 if(org.getOrgType() == Organization.orgType.DisasterReliefKitSupplyOrg){
@@ -335,7 +337,7 @@ public class KitSupplyAdminJPanel extends javax.swing.JPanel {
             
 
         } else{
-            JOptionPane.showMessageDialog(null, "Enter Organization name");
+            JOptionPane.showMessageDialog(null, "Please enter all details", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         populateTableOrg();
     }//GEN-LAST:event_buttonAddActionPerformed

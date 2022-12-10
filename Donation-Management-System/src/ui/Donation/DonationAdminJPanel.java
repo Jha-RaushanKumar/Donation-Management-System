@@ -251,7 +251,9 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Organization.orgType orgtype = (Organization.orgType) comboOrgType.getSelectedItem();
         String name = txtUserName.getText().trim();
-        if(!name.isEmpty()){
+        String username = txtOrg.getText();
+        String password = String.valueOf(txtUserPassword.getText());
+        if(!name.isEmpty() && !password.isEmpty() && !username.isEmpty()){
             Organization org = enterprise.getOrgDirectory().addOrganization(orgtype, txtOrg.getText());
             if (orgtype == Organization.orgType.EducationDonationOrg) {
                 if(org.getOrgType() == Organization.orgType.EducationDonationOrg){
@@ -275,7 +277,7 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
             comboOrgType.setSelectedIndex(0);
 
         } else{
-            JOptionPane.showMessageDialog(null, "Enter Organization name");
+            JOptionPane.showMessageDialog(null, "Please enter all details", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         populateTableOrg();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -335,11 +337,11 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
                 row[0] = org.getName();
                 row[1] = org.getOrgType();
                 for(UserAccount useracc : org.getuserAccountList().getUaList()){
-                    if(useracc.getRole().toString().equals(Role.RoleType.DisasterReliefOrgAdminRole.toString())){
+                    if(useracc.getRole().toString().equals(Role.RoleType.DisasterReliefOrgAdminRole.getValue())){
                         row[2] = useracc.getUsername();
                         row[3] = useracc.getPassword();
                     }
-                    else if(useracc.getRole().toString().equals(Role.RoleType.EducationDonationOrgAdminRole.toString())){
+                    else if(useracc.getRole().toString().equals(Role.RoleType.EducationDonationOrgAdminRole.getValue())){
                         row[2] = useracc.getUsername();
                         row[3] = useracc.getPassword();
                     }

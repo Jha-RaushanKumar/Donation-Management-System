@@ -272,7 +272,7 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
             txtOrgName.setText("");
 
         } else{
-            JOptionPane.showMessageDialog(null, "Please enter Organization name");
+            JOptionPane.showMessageDialog(null, "Please enter Organization name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         populateTableOrg();
     }//GEN-LAST:event_btnAddOrganizationActionPerformed
