@@ -89,10 +89,14 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtTotalKits = new javax.swing.JTextField();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(44, 54, 57));
+        setForeground(new java.awt.Color(220, 215, 201));
+
+        jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setLayout(null);
 
-        tableFunds.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableFunds.setBackground(new java.awt.Color(220, 215, 224));
+        tableFunds.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tableFunds.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -118,14 +122,14 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jScrollPane1.setBounds(40, 220, 900, 120);
 
         jLabelIncomingKit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelIncomingKit.setForeground(new java.awt.Color(2, 55, 108));
+        jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
         jLabelIncomingKit.setText("Incoming Kits");
         jPanel1.add(jLabelIncomingKit);
         jLabelIncomingKit.setBounds(20, 450, 178, 37);
 
-        buttonProcess.setBackground(new java.awt.Color(2, 55, 108));
+        buttonProcess.setBackground(new java.awt.Color(220, 215, 201));
         buttonProcess.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        buttonProcess.setForeground(new java.awt.Color(255, 255, 255));
+        buttonProcess.setForeground(new java.awt.Color(51, 51, 51));
         buttonProcess.setText("Process");
         buttonProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,13 +140,14 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         buttonProcess.setBounds(810, 350, 130, 36);
 
         jLabelTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabelTitle.setForeground(new java.awt.Color(2, 55, 108));
+        jLabelTitle.setForeground(new java.awt.Color(220, 215, 201));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Education Donation Org Admin");
         jPanel1.add(jLabelTitle);
-        jLabelTitle.setBounds(10, 10, 940, 70);
+        jLabelTitle.setBounds(20, 0, 940, 70);
 
-        tableKits.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
+        tableKits.setBackground(new java.awt.Color(220, 215, 224));
+        tableKits.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tableKits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -165,17 +170,17 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tableKits);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(50, 480, 850, 130);
+        jScrollPane2.setBounds(40, 490, 900, 130);
 
         jLabelIncomingKit1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelIncomingKit1.setForeground(new java.awt.Color(2, 55, 108));
+        jLabelIncomingKit1.setForeground(new java.awt.Color(220, 215, 201));
         jLabelIncomingKit1.setText("Incoming Funds");
         jPanel1.add(jLabelIncomingKit1);
         jLabelIncomingKit1.setBounds(20, 180, 178, 37);
 
-        buttonProcessKits.setBackground(new java.awt.Color(2, 55, 108));
+        buttonProcessKits.setBackground(new java.awt.Color(220, 215, 201));
         buttonProcessKits.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        buttonProcessKits.setForeground(new java.awt.Color(255, 255, 255));
+        buttonProcessKits.setForeground(new java.awt.Color(51, 51, 51));
         buttonProcessKits.setText("Process");
         buttonProcessKits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,52 +193,56 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jLabel3.setBounds(0, 120, 110, 90);
 
         jLabelInventoryOverview.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelInventoryOverview.setForeground(new java.awt.Color(2, 55, 108));
+        jLabelInventoryOverview.setForeground(new java.awt.Color(220, 215, 201));
         jLabelInventoryOverview.setText("Total Donations collected for Education Donation Organization");
         jPanel1.add(jLabelInventoryOverview);
-        jLabelInventoryOverview.setBounds(20, 110, 645, 37);
+        jLabelInventoryOverview.setBounds(20, 100, 645, 37);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel1.setForeground(new java.awt.Color(220, 215, 201));
         jLabel1.setText("Total Funds");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(120, 160, 93, 22);
+        jLabel1.setBounds(30, 150, 93, 22);
+
+        txtTotalFunds.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtTotalFunds);
-        txtTotalFunds.setBounds(230, 160, 231, 22);
+        txtTotalFunds.setBounds(150, 150, 231, 23);
 
         jLabelInventoryOverview1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelInventoryOverview1.setForeground(new java.awt.Color(2, 55, 108));
+        jLabelInventoryOverview1.setForeground(new java.awt.Color(220, 215, 201));
         jLabelInventoryOverview1.setText("Total Kits Donations collected for Education Donation Organization");
         jPanel1.add(jLabelInventoryOverview1);
         jLabelInventoryOverview1.setBounds(20, 380, 645, 37);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(2, 55, 108));
+        jLabel2.setForeground(new java.awt.Color(220, 215, 201));
         jLabel2.setText("Total Kits");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(140, 430, 75, 22);
+        jLabel2.setBounds(30, 430, 75, 22);
+
+        txtTotalKits.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtTotalKits);
-        txtTotalKits.setBounds(230, 430, 240, 22);
+        txtTotalKits.setBounds(150, 430, 240, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1077, Short.MAX_VALUE)
+            .addGap(0, 1111, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(57, Short.MAX_VALUE)
+                    .addContainerGap(74, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 965, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(55, Short.MAX_VALUE)))
+                    .addContainerGap(72, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
+            .addGap(0, 758, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(18, Short.MAX_VALUE)
+                    .addContainerGap(34, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(19, Short.MAX_VALUE)))
+                    .addContainerGap(35, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
