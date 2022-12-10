@@ -140,8 +140,8 @@ public class DonateDisasterKitSupplyJPanel extends javax.swing.JFrame {
         Organization.orgType type = org.getOrgType();
 
         if (txtCount.getText().isEmpty()
-                || type == null) {
-            JOptionPane.showMessageDialog(null, "Please Provide all the Details.");
+                || type == null || (!txtCount.getText().matches("[0-9]+"))) {
+            JOptionPane.showMessageDialog(null, "Please Provide all valid Details(Count in some nos).","Warning", JOptionPane.WARNING_MESSAGE);
         } 
         else {
             DisasterReliefKitSupplyWorkRequest req = new DisasterReliefKitSupplyWorkRequest();

@@ -270,7 +270,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
                 return;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a request to process.");
+            JOptionPane.showMessageDialog(null, "Please select a request to process.");
             return;
         }
     }//GEN-LAST:event_buttonProcessActionPerformed
@@ -305,7 +305,7 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
                 return;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a request to accept.");
+            JOptionPane.showMessageDialog(null, "Please select a request to accept.");
             return;
         }
     }//GEN-LAST:event_buttonProcessKitsActionPerformed

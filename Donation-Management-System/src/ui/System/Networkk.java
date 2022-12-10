@@ -188,10 +188,10 @@ public class Networkk extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Network Added Successfully");
                 txtNewNetwork.setText("");
             } else {
-                JOptionPane.showMessageDialog(null, "Network Exists. Duplicate Value provided.");
+                JOptionPane.showMessageDialog(null, "Network Exists. Duplicate Value provided.","Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please Enter Network");
+            JOptionPane.showMessageDialog(null, "Please Enter Network","Warning", JOptionPane.WARNING_MESSAGE);
         }
         populateNetwork();
     }//GEN-LAST:event_btnAddNetworkActionPerformed

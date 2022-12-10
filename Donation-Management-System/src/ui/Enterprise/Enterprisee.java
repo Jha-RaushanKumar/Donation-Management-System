@@ -218,7 +218,7 @@ public class Enterprisee extends javax.swing.JFrame {
         int selectedRow = tableEnterprise.getSelectedRow();
         if(selectedRow<0){
             val=false;
-            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.","Warning", JOptionPane.WARNING_MESSAGE);
         }
         if(val){
             DefaultTableModel tableModel = (DefaultTableModel) tableEnterprise.getModel();
@@ -250,7 +250,7 @@ public class Enterprisee extends javax.swing.JFrame {
         Enterprise.EntType entType = (Enterprise.EntType) comboEnterprise.getSelectedItem();
 
         if (network == null || entType == null) {
-            JOptionPane.showMessageDialog(null, "Please select options.");
+            JOptionPane.showMessageDialog(null, "Please select options.","Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -262,7 +262,7 @@ public class Enterprisee extends javax.swing.JFrame {
             populateTable();
 
         } else{
-            JOptionPane.showMessageDialog(null, "Please Enter Enterprise Name.");
+            JOptionPane.showMessageDialog(null, "Please Enter Enterprise Name.","Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

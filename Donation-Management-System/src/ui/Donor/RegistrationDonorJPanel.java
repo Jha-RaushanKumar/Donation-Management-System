@@ -61,7 +61,6 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         txtContact = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        buttonCapture = new javax.swing.JButton();
         comboNetwork = new javax.swing.JComboBox();
         comboOrg = new javax.swing.JComboBox();
 
@@ -98,8 +97,6 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        buttonCapture.setText("Capture Image");
 
         comboNetwork.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         comboNetwork.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -172,10 +169,6 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
                         .addGap(311, 311, 311)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(375, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(buttonCapture, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(171, 171, 171))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,9 +209,7 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(comboOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(buttonCapture, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -261,13 +252,16 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
             || txtEmail.getText().isEmpty()
             || txtAddress.getText().isEmpty()
             || txtContact.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please provide all Details.");
+            JOptionPane.showMessageDialog(null, "Please provide all Details.","Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (txtName.getText().length() <= 0 || (!txtName.getText().matches("[A-Za-z]+"))) {
+            JOptionPane.showMessageDialog(this, "Please Enter Valid Name","Warning", JOptionPane.WARNING_MESSAGE);
         }
         else if (!isContactValid(txtContact.getText())) {
-            JOptionPane.showMessageDialog(null, "Please provide valid contact no.");
+            JOptionPane.showMessageDialog(null, "Please provide valid contact no.","Warning", JOptionPane.WARNING_MESSAGE);
         }
         else if (!isEmailValid(txtEmail.getText())) {
-            JOptionPane.showMessageDialog(null, "Please provide valid email.");
+            JOptionPane.showMessageDialog(null, "Please provide valid email.","Warning", JOptionPane.WARNING_MESSAGE);
         }
         else if (isEmailValid(txtEmail.getText())) {
             DonorRegistrationWorkRequest req = new DonorRegistrationWorkRequest();
@@ -341,7 +335,6 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCapture;
     private javax.swing.JComboBox comboNetwork;
     private javax.swing.JComboBox comboOrg;
     private javax.swing.JButton jButton1;
