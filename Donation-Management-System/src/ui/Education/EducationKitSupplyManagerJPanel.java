@@ -144,23 +144,23 @@ public class EducationKitSupplyManagerJPanel extends javax.swing.JPanel {
                 return;
             }
             else if (req.getStatus().equalsIgnoreCase("Forwarded to Charity Organization")) {
-                JOptionPane.showMessageDialog(null, "Request is already forwarded to the charity organization.");
+                JOptionPane.showMessageDialog(null, "Request is already forwarded to the Donation organization.");
                 return;
             }
-//            else {
-//                if (req instanceof AnimalWelfareKitInventoryRequest) {
-//                    EducationWelfareKitInventoryRequest fundRequest = (EducationWelfareKitInventoryRequest) tblKits.getValueAt(selectedRow, 0);
-////                    
-////                    int quantity = fundRequest.getQuanity();
-////                    int totalKits = animalWelfareInventoryOrg.getTotalKits() + quantity;
-////                    animalWelfareInventoryOrg.setTotalKits(totalKits);
-////                    txtTotalKits.setText(String.valueOf(animalWelfareInventoryOrg.getTotalKits()));
-//                }
-//                request.setReceiver(account);
-//                request.setStatus("Forwarded to Charity Organization");
-//                populateTable();
-//                JOptionPane.showMessageDialog(null, "Request is forwarded to the charity organization");
-//            }
+            else {
+                if (req instanceof EducationKitSupplyWorkRequest) {
+                    EducationKitSupplyWorkRequest fundRequest = (EducationKitSupplyWorkRequest) kitSupplyManagertable.getValueAt(selectedRow, 0);
+//                    
+//                    int quantity = fundRequest.getQuanity();
+//                    int totalKits = animalWelfareInventoryOrg.getTotalKits() + quantity;
+//                    animalWelfareInventoryOrg.setTotalKits(totalKits);
+//                    txtTotalKits.setText(String.valueOf(animalWelfareInventoryOrg.getTotalKits()));
+                }
+                req.setReceiver(userAccount);
+                req.setStatus("Forwarded to Donation Organization");
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Request is forwarded to the Donation organization");
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Choose a request to accept.");
             return;
