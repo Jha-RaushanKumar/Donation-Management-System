@@ -54,14 +54,12 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         btnProcess = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnReject = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setLayout(null);
 
         tableKits.setBackground(new java.awt.Color(220, 215, 224));
-        tableKits.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
         tableKits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -84,68 +82,66 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableKits);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(80, 250, 1020, 160);
+        jScrollPane1.setBounds(80, 270, 1000, 130);
 
-        jLabelIncomingKit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelIncomingKit.setForeground(new java.awt.Color(242, 242, 242));
-        jLabelIncomingKit.setText("Incoming Kits");
+        jLabelIncomingKit.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
+        jLabelIncomingKit.setText("Kits Requests:");
         jPanel1.add(jLabelIncomingKit);
-        jLabelIncomingKit.setBounds(80, 200, 178, 37);
+        jLabelIncomingKit.setBounds(80, 220, 178, 37);
 
         btnProcess.setBackground(new java.awt.Color(220, 215, 201));
-        btnProcess.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnProcess.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         btnProcess.setText("Process");
+        btnProcess.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
         jPanel1.add(btnProcess);
-        btnProcess.setBounds(1000, 440, 123, 36);
+        btnProcess.setBounds(640, 450, 123, 36);
 
-        jLabelTitle.setFont(new java.awt.Font("Serif", 1, 62)); // NOI18N
+        jLabelTitle.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(220, 215, 201));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitle.setText("Disaster Relief Kit Supply Admin");
+        jLabelTitle.setText("Welcome Disaster Relief Kit Supply Manager");
         jPanel1.add(jLabelTitle);
-        jLabelTitle.setBounds(70, 40, 1080, 90);
+        jLabelTitle.setBounds(90, 50, 990, 90);
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 100, 90);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(320, 540, 530, 390);
-
         btnReject.setBackground(new java.awt.Color(220, 215, 201));
-        btnReject.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnReject.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         btnReject.setText("Reject");
+        btnReject.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRejectActionPerformed(evt);
             }
         });
         jPanel1.add(btnReject);
-        btnReject.setBounds(840, 440, 123, 36);
+        btnReject.setBounds(390, 450, 123, 36);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1148, Short.MAX_VALUE)
+            .addGap(0, 1160, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 888, Short.MAX_VALUE)
+            .addGap(0, 795, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -217,7 +213,6 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelIncomingKit;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
