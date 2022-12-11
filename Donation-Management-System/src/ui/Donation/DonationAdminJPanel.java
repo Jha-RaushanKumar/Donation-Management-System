@@ -158,7 +158,6 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel2.add(comboRole);
         comboRole.setBounds(510, 330, 280, 30);
 
-        txtOrg.setEditable(false);
         txtOrg.setBackground(new java.awt.Color(220, 215, 224));
         txtOrg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtOrg.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +187,6 @@ public class DonationAdminJPanel extends javax.swing.JPanel {
         jPanel2.add(jLabel9);
         jLabel9.setBounds(260, 530, 140, 20);
 
-        txtUserPassword.setEditable(false);
         txtUserPassword.setBackground(new java.awt.Color(220, 215, 224));
         txtUserPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel2.add(txtUserPassword);
