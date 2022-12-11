@@ -53,6 +53,7 @@ public class DonorJPanel extends javax.swing.JPanel {
         btnDonateDisasterKit = new javax.swing.JButton();
         btnDonateFunds = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnDonateFunds1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(44, 54, 57));
 
@@ -92,6 +93,16 @@ public class DonorJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/donation.jpg"))); // NOI18N
 
+        btnDonateFunds1.setBackground(new java.awt.Color(220, 215, 201));
+        btnDonateFunds1.setFont(new java.awt.Font("Baskerville Old Face", 0, 24)); // NOI18N
+        btnDonateFunds1.setText("My Profile");
+        btnDonateFunds1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDonateFunds1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonateFunds1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,8 +122,13 @@ public class DonorJPanel extends javax.swing.JPanel {
                 .addContainerGap(152, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(297, 297, 297))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(297, 297, 297))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnDonateFunds1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(463, 463, 463))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +142,9 @@ public class DonorJPanel extends javax.swing.JPanel {
                     .addComponent(btnDonateDisasterKit, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87)
                 .addComponent(jLabel1)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(btnDonateFunds1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -168,11 +186,18 @@ public class DonorJPanel extends javax.swing.JPanel {
         panel.setVisible(true);
     }//GEN-LAST:event_btnDonateDisasterKitActionPerformed
 
+    private void btnDonateFunds1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateFunds1ActionPerformed
+        // TODO add your handling code here:
+        DonorProfilePanel panel = new DonorProfilePanel(ecosystem, network, enterprise, jPanel, userAccount);
+        panel.setVisible(true);
+    }//GEN-LAST:event_btnDonateFunds1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDonateDisasterKit;
     private javax.swing.JButton btnDonateEduKit;
     private javax.swing.JButton btnDonateFunds;
+    private javax.swing.JButton btnDonateFunds1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
