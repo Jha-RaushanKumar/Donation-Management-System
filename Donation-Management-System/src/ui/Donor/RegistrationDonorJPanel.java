@@ -276,7 +276,7 @@ public class RegistrationDonorJPanel extends javax.swing.JPanel {
                 || txtAddress.getText().isEmpty()
                 || txtContact.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please provide all Details.", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (txtName.getText().length() <= 0 || (!txtName.getText().matches("[A-Za-z]+"))) {
+        } else if (txtName.getText().length() <= 0 || (!txtName.getText().matches("^[a-zA-Z\\s\\.]*$"))) {
             JOptionPane.showMessageDialog(this, "Please Enter Valid Name", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!isContactValid(txtContact.getText())) {
             JOptionPane.showMessageDialog(null, "Please provide valid contact no.", "Warning", JOptionPane.WARNING_MESSAGE);

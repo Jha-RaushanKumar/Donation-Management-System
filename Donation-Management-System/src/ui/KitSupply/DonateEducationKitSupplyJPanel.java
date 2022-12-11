@@ -39,6 +39,7 @@ public class DonateEducationKitSupplyJPanel extends javax.swing.JFrame {
         this.jPanel = jPanel;
         this.ecosystem=ecosystem;
         populateBox();
+        setLocationRelativeTo(null);
     }
 
     /**
