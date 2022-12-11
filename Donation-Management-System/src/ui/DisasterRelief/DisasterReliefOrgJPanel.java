@@ -80,14 +80,12 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableFunds = new javax.swing.JTable();
         jLabelIncomingKit = new javax.swing.JLabel();
-        jLabelSupplyKitOverview = new javax.swing.JLabel();
         btnProcess = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtTotalFunds = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableKits = new javax.swing.JTable();
         jLabelIncomingFunds = new javax.swing.JLabel();
-        jLabelSupplyKitOverview1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtTotalKits = new javax.swing.JTextField();
         btnProcessKit = new javax.swing.JButton();
@@ -96,10 +94,9 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setLayout(null);
 
-        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), null)));
+        jScrollPane1.setBorder(null);
 
         tableFunds.setBackground(new java.awt.Color(220, 215, 224));
-        tableFunds.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
         tableFunds.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -122,22 +119,16 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableFunds);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(130, 240, 830, 100);
+        jScrollPane1.setBounds(130, 220, 900, 120);
 
-        jLabelIncomingKit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelIncomingKit.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelIncomingKit.setText("Incoming Kits");
+        jLabelIncomingKit.setText("Kits Requests:");
         jPanel1.add(jLabelIncomingKit);
         jLabelIncomingKit.setBounds(130, 500, 178, 37);
 
-        jLabelSupplyKitOverview.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelSupplyKitOverview.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelSupplyKitOverview.setText("Total Donations collected for Disaster Relief Donation Organization");
-        jPanel1.add(jLabelSupplyKitOverview);
-        jLabelSupplyKitOverview.setBounds(130, 110, 645, 37);
-
         btnProcess.setBackground(new java.awt.Color(220, 215, 201));
-        btnProcess.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnProcess.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,24 +136,23 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnProcess);
-        btnProcess.setBounds(830, 360, 123, 36);
+        btnProcess.setBounds(530, 350, 100, 36);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(220, 215, 201));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Total Funds");
+        jLabel1.setText("Total Funds:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(100, 160, 120, 22);
+        jLabel1.setBounds(760, 180, 120, 22);
 
         txtTotalFunds.setBackground(new java.awt.Color(220, 215, 224));
         txtTotalFunds.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(txtTotalFunds);
-        txtTotalFunds.setBounds(240, 160, 231, 30);
+        txtTotalFunds.setBounds(890, 180, 140, 30);
 
-        jScrollPane2.setViewportBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), null));
+        jScrollPane2.setBorder(null);
 
         tableKits.setBackground(new java.awt.Color(220, 215, 224));
-        tableKits.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
         tableKits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -185,34 +175,28 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tableKits);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(130, 550, 810, 130);
+        jScrollPane2.setBounds(130, 540, 910, 130);
 
-        jLabelIncomingFunds.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelIncomingFunds.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabelIncomingFunds.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelIncomingFunds.setText("Incoming Funds");
+        jLabelIncomingFunds.setText("Funds Requests:");
         jPanel1.add(jLabelIncomingFunds);
-        jLabelIncomingFunds.setBounds(130, 200, 178, 37);
+        jLabelIncomingFunds.setBounds(130, 170, 178, 37);
 
-        jLabelSupplyKitOverview1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelSupplyKitOverview1.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelSupplyKitOverview1.setText("Total Kits Donations collected for Disaster Relief Donation Organization");
-        jPanel1.add(jLabelSupplyKitOverview1);
-        jLabelSupplyKitOverview1.setBounds(130, 410, 641, 37);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(220, 215, 201));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Total Kits");
+        jLabel2.setText("Total Kits:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(100, 460, 100, 22);
+        jLabel2.setBounds(790, 500, 100, 22);
 
         txtTotalKits.setBackground(new java.awt.Color(220, 215, 224));
         txtTotalKits.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(txtTotalKits);
-        txtTotalKits.setBounds(270, 460, 231, 30);
+        txtTotalKits.setBounds(900, 500, 140, 30);
 
         btnProcessKit.setBackground(new java.awt.Color(220, 215, 201));
-        btnProcessKit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnProcessKit.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         btnProcessKit.setText("Process");
         btnProcessKit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,9 +204,9 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnProcessKit);
-        btnProcessKit.setBounds(820, 700, 123, 36);
+        btnProcessKit.setBounds(530, 680, 100, 36);
 
-        jLabelTitle.setFont(new java.awt.Font("Serif", 1, 62)); // NOI18N
+        jLabelTitle.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(220, 215, 201));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Disaster Relief Org Admin");
@@ -233,21 +217,15 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1133, Short.MAX_VALUE)
+            .addGap(0, 1183, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 797, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -336,8 +314,6 @@ public class DisasterReliefOrgJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelIncomingFunds;
     private javax.swing.JLabel jLabelIncomingKit;
-    private javax.swing.JLabel jLabelSupplyKitOverview;
-    private javax.swing.JLabel jLabelSupplyKitOverview1;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
