@@ -113,16 +113,16 @@ Funds Manager
 
 ![](./class%20dia.jpg)
 
-![](../Donation-Management-System/Donation%20class%20Diagram/enterprise.JPG)
+![](./enterprise.JPG)
 
-![](../Donation-Management-System/Donation%20class%20Diagram/Organization.JPG)
+![](./Organization.JPG)
 
-![](../Donation-Management-System/Donation%20class%20Diagram/Role.JPG)
+![](./Role.JPG)
 
-![](../Donation-Management-System/Donation%20class%20Diagram/workQueue.JPG)
+![](./workQueue.JPG)
 
-![](../Donation-Management-System/Donation%20class%20Diagram/network.JPG)
+![](./network.JPG)
 
-![](../Donation-Management-System/Donation%20class%20Diagram/Donation.JPG)
+![](./Donation.JPG)
 
-![](../Donation-Management-System/Donation%20class%20Diagram/userAccount.JPG)
+![](./userAccount.JPG)
