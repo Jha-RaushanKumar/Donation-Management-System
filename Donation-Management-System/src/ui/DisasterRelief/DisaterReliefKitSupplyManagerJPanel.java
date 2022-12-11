@@ -53,14 +53,14 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jLabelIncomingKit = new javax.swing.JLabel();
         btnProcess = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnReject = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(44, 54, 57));
         jPanel1.setLayout(null);
 
+        tableKits.setBackground(new java.awt.Color(220, 215, 224));
         tableKits.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108)), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(2, 55, 108))));
         tableKits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,14 +87,13 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jScrollPane1.setBounds(80, 250, 1020, 160);
 
         jLabelIncomingKit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelIncomingKit.setForeground(new java.awt.Color(2, 55, 108));
+        jLabelIncomingKit.setForeground(new java.awt.Color(242, 242, 242));
         jLabelIncomingKit.setText("Incoming Kits");
         jPanel1.add(jLabelIncomingKit);
         jLabelIncomingKit.setBounds(80, 200, 178, 37);
 
-        btnProcess.setBackground(new java.awt.Color(2, 55, 108));
+        btnProcess.setBackground(new java.awt.Color(220, 215, 201));
         btnProcess.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnProcess.setForeground(new java.awt.Color(255, 255, 255));
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,19 +103,12 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jPanel1.add(btnProcess);
         btnProcess.setBounds(1000, 440, 123, 36);
 
-        jLabelTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabelTitle.setForeground(new java.awt.Color(2, 55, 108));
+        jLabelTitle.setFont(new java.awt.Font("Serif", 1, 62)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(220, 215, 201));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Disaster Relief Kit Supply Admin");
         jPanel1.add(jLabelTitle);
-        jLabelTitle.setBounds(70, 40, 1080, 35);
-
-        jLabel9.setFont(new java.awt.Font("Marker Felt", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(2, 55, 108));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Welcome Admin");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 130, 1210, 32);
+        jLabelTitle.setBounds(70, 40, 1080, 90);
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 100, 90);
 
@@ -124,9 +116,8 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(320, 540, 530, 390);
 
-        btnReject.setBackground(new java.awt.Color(2, 55, 108));
+        btnReject.setBackground(new java.awt.Color(220, 215, 201));
         btnReject.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +218,6 @@ public class DisaterReliefKitSupplyManagerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelIncomingKit;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
