@@ -96,7 +96,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2.setText("Password");
 
         txtUserName.setBackground(new java.awt.Color(220, 215, 224));
-        txtUserName.setText("sysadmin");
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
@@ -134,14 +133,13 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         txtUserPassword.setBackground(new java.awt.Color(220, 215, 224));
-        txtUserPassword.setText("sysadmin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 49, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
