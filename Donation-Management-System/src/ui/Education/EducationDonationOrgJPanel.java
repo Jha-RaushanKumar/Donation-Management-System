@@ -81,11 +81,8 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         tableKits = new javax.swing.JTable();
         jLabelIncomingKit1 = new javax.swing.JLabel();
         buttonProcessKits = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabelInventoryOverview = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtTotalFunds = new javax.swing.JTextField();
-        jLabelInventoryOverview1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtTotalKits = new javax.swing.JTextField();
 
@@ -119,16 +116,16 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableFunds);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(40, 220, 900, 120);
+        jScrollPane1.setBounds(10, 170, 930, 120);
 
-        jLabelIncomingKit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelIncomingKit.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabelIncomingKit.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelIncomingKit.setText("Incoming Kits");
+        jLabelIncomingKit.setText("Kits Requests:");
         jPanel1.add(jLabelIncomingKit);
-        jLabelIncomingKit.setBounds(20, 450, 178, 37);
+        jLabelIncomingKit.setBounds(10, 440, 178, 37);
 
         buttonProcess.setBackground(new java.awt.Color(220, 215, 201));
-        buttonProcess.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        buttonProcess.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         buttonProcess.setForeground(new java.awt.Color(51, 51, 51));
         buttonProcess.setText("Process");
         buttonProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -137,14 +134,14 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(buttonProcess);
-        buttonProcess.setBounds(810, 350, 130, 36);
+        buttonProcess.setBounds(430, 300, 110, 36);
 
-        jLabelTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelTitle.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(220, 215, 201));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Education Donation Org Admin");
         jPanel1.add(jLabelTitle);
-        jLabelTitle.setBounds(20, 0, 940, 70);
+        jLabelTitle.setBounds(10, -20, 940, 70);
 
         tableKits.setBackground(new java.awt.Color(220, 215, 224));
         tableKits.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -170,16 +167,16 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tableKits);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(40, 490, 900, 130);
+        jScrollPane2.setBounds(10, 480, 930, 130);
 
-        jLabelIncomingKit1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelIncomingKit1.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabelIncomingKit1.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelIncomingKit1.setText("Incoming Funds");
+        jLabelIncomingKit1.setText("Funds Requests:");
         jPanel1.add(jLabelIncomingKit1);
-        jLabelIncomingKit1.setBounds(20, 180, 178, 37);
+        jLabelIncomingKit1.setBounds(10, 130, 178, 37);
 
         buttonProcessKits.setBackground(new java.awt.Color(220, 215, 201));
-        buttonProcessKits.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        buttonProcessKits.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         buttonProcessKits.setForeground(new java.awt.Color(51, 51, 51));
         buttonProcessKits.setText("Process");
         buttonProcessKits.addActionListener(new java.awt.event.ActionListener() {
@@ -188,61 +185,47 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(buttonProcessKits);
-        buttonProcessKits.setBounds(790, 640, 140, 36);
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(0, 120, 110, 90);
+        buttonProcessKits.setBounds(430, 620, 120, 36);
 
-        jLabelInventoryOverview.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelInventoryOverview.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelInventoryOverview.setText("Total Donations collected for Education Donation Organization");
-        jPanel1.add(jLabelInventoryOverview);
-        jLabelInventoryOverview.setBounds(20, 100, 645, 37);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(220, 215, 201));
-        jLabel1.setText("Total Funds");
+        jLabel1.setText("Total Funds:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(30, 150, 93, 22);
+        jLabel1.setBounds(670, 130, 110, 30);
 
         txtTotalFunds.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtTotalFunds);
-        txtTotalFunds.setBounds(150, 150, 231, 23);
+        txtTotalFunds.setBounds(790, 130, 150, 30);
 
-        jLabelInventoryOverview1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelInventoryOverview1.setForeground(new java.awt.Color(220, 215, 201));
-        jLabelInventoryOverview1.setText("Total Kits Donations collected for Education Donation Organization");
-        jPanel1.add(jLabelInventoryOverview1);
-        jLabelInventoryOverview1.setBounds(20, 380, 645, 37);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(220, 215, 201));
-        jLabel2.setText("Total Kits");
+        jLabel2.setText("Total Kits:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(30, 430, 75, 22);
+        jLabel2.setBounds(680, 440, 87, 30);
 
         txtTotalKits.setBackground(new java.awt.Color(220, 215, 224));
         jPanel1.add(txtTotalKits);
-        txtTotalKits.setBounds(150, 430, 240, 23);
+        txtTotalKits.setBounds(780, 440, 160, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1111, Short.MAX_VALUE)
+            .addGap(0, 1180, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(74, Short.MAX_VALUE)
+                    .addContainerGap(108, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 965, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(72, Short.MAX_VALUE)))
+                    .addContainerGap(107, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
+            .addGap(0, 791, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(34, Short.MAX_VALUE)
+                    .addContainerGap(51, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(35, Short.MAX_VALUE)))
+                    .addContainerGap(51, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -325,11 +308,8 @@ public class EducationDonationOrgJPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonProcessKits;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelIncomingKit;
     private javax.swing.JLabel jLabelIncomingKit1;
-    private javax.swing.JLabel jLabelInventoryOverview;
-    private javax.swing.JLabel jLabelInventoryOverview1;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
